@@ -6,7 +6,7 @@ class LandingPage extends Component {
 
         return (
             <div>
-                <h1>Landing page</h1>
+                <h1>Landing page123</h1>
             </div>
         )
     }
