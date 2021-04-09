@@ -1,0 +1,17 @@
+.ImageQuote{
+    width: 50%;
+    text-align: center;
+}
+
+
+img{
+    margin: 25px 50px;
+    width: 70%;
+    
+}
+
+p{
+    color: rgb(139, 139, 139);
+    font-style: italic;
+    /* border-bottom: 1px solid rgb(139, 139, 139); */
+}
