@@ -6,7 +6,7 @@ const imageQuote = (props) => {
     return (
         <div className={classes.ImageQuote}>
             <img src={props.src} alt={props.alt} />
-            <p>"{props.quote}"</p>
+            <p className={classes.Quote}>"{props.quote}"</p>
         </div>
     )
 }

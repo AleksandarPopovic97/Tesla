@@ -4,28 +4,68 @@
     margin-left: auto;
     margin-right: auto;
     height: 500px;
-    border-radius: 20px;
+    border-radius: 7px;
     display: flex;
     flex-direction: column;
-    text-align: center;
 }
 
-p{
-    text-align: left;
-    margin-left: 20%;
+.LogInContent{
+    width: 70%;
+    margin: 0 auto;
 }
+
+
+
 
 .Container{
-    margin: 0 20%;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
 }
 
-input{
-    
-    
+.LogInbtn{
+    background-color: rgb(3, 51, 51);
+    width: 100%;
+    height: 40px;
+    color: white;
+    margin-top: 18px;
+    border-radius: 5px;
+    border: none;
 }
 
-label{
+.LogInbtn:hover{
+    border: 2px solid silver;
+    cursor: pointer;
+}
 
+.Container input{
+    border: 2.5px solid #ccc ;
+    border-radius: 7px;
+    width: 100%;
+    height: 40px;
+    margin-top: 5px;
+}
+
+.Container label{
+    text-align: left;
+}
+
+.ForgotPassword{
+    display: inline-block;
+    text-align: left;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.GoogleBtn{
+    background-color: #dd4b39;
+
+}
+.FacebookBtn{
+    background-color: #3b5999;
+}
+
+.CreateAccount{
+    display: inline-block;
+    margin-top: 15px;
 }

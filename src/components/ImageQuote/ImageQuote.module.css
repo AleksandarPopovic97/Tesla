@@ -4,14 +4,16 @@
 }
 
 
-img{
+.ImageQuote img{
     margin: 25px 50px;
     width: 70%;
-    
+    border-radius: 5px;
 }
 
-p{
+.Quote{
     color: rgb(139, 139, 139);
     font-style: italic;
+    width: fit-content;
+    margin: auto;
     /* border-bottom: 1px solid rgb(139, 139, 139); */
 }
