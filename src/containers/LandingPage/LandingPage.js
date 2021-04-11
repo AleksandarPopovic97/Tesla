@@ -3,7 +3,6 @@ import teslaPicture from '../../assets/images/tesla.jpg';
 import ImageQuote from '../../components/ImageQuote/ImageQuote';
 import LogIn from '../../components/LogIn/LogIn';
 import classes from './LandingPage.module.css';
-import { Link } from 'react-router-dom';
 class LandingPage extends Component {
     quote = "The present is theirs; the future, for witch I really worked, is mine."
 
