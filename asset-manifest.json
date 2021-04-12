@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/AleksandarPopovic97/Tesla/static/css/main.4d2bffa0.chunk.css",
-    "main.js": "/AleksandarPopovic97/Tesla/static/js/main.9843fe9c.chunk.js",
-    "main.js.map": "/AleksandarPopovic97/Tesla/static/js/main.9843fe9c.chunk.js.map",
+    "main.js": "/AleksandarPopovic97/Tesla/static/js/main.26b7afd3.chunk.js",
+    "main.js.map": "/AleksandarPopovic97/Tesla/static/js/main.26b7afd3.chunk.js.map",
     "runtime-main.js": "/AleksandarPopovic97/Tesla/static/js/runtime-main.208927ff.js",
     "runtime-main.js.map": "/AleksandarPopovic97/Tesla/static/js/runtime-main.208927ff.js.map",
     "static/js/2.0f632021.chunk.js": "/AleksandarPopovic97/Tesla/static/js/2.0f632021.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.208927ff.js",
     "static/js/2.0f632021.chunk.js",
     "static/css/main.4d2bffa0.chunk.css",
-    "static/js/main.9843fe9c.chunk.js"
+    "static/js/main.26b7afd3.chunk.js"
   ]
 }
