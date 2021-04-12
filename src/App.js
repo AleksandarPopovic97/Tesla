@@ -1,12 +1,12 @@
 import './App.css';
 import Layout from './components/Layout/Layout';
 import LandingPage from './containers/LandingPage/LandingPage';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Switch, Route, HashRouter } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter>
         <Layout>
           <Switch>
             {/* <Route path="/reportOutage" component={} />
@@ -14,7 +14,7 @@ function App() {
             <Route path="/" component={LandingPage} />
           </Switch>
         </Layout>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
