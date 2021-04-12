@@ -23,8 +23,9 @@ class LandingPage extends Component {
                     <ImageQuote src={teslaPicture} alt="Nikola Tesla" quote={this.quote} />
                     <LogIn />
                 </div>
-
-                <button className={classes.ReportBtn} onClick={this.reportOutageHandler}>📞 Report outage</button>
+                <div className={classes.ReportBtnContainer}>
+                    <button className={classes.ReportBtn} onClick={this.reportOutageHandler}>📞 Report outage</button>
+                </div>
                 {/* <Link to='/reportOutage' className={classes.ReportBtn} onClick={this.reportOutageHandler}>
                     📞 Report outage
                 </Link> */}

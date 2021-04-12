@@ -34,3 +34,16 @@ h3{
     background-color: silver;
 }
 
+@media (max-width:500px) {
+
+
+    .ReportBtnContainer{
+        margin-top: -75px;
+    }
+
+    .ReportBtn{
+        margin-left: 7.5%;
+        width: 35vw;
+    }
+}
+

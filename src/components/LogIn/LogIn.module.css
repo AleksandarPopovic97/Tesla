@@ -61,3 +61,19 @@
     display: inline-block;
     margin-top: 15px;
 }
+
+@media (max-width: 500px) {
+    .LogIn{
+        width: 70%;
+        font-size: 0.8rem;
+        height: 450px;
+        
+    }
+
+    .LogInContent{
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    
+}

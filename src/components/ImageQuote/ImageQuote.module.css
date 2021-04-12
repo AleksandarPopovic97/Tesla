@@ -17,3 +17,11 @@
     margin-top: 20px;
     /* border-bottom: 1px solid rgb(139, 139, 139); */
 }
+
+@media (max-width: 500px) {
+    .ImageQuote{
+        margin: auto;
+        width: 70%;
+        text-align: center;
+    }
+}
