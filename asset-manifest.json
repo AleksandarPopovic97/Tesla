@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/AleksandarPopovic97/static/css/main.4d2bffa0.chunk.css",
-    "main.js": "/AleksandarPopovic97/static/js/main.56e11d06.chunk.js",
-    "main.js.map": "/AleksandarPopovic97/static/js/main.56e11d06.chunk.js.map",
-    "runtime-main.js": "/AleksandarPopovic97/static/js/runtime-main.4a17558a.js",
-    "runtime-main.js.map": "/AleksandarPopovic97/static/js/runtime-main.4a17558a.js.map",
-    "static/js/2.6bb92c4e.chunk.js": "/AleksandarPopovic97/static/js/2.6bb92c4e.chunk.js",
-    "static/js/2.6bb92c4e.chunk.js.map": "/AleksandarPopovic97/static/js/2.6bb92c4e.chunk.js.map",
-    "static/js/3.8b4dd9b8.chunk.js": "/AleksandarPopovic97/static/js/3.8b4dd9b8.chunk.js",
-    "static/js/3.8b4dd9b8.chunk.js.map": "/AleksandarPopovic97/static/js/3.8b4dd9b8.chunk.js.map",
-    "index.html": "/AleksandarPopovic97/index.html",
-    "static/css/main.4d2bffa0.chunk.css.map": "/AleksandarPopovic97/static/css/main.4d2bffa0.chunk.css.map",
-    "static/js/2.6bb92c4e.chunk.js.LICENSE.txt": "/AleksandarPopovic97/static/js/2.6bb92c4e.chunk.js.LICENSE.txt",
-    "static/media/tesla.c6c91b8f.jpg": "/AleksandarPopovic97/static/media/tesla.c6c91b8f.jpg"
+    "main.css": "/AleksandarPopovic97/Tesla/static/css/main.4d2bffa0.chunk.css",
+    "main.js": "/AleksandarPopovic97/Tesla/static/js/main.2171b7e7.chunk.js",
+    "main.js.map": "/AleksandarPopovic97/Tesla/static/js/main.2171b7e7.chunk.js.map",
+    "runtime-main.js": "/AleksandarPopovic97/Tesla/static/js/runtime-main.208927ff.js",
+    "runtime-main.js.map": "/AleksandarPopovic97/Tesla/static/js/runtime-main.208927ff.js.map",
+    "static/js/2.6bb92c4e.chunk.js": "/AleksandarPopovic97/Tesla/static/js/2.6bb92c4e.chunk.js",
+    "static/js/2.6bb92c4e.chunk.js.map": "/AleksandarPopovic97/Tesla/static/js/2.6bb92c4e.chunk.js.map",
+    "static/js/3.8b4dd9b8.chunk.js": "/AleksandarPopovic97/Tesla/static/js/3.8b4dd9b8.chunk.js",
+    "static/js/3.8b4dd9b8.chunk.js.map": "/AleksandarPopovic97/Tesla/static/js/3.8b4dd9b8.chunk.js.map",
+    "index.html": "/AleksandarPopovic97/Tesla/index.html",
+    "static/css/main.4d2bffa0.chunk.css.map": "/AleksandarPopovic97/Tesla/static/css/main.4d2bffa0.chunk.css.map",
+    "static/js/2.6bb92c4e.chunk.js.LICENSE.txt": "/AleksandarPopovic97/Tesla/static/js/2.6bb92c4e.chunk.js.LICENSE.txt",
+    "static/media/tesla.c6c91b8f.jpg": "/AleksandarPopovic97/Tesla/static/media/tesla.c6c91b8f.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.4a17558a.js",
+    "static/js/runtime-main.208927ff.js",
     "static/js/2.6bb92c4e.chunk.js",
     "static/css/main.4d2bffa0.chunk.css",
-    "static/js/main.56e11d06.chunk.js"
+    "static/js/main.2171b7e7.chunk.js"
   ]
 }
