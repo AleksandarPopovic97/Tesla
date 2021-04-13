@@ -1,0 +1,149 @@
+.DashboardLayout{
+    display: flex;
+    float: left;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+.NavBar{
+    background-color: blueviolet;
+    /* position: absolute;
+    left: 0;
+    top: 35px; */
+    height: 86vh;
+    width: 75px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+
+.NavLink{
+    background-color: green;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 10px;
+    font-size: 1.5rem;
+    width: 100%;
+    color: rgb(167, 167, 167);
+}
+
+
+.NavLink:hover{
+    background-color: gray;
+}
+
+.NavLinks{
+    display: flex;
+    flex-direction: column;
+}
+
+.NavOptionsLinks{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.Footer{
+    background-color: blue;
+    width: 100%;
+    height: 6vh;
+    /* position: absolute;
+    bottom: 0;
+    left: 0; */
+}
+
+.Copyright{
+    margin: auto 0 auto 70px;
+}
+
+.Header{
+    background-color: silver;
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.NavContentContainer{
+    display: flex;
+}
+
+.Content{
+    margin: 20px;
+    background-color: pink;
+    width: 100%;
+    height: 93%;
+}
+
+.DrawerToggle{
+    width: 75px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.DashboardIconContainer{
+    margin-left: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+.HeaderContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.UserNameContainer{
+    margin: auto 0 auto 0;
+}
+
+.UserContainer{
+    display: flex;
+    flex-direction: row;
+    margin-right: 30px;
+    color: gray;
+}
+
+.UserContainer p{
+    margin: 0;   
+    text-align: right;
+}
+
+
+.UserName{
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    
+}
+
+.UserIcon{
+    margin: auto 0 auto 30px;
+}
+
+.DashboardIcon{
+    margin: auto 30px auto 0;
+}
+
+.DashboardTitle{
+    margin: auto 0 auto 0;
+    text-transform: uppercase;
+}
+
+
+
+@media (max-height: 800px) {
+    .NavLink{
+        font-size: 1.2rem;
+        padding: 5px 0;
+        margin-top: 5px;
+    }
+}

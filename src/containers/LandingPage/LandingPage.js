@@ -3,6 +3,7 @@ import teslaPicture from '../../assets/images/tesla.jpg';
 import ImageQuote from '../../components/ImageQuote/ImageQuote';
 import LogIn from '../../components/LogIn/LogIn';
 import classes from './LandingPage.module.css';
+import { ImPhone } from 'react-icons/im';
 class LandingPage extends Component {
     quote = "The present is theirs; the future, for witch I really worked, is mine."
 
@@ -21,10 +22,10 @@ class LandingPage extends Component {
                 <h3>Electricity for the future</h3>
                 <div className={classes.Container}>
                     <ImageQuote src={teslaPicture} alt="Nikola Tesla" quote={this.quote} />
-                    <LogIn />
+                    <LogIn {...this.props} />
                 </div>
                 <div className={classes.ReportBtnContainer}>
-                    <button className={classes.ReportBtn} onClick={this.reportOutageHandler}>📞 Report outage</button>
+                    <button className={classes.ReportBtn} onClick={this.reportOutageHandler}><ImPhone /> Report outage</button>
                 </div>
                 {/* <Link to='/reportOutage' className={classes.ReportBtn} onClick={this.reportOutageHandler}>
                     📞 Report outage

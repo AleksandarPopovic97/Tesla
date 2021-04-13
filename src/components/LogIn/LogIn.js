@@ -26,7 +26,7 @@ class LogIn extends Component {
             password: {
                 elementType: 'input',
                 elementConfig: {
-                    type: 'text',
+                    type: 'text',       //change to password
                     placeholder: 'Password',
                 },
                 label: 'Password:',
@@ -46,6 +46,8 @@ class LogIn extends Component {
     logInHandler = (event) => {
         event.preventDefault();
         //Send data to server
+
+        this.props.history.push('/dashboard');
 
         this.setState({ loading: true });
         console.log(this.state.userData.email.value);
@@ -109,7 +111,8 @@ class LogIn extends Component {
                     />
                 })}
                 <Link to='/forgotPassword' style={{ color: 'black' }} className={classes.ForgotPassword}>Forgot your password?</Link>
-                <button type="submit" className={classes.LogInbtn} onClick={this.logInHandler} disabled={!this.state.formIsValid}>Login</button>
+                <button type="submit" className={classes.LogInbtn} onClick={this.logInHandler}>Login</button>
+                {/* disabled={!this.state.formIsValid}  for testing reasons, return back when complete*/}
             </form>
         );
 
