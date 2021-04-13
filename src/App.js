@@ -11,7 +11,7 @@ function App() {
         <Layout>
           <Switch>
             {/* <Route path="/reportOutage" component={} />
-            <Route path='/forgotPassword' component={} /> */}
+            <Route path='/forgotPassword' component={} />  */}
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/" component={LandingPage} />
           </Switch>
