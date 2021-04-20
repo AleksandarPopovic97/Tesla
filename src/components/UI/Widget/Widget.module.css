@@ -1,9 +1,10 @@
 .Widget{
-    padding: 0;
+    padding: 20px 20px 20px 40px;
     width: 25%;
     height: 100%;
     border-radius: 5px;
     border: 2px solid rgb(207, 207, 207);
+    box-sizing: border-box;
 }
 
 .TitleContainer{
@@ -11,15 +12,24 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
 }
 
 .IncidentNumber{
     display: flex;
     flex-direction: row;
     margin-right: 20px;
-    width: 40px;
-    justify-content: space-between;
+    width: 15%;
+    justify-content: space-around;
+    align-items: center;
 }
+
+.IncidentNumbers{
+    font-weight: bold;
+    padding-right: 5px;
+}
+
 
 
 .IncidentsInfo{
@@ -32,11 +42,18 @@
     display: flex;
     flex-direction: row;
     justify-content: left;
-    margin-left: 10px;
     padding-top: 5px;
 }
 
 .IncidentInfo p{
-    margin: 0 0 0 5px;
+    margin: 0;
+}
+
+
+@media (max-width: 1000px) {
+    .Widget{
+        width: 60%;
+        margin-bottom: 20px;
+    }
 }
 

@@ -22,7 +22,7 @@ const dashboardLayout = (props) => {
 
                     <div className={classes.HeaderContainer}>
                         <div className={classes.DashboardIconContainer}>
-                            <div className={classes.DashboardIcon} style={{ fontSize: '1.5rem' }} ><FaCloud /></div>
+                            <div className={classes.DashboardIcon} style={{ fontSize: '1.5rem', color: 'rgb(93, 93, 93)' }} ><FaCloud /></div>
                             <div className={classes.DashboardTitle}><h3>Dashboard</h3></div>
                         </div>
                         <div className={classes.UserContainer}>

@@ -4,3 +4,19 @@ body {
   box-sizing: border-box;
 }
 
+h1{
+  text-align: center;
+}
+
+h3{
+  text-align: center;
+  color: rgb(139, 139, 139);
+}
+
+h2{
+  color: rgb(139, 139, 139);
+}
+
+p{
+  color: rgb(139, 139, 139);
+}

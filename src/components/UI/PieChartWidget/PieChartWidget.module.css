@@ -1,0 +1,19 @@
+.PieChartWidget{
+    width: 25%;
+    height: 100%;
+    border: 2px solid rgb(207, 207, 207);
+    box-sizing: border-box;
+    border-radius: 5px;
+
+}
+
+.Title{
+    margin-left: 20px;
+    text-transform: uppercase;
+}
+
+.TitleContainer hr{
+    margin: 0;
+    width: 30%;
+    border: 1px solid rgb(199, 199, 199);;
+}

@@ -1,11 +1,25 @@
-.Dashboard{
-    background-color: coral;
-}
-
 .WidgetContainer{
     width: 100%;
-    height: 30%;
+    height: 35%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;    
+    justify-content: space-between;   
+    margin-bottom: 3%;
+}
+
+.GraphsWidgetContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 57%;
+    justify-content: space-between;   
+}
+
+
+@media (max-width: 1000px) {
+    .WidgetContainer, .GraphsWidgetContainer{
+        height: fit-content;
+        flex-direction: column;
+        align-items: center;
+    }
 }
