@@ -1,12 +1,11 @@
 import React from 'react';
 import classes from './DashboardLayout.module.css';
 import DraverToggle from '../UI/DrawerToggle/DraverToggle';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import {
     FaSearch, FaHome, FaFileAlt, FaGlobe, FaPhone, FaSuitcase, FaRegSurprise, FaUserFriends, FaBell, FaRegSun, FaSignInAlt, FaCloud
 } from 'react-icons/fa';
 import defaultPicture from '../../assets/images/defaultUserPicture.png';
-import { ImFontSize } from 'react-icons/im';
 
 const dashboardLayout = (props) => {
 
@@ -23,7 +22,7 @@ const dashboardLayout = (props) => {
                     <div className={classes.HeaderContainer}>
                         <div className={classes.DashboardIconContainer}>
                             <div className={classes.DashboardIcon} style={{ fontSize: '1.5rem', color: 'rgb(93, 93, 93)' }} ><FaCloud /></div>
-                            <div className={classes.DashboardTitle}><h3>Dashboard</h3></div>
+                            <div className={classes.DashboardTitle}><h3>{props.title}</h3></div>
                         </div>
                         <div className={classes.UserContainer}>
                             <div className={classes.UserNameContainer}>
@@ -31,7 +30,7 @@ const dashboardLayout = (props) => {
                                 <div><p>Account Settings</p></div>
                             </div>
 
-                            <div className={classes.UserIcon}><img src={defaultPicture} /></div>
+                            <div className={classes.UserIcon}><img src={defaultPicture} alt="User icon" /></div>
                         </div>
                     </div>
                 </header>
@@ -39,15 +38,15 @@ const dashboardLayout = (props) => {
                 <div className={classes.NavContentContainer}>
                     <nav className={classes.NavBar}>
                         <div className={classes.NavLinks}>
-                            <Link to="/" className={classes.NavLink} ><FaSearch /></Link>
+                            <NavLink to="/" className={classes.NavLink} ><FaSearch /></NavLink>
                             {/* maybe use NavLink because of active routes? */}
-                            <Link to="/" className={classes.NavLink}><FaHome /></Link>
-                            <Link to="/" className={classes.NavLink}><FaFileAlt /></Link>
-                            <Link to="/" className={classes.NavLink}><FaGlobe /></Link>
-                            <Link to="/" className={classes.NavLink}><FaPhone /></Link>
-                            <Link to="/" className={classes.NavLink}><FaSuitcase /></Link>
-                            <Link to="/" className={classes.NavLink}><FaRegSurprise /></Link>
-                            <Link to="/" className={classes.NavLink}><FaUserFriends /></Link>
+                            <NavLink to="/" className={classes.NavLink}><FaHome /></NavLink>
+                            <NavLink to="/incident-browser" activeClassName={classes.Active} className={classes.NavLink}><FaFileAlt /></NavLink>
+                            <NavLink to="/" className={classes.NavLink}><FaGlobe /></NavLink>
+                            <NavLink to="/" className={classes.NavLink}><FaPhone /></NavLink>
+                            <NavLink to="/" className={classes.NavLink}><FaSuitcase /></NavLink>
+                            <NavLink to="/" className={classes.NavLink}><FaRegSurprise /></NavLink>
+                            <NavLink to="/" className={classes.NavLink}><FaUserFriends /></NavLink>
                         </div>
 
                         <div className={classes.NavOptionsLinks}>

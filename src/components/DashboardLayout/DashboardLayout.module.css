@@ -161,6 +161,10 @@
     text-transform: uppercase;
 }
 
+.Active{
+    color: black;
+}
+
 
 
 @media (max-height: 800px) {

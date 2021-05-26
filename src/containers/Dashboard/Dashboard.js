@@ -12,15 +12,15 @@ class Dashboard extends Component {
 
     render() {
         return (
-            <DashboardLayout>
+            <DashboardLayout title="Dashboard">
                 <div className={classes.WidgetContainer}>
                     <Widget title="My incidents" number="5" draftNum='0' canceledNum='0' executingNum='2' completedNum='1' />
                     <Widget title="My work plans" number="10" draftNum='0' canceledNum='0' executingNum='2' completedNum='1' />
                     <Widget title="My safety docs" number="5" draftNum='0' canceledNum='0' executingNum='2' completedNum='1' />
                 </div>
                 <div className={classes.GraphsWidgetContainer}>
-                    <GraphWidget title="Incidents"/>
-                    <PieChartWidget title="Documents"/>
+                    <GraphWidget title="Incidents" />
+                    <PieChartWidget title="Documents" />
                 </div>
             </DashboardLayout>
         )

@@ -3,6 +3,7 @@ import Layout from './components/Layout/Layout';
 import LandingPage from './containers/LandingPage/LandingPage';
 import { Switch, Route, HashRouter } from 'react-router-dom';
 import Dashboard from './containers/Dashboard/Dashboard';
+import IncidentBrowser from './containers/IncidentBrowser/IncidentBrowser';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
             {/* <Route path="/reportOutage" component={} />
             <Route path='/forgotPassword' component={} />  */}
             <Route path="/dashboard" component={Dashboard} />
+            <Route path="/incident-browser" component={IncidentBrowser} />
             <Route path="/" component={LandingPage} />
           </Switch>
         </Layout>
