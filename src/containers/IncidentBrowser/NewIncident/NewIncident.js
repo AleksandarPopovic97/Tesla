@@ -39,7 +39,7 @@ const NewIncident = (props) => {
                                 <Route path="/incident-browser/new-incident/devices" component={Devices} />
                                 <Route path="/incident-browser/new-incident/resolution" component={Resolution} />
 
-                                <Route path="/incident-browser/new-incident/calls/new-call" exact component={NewCall} />                                />
+                                <Route path="/incident-browser/new-incident/calls/new-call" exact component={NewCall} />
 
                                 <Route path="/incident-browser/new-incident/calls" component={Calls} />
                             </Switch>
