@@ -31,7 +31,8 @@ const IncidentTable = (props) => {
             useSortBy,
             usePagination)
 
-    const { pageIndex, pageSize } = state
+    const { pageIndex } = state
+    // const { pageIndex, pageSize } = state
 
     return (
         <React.Fragment>

@@ -90,14 +90,16 @@ const IncidentBrowser = (props) => {
     ]
 
 
-
+    const newIncident = () => {
+        props.history.push('/incident-browser/new-incident');
+    }
 
 
     return (
         <DashboardLayout title="Incident browser - all">
             <div className={classes.IncidentBrowser}>
                 <div className={classes.ButtonContainer}>
-                    <button><FaPlusCircle />New</button>
+                    <button onClick={newIncident}><FaPlusCircle />New</button>
                     {/* maybe navlink? */}
                     <div className={classes.RadioButtons}>
                         <button onClick={allIncidentsHandler}>All</button>
@@ -105,7 +107,9 @@ const IncidentBrowser = (props) => {
                     </div>
                     <button><FaFilter />Filter</button>
                 </div>
-                <IncidentTable tableColumns={columns} tableData={data} />
+                <div className={classes.Table}>
+                    <IncidentTable tableColumns={columns} tableData={data} />
+                </div>
             </div>
         </DashboardLayout>
     )
