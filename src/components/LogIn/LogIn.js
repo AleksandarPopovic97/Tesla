@@ -50,8 +50,8 @@ class LogIn extends Component {
         this.props.history.push('/dashboard');
 
         this.setState({ loading: true });
-        console.log(this.state.userData.email.value);
-        console.log(this.state.userData.password.value);
+        // console.log(this.state.userData.email.value);
+        // console.log(this.state.userData.password.value);
     }
 
     checkValidity = (value, rules) => {

@@ -91,7 +91,7 @@ const IncidentBrowser = (props) => {
 
 
     const newIncident = () => {
-        props.history.push('/incident-browser/new-incident');
+        props.history.push('/incident-browser/new-incident/basic-info');
     }
 
 

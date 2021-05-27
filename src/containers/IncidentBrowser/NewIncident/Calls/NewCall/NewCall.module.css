@@ -1,0 +1,43 @@
+.NewCall{
+    width: 100%;
+    height: 100%;
+}
+
+.Form{
+    height: 50%;
+    box-sizing: border-box;
+    padding: 40px 70px;
+}
+
+.FormGroup{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+}
+
+.FormGroup:not(:first-child){
+    margin-top: 20px;
+}
+
+.FormGroup label{
+    display: block;
+    width: 15%;
+    margin: auto 0;
+    font-size: 1.2rem;
+    color:rgb(138, 138, 138);
+}
+
+.FormGroup input{
+    box-sizing: border-box;
+    width: 85%;
+    height: 100%;
+    border: 2px solid rgb(199, 199, 199);
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+
+.CustomerInfo{
+    height: 50%;
+    width: 100%;
+}
