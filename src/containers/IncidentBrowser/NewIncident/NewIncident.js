@@ -9,6 +9,7 @@ import Resolution from './Resolution/Resolution';
 import Calls from './Calls/Calls';
 import { FaSave, FaTimesCircle } from 'react-icons/fa';
 import NewCall from './Calls/NewCall/NewCall';
+import NewDevice from './Devices/NewDevice/NewDevice';
 
 const NewIncident = (props) => {
 
@@ -36,9 +37,9 @@ const NewIncident = (props) => {
                                 {/* <Route path="/reportOutage" component={} />
                         <Route path='/forgotPassword' component={} />  */}
                                 <Route path="/incident-browser/new-incident/basic-info" component={NewBasicInfo} />
+                                <Route path="/incident-browser/new-incident/devices/new-device" component={NewDevice} />
                                 <Route path="/incident-browser/new-incident/devices" component={Devices} />
                                 <Route path="/incident-browser/new-incident/resolution" component={Resolution} />
-
                                 <Route path="/incident-browser/new-incident/calls/new-call" exact component={NewCall} />
 
                                 <Route path="/incident-browser/new-incident/calls" component={Calls} />

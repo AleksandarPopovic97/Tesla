@@ -60,7 +60,7 @@ const Devices = (props) => {
     ]
 
     const onAddHandler = () => {
-
+        props.history.push('/incident-browser/new-incident/devices/new-device');
     }
 
     const onFilterHandler = () => {
@@ -72,7 +72,6 @@ const Devices = (props) => {
             <div className={classes.ButtonContainer}>
                 <button onClick={onAddHandler}><FaPlusCircle />Add</button>
                 <button onClick={onFilterHandler}><FaFilter />Filter</button>
-
             </div>
             <div className={classes.Table}>
                 <IncidentTable tableColumns={columns} tableData={devices} />

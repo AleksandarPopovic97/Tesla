@@ -1,17 +1,16 @@
-.BasicInfo{
-    height: 100%;
+.NewDevice{
     width: 100%;
+    height: 50%;
 }
-
-.BasicInfo p{
-    margin: 0;
-}
-
 
 .Form{
     display: grid;
     grid-template-columns: auto auto;
     height: 100%;
+}
+
+.Form p{
+    margin: 0;
 }
 
 .Container{
