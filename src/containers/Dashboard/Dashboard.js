@@ -8,15 +8,21 @@ import GraphWidget from '../../components/UI/GraphWidget/GraphWidget';
 class Dashboard extends Component {
 
 
+    redirectToIncidents = () => {
+        this.props.history.push('/incident-browser')
+    }
 
+    redirectToSafetyDoc = () => {
+        this.props.history.push('/safetyDocs-browser')
+    }
 
     render() {
         return (
             <DashboardLayout title="Dashboard">
                 <div className={classes.WidgetContainer}>
-                    <Widget title="My incidents" number="5" draftNum='0' canceledNum='0' executingNum='2' completedNum='1' />
+                    <Widget title="My incidents" number="5" draftNum='0' canceledNum='0' executingNum='2' completedNum='1' click={this.redirectToIncidents} />
                     <Widget title="My work plans" number="10" draftNum='0' canceledNum='0' executingNum='2' completedNum='1' />
-                    <Widget title="My safety docs" number="5" draftNum='0' canceledNum='0' executingNum='2' completedNum='1' />
+                    <Widget title="My safety docs" number="5" draftNum='0' canceledNum='0' executingNum='2' completedNum='1' click={this.redirectToSafetyDoc} />
                 </div>
                 <div className={classes.GraphsWidgetContainer}>
                     <GraphWidget title="Incidents" />

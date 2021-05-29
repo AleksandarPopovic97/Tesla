@@ -6,7 +6,7 @@ const widget = (props) => {
 
 
     return (
-        <div className={classes.Widget}>
+        <div className={classes.Widget} onClick={props.click}>
             <div className={classes.TitleContainer}>
                 <h3>{props.title}</h3>
                 <div className={classes.IncidentNumber}>

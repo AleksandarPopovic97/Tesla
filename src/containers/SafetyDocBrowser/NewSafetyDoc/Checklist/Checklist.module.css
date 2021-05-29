@@ -1,0 +1,17 @@
+.Checklist{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    font-size: 1.2rem;
+}
+
+.Container{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.Container input{
+    margin: 10px;
+}

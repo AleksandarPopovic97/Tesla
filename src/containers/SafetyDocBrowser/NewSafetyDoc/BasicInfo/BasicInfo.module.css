@@ -1,0 +1,44 @@
+.BasicInfo{
+    height: 100%;
+    width: 100%;
+}
+
+.BasicInfo p{
+    margin: 0;
+}
+
+
+.Form{
+    height: 100%;
+}
+
+.Grid{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.Rows{
+    display: block;
+}
+
+.Container{
+    display: flex;
+    flex-direction: row;
+    margin: 15px;
+    font-size: 1.2rem;
+}
+
+.Container label{
+    width: 30%;
+    min-width: fit-content;
+}
+
+.Container input, select{
+    font-size: 1.1rem;
+    width: 50%;
+    border-radius: 7px;
+    border-color: rgb(190, 190, 190);
+    height: 100%;
+    box-sizing: border-box;
+    min-width: fit-content;
+}

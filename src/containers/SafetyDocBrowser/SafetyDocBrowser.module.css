@@ -1,0 +1,34 @@
+.SafetyDocBrowser{
+    width: 100%;
+    height: 100%;
+}
+
+.SafetyDocBrowser button{
+    height: 100%;
+    width: 10%;
+}
+
+.SafetyDocBrowser button:last-child{
+    margin-left: auto;
+}
+
+.ButtonContainer{
+    width: 100%;
+    height: 5%;
+    display: flex;
+}
+
+.RadioButtons{
+    width: 100%;
+    margin-left: 50px;
+}
+
+.Active{
+    background-color: gray;
+}
+
+.Table{
+    width: 100%;
+    height: 50%;
+}
+
