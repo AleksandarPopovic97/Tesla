@@ -4,7 +4,7 @@ import classes from './Multimedia.module.css';
 const Multimedia = (props) => {
 
     return (
-        <div>
+        <div className={classes.Multimedia}>
             <h1>Multimedia</h1>
         </div>
     )

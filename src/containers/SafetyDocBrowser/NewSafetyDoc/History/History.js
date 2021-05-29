@@ -4,7 +4,7 @@ import classes from './History.module.css';
 const History = (props) => {
 
     return (
-        <div>
+        <div className={classes.History}>
             <h1>History</h1>
         </div>
     )
