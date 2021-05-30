@@ -7,7 +7,6 @@ const BasicInfo = (props) => {
         <div className={classes.BasicInfo}>
             <form className={classes.Form}>
                 <div className={classes.Grid}>
-
                     <div className={classes.Container}>
                         <label>Type:</label>
                         <select onChange={props.typeChange} value={props.basic.type}>

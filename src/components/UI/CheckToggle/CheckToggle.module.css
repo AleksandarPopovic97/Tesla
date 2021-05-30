@@ -1,0 +1,39 @@
+.ToggleContainer{
+    margin-top: 20px;
+    position: relative;
+    width: 70px;
+    height: 25px;
+    border: 1px solid black;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+.ToggleContainer input{
+    position: absolute;
+    opacity: 0;
+}
+
+.ToggleContainer div{
+    width: 50%;
+    height: 100%;
+    border-radius: 15px;
+    background: rgb(189, 189, 189);
+    transition: transform 0.4s, background-color 0.4s, color 0.4s;
+}
+
+.ToggleContainer input:checked + div{
+    transform: translateX(100%);
+    background-color: rgb(7, 7, 7);
+    color: rgb(255, 255, 255);
+}
+
+.Toggle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Check{
+    font-size: 1rem;
+}
+
