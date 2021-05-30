@@ -82,7 +82,7 @@ const SafetyDocBrowser = (props) => {
     ]
 
     const newSafetyDoc = () => {
-        props.history.push('/incident-browser/new-safetyDoc');
+        props.history.push('/incident-browser/new-safetyDoc/basic-info');
     }
 
     return (

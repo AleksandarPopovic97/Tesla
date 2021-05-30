@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import DashboardLayout from '../../../components/DashboardLayout/DashboardLayout';
 import classes from './NewIncident.module.css'
@@ -13,6 +13,74 @@ import NewDevice from './Devices/NewDevice/NewDevice';
 
 const NewIncident = (props) => {
 
+    const [incident, setIncident] = useState({
+        basicInfo: {
+            incidentId: 'INC00015',
+            affectedCustomers: 100,
+            type: 'Planned Work',
+            outageTime: '',
+            priority: 1,
+            etr: '',
+            confirmed: false,
+            calls: 5,
+            status: 'Dispatched',
+            voltage: 12.47,
+            description: '',
+            eta: '',
+            scheduledTime: '',
+            ata: '',
+        },
+        devices: [],
+        resolution: {
+            cause: 'Weather',
+            subcause: 'Lightning',
+            constructionType: 'None',
+            material: 'Metal'
+        }
+    })
+
+    const handleBasicChange = (event) => {
+
+        if (event.target.name === 'confirmed') {        //for checklist only
+            setIncident(prevState => {
+                return {
+                    ...prevState,
+                    basicInfo: {
+                        ...prevState.basicInfo,
+                        [event.target.name]: !prevState.basicInfo[event.target.name],
+                    }
+                }
+            })
+            return
+        }
+
+        setIncident(prevState => {
+            return {
+                ...prevState,
+                basicInfo: {
+                    ...prevState.basicInfo,
+                    [event.target.name]: event.target.value,
+                }
+            }
+        })
+
+    }
+
+    const handleResolutionChange = (event) => {
+        setIncident(prevState => {
+            return {
+                ...prevState,
+                resolution: {
+                    ...prevState.resolution,
+                    [event.target.name]: event.target.value,
+                }
+            }
+        })
+    }
+
+    const saveHandle = () => {
+        console.log(incident);
+    }
 
     return (
         <DashboardLayout title='Incident - new'>
@@ -36,10 +104,18 @@ const NewIncident = (props) => {
                             <Switch>
                                 {/* <Route path="/reportOutage" component={} />
                         <Route path='/forgotPassword' component={} />  */}
-                                <Route path="/incident-browser/new-incident/basic-info" component={NewBasicInfo} />
+                                <Route path="/incident-browser/new-incident/basic-info" render={() =>
+                                    <NewBasicInfo
+                                        basic={incident.basicInfo}
+                                        change={handleBasicChange}
+                                    />} />
                                 <Route path="/incident-browser/new-incident/devices/new-device" component={NewDevice} />
                                 <Route path="/incident-browser/new-incident/devices" component={Devices} />
-                                <Route path="/incident-browser/new-incident/resolution" component={Resolution} />
+                                <Route path="/incident-browser/new-incident/resolution" render={() =>
+                                    <Resolution
+                                        resolution={incident.resolution}
+                                        change={handleResolutionChange}
+                                    />} />
                                 <Route path="/incident-browser/new-incident/calls/new-call" exact component={NewCall} />
 
                                 <Route path="/incident-browser/new-incident/calls" component={Calls} />
@@ -50,7 +126,7 @@ const NewIncident = (props) => {
                 <div className={classes.FooterSection}>
                     <div className={classes.ButtonContainer}>
                         <button><FaTimesCircle /></button>
-                        <button><FaSave /></button>
+                        <button onClick={saveHandle}><FaSave /></button>
                     </div>
                 </div>
             </React.Fragment>

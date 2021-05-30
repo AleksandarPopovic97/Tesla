@@ -9,14 +9,14 @@ const BasicInfo = (props) => {
                 <div className={classes.Grid}>
                     <div className={classes.Container}>
                         <label>Type:</label>
-                        <select onChange={props.typeChange} value={props.basic.type}>
+                        <select name="type" onChange={props.change} value={props.basic.type}>
                             <option>Planned Work</option>
                             <option>Incident</option>
                         </select>
                     </div>
                     <div className={classes.Container}>
                         <label>Phone No:</label>
-                        <input type="number" value={props.basic.phoneNo} onChange={props.phoneChange}></input>
+                        <input name="phoneNo" type="number" value={props.basic.phoneNo} onChange={props.change}></input>
                     </div>
 
                     <div className={classes.Container}>
@@ -36,7 +36,7 @@ const BasicInfo = (props) => {
 
                     <div className={classes.Container}>
                         <label>Safety doc type:</label>
-                        <select onChange={props.safetyDocTypeChange} value={props.basic.safetyDocType}>
+                        <select name="safetyDocType" onChange={props.change} value={props.basic.safetyDocType}>
                             <option>Clearance</option>
                             <option>Something else</option>
                         </select>
@@ -44,7 +44,7 @@ const BasicInfo = (props) => {
 
                     <div className={classes.Container}>
                         <label>Date/time created:</label>
-                        <input type="date"></input>
+                        <input name={props.name} type="date"></input>
                     </div>
                 </div>
                 <div className={classes.Rows}>
@@ -54,11 +54,11 @@ const BasicInfo = (props) => {
                     </div>
                     <div className={classes.Container}>
                         <label>Details:</label>
-                        <input type="text" onChange={props.detailsChange} value={props.basic.details}></input>
+                        <input name="details" type="text" onChange={props.change} value={props.basic.details}></input>
                     </div>
                     <div className={classes.Container}>
                         <label>Notes:</label>
-                        <input type="text" onChange={props.notesChange} value={props.basic.notes}></input>
+                        <input name="notes" type="text" onChange={props.change} value={props.basic.notes}></input>
                     </div>
                 </div>
 

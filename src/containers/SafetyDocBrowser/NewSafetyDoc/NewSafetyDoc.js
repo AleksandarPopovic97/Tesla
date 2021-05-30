@@ -23,6 +23,12 @@ const NewSafetyDoc = (props) => {
             createdBy: 'User name',
             details: '',
             notes: '',
+        },
+        checkList: {
+            workCompleted: false,
+            tagsRemoved: false,
+            groundingRemoved: false,
+            ready: false
         }
     });
 
@@ -30,109 +36,36 @@ const NewSafetyDoc = (props) => {
         console.log(safetyDoc);
     }
 
-    const typeChange = (event) => {
+    const handleBasicChange = (event) => {
+
         setSafetyDoc(prevState => {
             return {
                 ...prevState,
                 basicInfo: {
                     ...prevState.basicInfo,
-                    type: event.target.value,
-                }
-            }
-        })
-    }
-    const statusChange = (event) => {
-        setSafetyDoc(prevState => {
-            return {
-                ...prevState,
-                basicInfo: {
-                    ...prevState.basicInfo,
-                    status: event.target.value,
-                }
-            }
-        })
-    }
-    const fieldCrewChange = (event) => {
-        setSafetyDoc(prevState => {
-            return {
-                ...prevState,
-                basicInfo: {
-                    ...prevState.basicInfo,
-                    fieldCrew: event.target.value,
-                }
-            }
-        })
-    }
-    const switchingPlanChange = (event) => {
-        setSafetyDoc(prevState => {
-            return {
-                ...prevState,
-                basicInfo: {
-                    ...prevState.basicInfo,
-                    switchingPlan: event.target.value,
-                }
-            }
-        })
-    }
-    const safetyDocTypeChange = (event) => {
-        setSafetyDoc(prevState => {
-            return {
-                ...prevState,
-                basicInfo: {
-                    ...prevState.basicInfo,
-                    safetyDocType: event.target.value,
-                }
-            }
-        })
-    }
-    const createdByChange = (event) => {
-        setSafetyDoc(prevState => {
-            return {
-                ...prevState,
-                basicInfo: {
-                    ...prevState.basicInfo,
-                    createdBy: event.target.value,
+                    [event.target.name]: event.target.value,
                 }
             }
         })
     }
 
+    const handleChecklistChange = (event) => {
 
-    const phoneChange = (event) => {
+
         setSafetyDoc(prevState => {
             return {
                 ...prevState,
-                basicInfo: {
-                    ...prevState.basicInfo,
-                    phoneNo: event.target.value,
+                checkList: {
+                    ...prevState.checkList,
+                    [event.target.name]: !prevState.checkList[event.target.name],
                 }
             }
         })
+
+
     }
 
-    const detailsChange = (event) => {
-        setSafetyDoc(prevState => {
-            return {
-                ...prevState,
-                basicInfo: {
-                    ...prevState.basicInfo,
-                    details: event.target.value,
-                }
-            }
-        })
-    }
 
-    const notesChange = (event) => {
-        setSafetyDoc(prevState => {
-            return {
-                ...prevState,
-                basicInfo: {
-                    ...prevState.basicInfo,
-                    notes: event.target.value,
-                }
-            }
-        })
-    }
 
     return (
         <DashboardLayout title='Safety document - new'>
@@ -159,21 +92,15 @@ const NewSafetyDoc = (props) => {
                         <Route path='/forgotPassword' component={} />  */}
                                 <Route path="/incident-browser/new-safetyDoc/basic-info" render={() => <BasicInfo
                                     basic={safetyDoc.basicInfo}
-                                    typeChange={typeChange}
-                                    // statusChange={statusChange}
-                                    // fieldCrewChange={fieldCrewChange}
-                                    // switchingPlanChange={switchingPlanChange}
-                                    safetyDocTypeChange={safetyDocTypeChange}
-                                    // createdByChange={createdByChange}
-                                    phoneChange={phoneChange}
-                                    detailsChange={detailsChange}
-                                    notesChange={notesChange}
-
+                                    change={handleBasicChange}
                                 />} />
                                 <Route path="/incident-browser/new-safetyDoc/history" component={History} />
                                 <Route path="/incident-browser/new-safetyDoc/multimedia" component={Multimedia} />
                                 <Route path="/incident-browser/new-safetyDoc/equipment" component={Equipment} />
-                                <Route path="/incident-browser/new-safetyDoc/checklist" component={Checklist} />
+                                <Route path="/incident-browser/new-safetyDoc/checklist" render={() => <Checklist
+                                    checkList={safetyDoc.checkList}
+                                    change={handleChecklistChange}
+                                />} />
                                 {/* <Route path="/incident-browser/new-safetyDoc/calls/new-call" exact component={NewCall} /> */}
                                 {/* <Route path="/incident-browser/new-incident/calls" component={Calls} /> */}
                             </Switch>

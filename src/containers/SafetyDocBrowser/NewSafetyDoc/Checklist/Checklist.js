@@ -8,22 +8,22 @@ const Checklist = (props) => {
         <div className={classes.Checklist}>
             <div className={classes.Container}>
                 <label>All work operations completed?</label>
-                <CheckToggle />
+                <CheckToggle change={props.change} name="workCompleted" value={props.checkList.workCompleted} />
             </div>
 
             <div className={classes.Container}>
                 <label>All tags removed?</label>
-                <CheckToggle />
+                <CheckToggle change={props.change} name="tagsRemoved" value={props.checkList.tagsRemoved} />
             </div>
 
             <div className={classes.Container}>
                 <label>Grounding removed?</label>
-                <CheckToggle />
+                <CheckToggle change={props.change} name="groundingRemoved" value={props.checkList.groundingRemoved} />
             </div>
 
             <div className={classes.Container}>
                 <label>Ready for service?</label>
-                <CheckToggle />
+                <CheckToggle change={props.change} name="ready" value={props.checkList.ready} />
             </div>
 
         </div >
