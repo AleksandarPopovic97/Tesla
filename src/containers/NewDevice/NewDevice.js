@@ -20,7 +20,6 @@ const NewDevice = (props) => {
                 [event.target.name]: event.target.value
             }
         })
-
     }
 
     const addDeviceHandler = () => {

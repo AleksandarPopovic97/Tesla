@@ -78,6 +78,27 @@ const NewIncident = (props) => {
         })
     }
 
+    const handleDevicesChange = (event) => {
+        if (event.config.added === true) {
+            setIncident(prevState => {
+                return {
+                    ...prevState,
+                    devices: [...prevState.devices, event.data]
+                }
+
+            })
+        } else {
+            setIncident(prevState => {
+                return {
+                    ...prevState,
+                    devices: prevState.devices.filter(item => item.id !== event.data.id)
+                }
+
+            })
+        }
+
+    }
+
     const saveHandle = () => {
         console.log(incident);
     }
@@ -110,7 +131,11 @@ const NewIncident = (props) => {
                                         change={handleBasicChange}
                                     />} />
                                 <Route path="/incident-browser/new-incident/devices/new-device" component={NewDevice} />
-                                <Route path="/incident-browser/new-incident/devices" component={Devices} />
+                                <Route path="/incident-browser/new-incident/devices" render={() =>
+                                    <Devices
+                                        devices={incident.devices}
+                                        change={handleDevicesChange}
+                                    />} />
                                 <Route path="/incident-browser/new-incident/resolution" render={() =>
                                     <Resolution
                                         resolution={incident.resolution}

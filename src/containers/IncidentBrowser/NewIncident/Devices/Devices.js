@@ -1,40 +1,14 @@
 import classes from './Devices.module.css';
-import React from 'react';
+import React, { useState } from 'react';
 import IncidentTable from '../../../../components/UI/IncidentTable/IncidentTable';
 import { FaPlusCircle, FaFilter } from 'react-icons/fa';
+import Modal from '../../../../components/UI/Modal/Modal';
+import NewDevice from '../../../NewDevice/NewDevice';
+import DevicePicker from './DevicePicker/DevicePicker';
 
 const Devices = (props) => {
 
-    const devices = [
-        {
-            id: 1525222,
-            name: 'BRE_000075',
-            type: 'Breaker',
-            coordinates: '45 15 59.8N 19 48 33.2 E',
-            address: 'Vladike Cirica 10'
-        },
-        {
-            id: 4852633,
-            name: 'DIS_000045',
-            type: 'Disconnector',
-            coordinates: '45 15 59.8N 19 48 33.2 E',
-            address: 'Suboticka 10'
-        },
-        {
-            id: 4875152,
-            name: 'BRE_000010',
-            type: 'Break',
-            coordinates: '45 15 59.8N 19 48 33.2 E',
-            address: 'Mileve Marica 14'
-        },
-        {
-            id: 1205222,
-            name: 'FUS_000077',
-            type: 'Fuse',
-            coordinates: '45 15 59.8N 19 48 33.2 E',
-            address: 'Masarikova 2'
-        },
-    ]
+    const [modal, setModal] = useState(false);
 
     const columns = [
         {
@@ -57,10 +31,13 @@ const Devices = (props) => {
             Header: 'Address',
             accessor: 'address'
         },
+
     ]
 
     const onAddHandler = () => {
-        props.history.push('/incident-browser/new-incident/devices/new-device');
+        setModal(prevState => {
+            return !prevState
+        });
     }
 
     const onFilterHandler = () => {
@@ -69,12 +46,18 @@ const Devices = (props) => {
 
     return (
         <div className={classes.Devices}>
+
+            {modal ?
+                <Modal modalClick={onAddHandler}>
+                    <DevicePicker devices={props.devices} change={props.change} />
+
+                </Modal> : ''}
             <div className={classes.ButtonContainer}>
-                <button onClick={onAddHandler}><FaPlusCircle />Add</button>
+                <button onClick={onAddHandler}><FaPlusCircle />Add/Remove</button>
                 <button onClick={onFilterHandler}><FaFilter />Filter</button>
             </div>
             <div className={classes.Table}>
-                <IncidentTable tableColumns={columns} tableData={devices} />
+                <IncidentTable tableColumns={columns} tableData={props.devices} />
             </div>
         </div>
     )

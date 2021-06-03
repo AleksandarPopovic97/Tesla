@@ -1,0 +1,14 @@
+.Device{
+    width: 80%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0 auto;    
+    border: 1px solid black;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+
+.Added{
+    background-color: rgba(28, 216, 22, 0.431);
+}
