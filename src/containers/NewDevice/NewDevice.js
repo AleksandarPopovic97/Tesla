@@ -6,7 +6,6 @@ import axios from 'axios';
 const NewDevice = (props) => {
 
     const [device, setDevice] = useState({
-        id: 1,
         type: 'Breaker',
         name: '1',
         address: '',

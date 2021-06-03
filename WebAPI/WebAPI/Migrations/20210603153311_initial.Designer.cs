@@ -9,7 +9,7 @@ using WebAPI.Models;
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(TeslaDBContext))]
-    [Migration("20210531223930_initial")]
+    [Migration("20210603153311_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
