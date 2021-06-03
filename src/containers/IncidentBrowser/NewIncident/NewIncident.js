@@ -9,7 +9,7 @@ import Resolution from './Resolution/Resolution';
 import Calls from './Calls/Calls';
 import { FaSave, FaTimesCircle } from 'react-icons/fa';
 import NewCall from './Calls/NewCall/NewCall';
-import NewDevice from './Devices/NewDevice/NewDevice';
+import NewDevice from '../../NewDevice/NewDevice';
 
 const NewIncident = (props) => {
 

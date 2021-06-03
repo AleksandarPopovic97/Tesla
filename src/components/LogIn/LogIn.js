@@ -47,6 +47,8 @@ class LogIn extends Component {
         event.preventDefault();
         //Send data to server
 
+        // console.log(this.state.userData.email.value);
+
         this.props.history.push('/dashboard');
 
         this.setState({ loading: true });

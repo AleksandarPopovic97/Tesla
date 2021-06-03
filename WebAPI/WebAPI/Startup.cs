@@ -30,6 +30,9 @@ namespace WebAPI
 
             services.AddDbContext<TeslaDBContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
+            services.AddCors(options => options.AddDefaultPolicy(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
+
+            //services.AddCors(options => options.AddDefaultPolicy(builder => builder.WithOrigins("https://localhost:3000").AllowAnyHeader().AllowAnyMethod()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +46,7 @@ namespace WebAPI
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {

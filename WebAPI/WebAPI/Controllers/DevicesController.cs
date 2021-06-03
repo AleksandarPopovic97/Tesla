@@ -47,7 +47,7 @@ namespace WebAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutDevice(int id, Device device)
         {
-            if (id != device.Id)
+            if (id != device.id)
             {
                 return BadRequest();
             }
@@ -82,7 +82,7 @@ namespace WebAPI.Controllers
             _context.DDevices.Add(device);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetDevice", new { id = device.Id }, device);
+            return CreatedAtAction("GetDevice", new { id = device.id }, device);
         }
 
         // DELETE: api/Devices/5
@@ -103,7 +103,7 @@ namespace WebAPI.Controllers
 
         private bool DeviceExists(int id)
         {
-            return _context.DDevices.Any(e => e.Id == id);
+            return _context.DDevices.Any(e => e.id == id);
         }
     }
 }

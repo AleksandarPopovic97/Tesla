@@ -10,20 +10,24 @@ namespace WebAPI.Models
     public class Device
     {
         [Key]
-        private int id;
-        [Column(TypeName = "nvarch(100)")]
-        private string type;    //change to enum
-        [Column(TypeName = "nvarch(4)")]
-        private string name;    //4 characters (first 3 of name and incrementing id)
-        [Column(TypeName = "nvarch(100)")]
-        private string address;
-        [Column(TypeName = "nvarch(100)")]
-        private string coordinates;
+        public int id { get; set; }
 
-        public int Id { get => id; set => id = value; }
-        public string Type { get => type; set => type = value; }
-        public string Name { get => name; set => name = value; }
-        public string Address { get => address; set => address = value; }
-        public string Coordinates { get => coordinates; set => coordinates = value; }
+        [Column]
+        public string type { get; set; }    //change to enum
+
+        [Column]
+        public string name { get; set; }   //4 characters (first 3 of name and incrementing id)
+
+        [Column]
+        public string address { get; set; }
+
+        [Column]
+        public string coordinates { get; set; }
+
+        //public int Id { get => id; set => id = value; }
+        //public string Type { get => type; set => type = value; }
+        //public string Name { get => name; set => name = value; }
+        //public string Address { get => address; set => address = value; }
+        //public string Coordinates { get => coordinates; set => coordinates = value; }
     }
 }

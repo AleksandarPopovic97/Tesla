@@ -2,7 +2,7 @@
 
 namespace WebAPI.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -10,16 +10,16 @@ namespace WebAPI.Migrations
                 name: "DDevices",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Coordinates = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    type = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    coordinates = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DDevices", x => x.Id);
+                    table.PrimaryKey("PK_DDevices", x => x.id);
                 });
         }
 

@@ -8,6 +8,7 @@ import NewIncident from './containers/IncidentBrowser/NewIncident/NewIncident';
 import NewBasicInfo from './containers/IncidentBrowser/NewIncident/NewBasicInfo/NewBasicInfo';
 import SafetyDocBrowser from './containers/SafetyDocBrowser/SafetyDocBrowser';
 import NewSafetyDoc from './containers/SafetyDocBrowser/NewSafetyDoc/NewSafetyDoc';
+import NewDevice from './containers/NewDevice/NewDevice';
 
 function App() {
   return (
@@ -18,11 +19,13 @@ function App() {
             {/* <Route path="/reportOutage" component={} />
             <Route path='/forgotPassword' component={} />  */}
             <Route path="/dashboard" component={Dashboard} />
+            <Route path="/new-device" component={NewDevice} />
             <Route path="/incident-browser/new-incident" component={NewIncident} />
             <Route path="/incident-browser/new-incident/basic-info" component={NewBasicInfo} />
             <Route path="/incident-browser/new-safetyDoc" component={NewSafetyDoc} />
             <Route path="/incident-browser" component={IncidentBrowser} />
             <Route path="/safetyDocs-browser" component={SafetyDocBrowser} />
+
 
             <Route path="/" component={LandingPage} />
           </Switch>

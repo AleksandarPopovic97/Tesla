@@ -20,24 +20,24 @@ namespace WebAPI.Migrations
 
             modelBuilder.Entity("WebAPI.Models.Device", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Address")
+                    b.Property<string>("address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Coordinates")
+                    b.Property<string>("coordinates")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Type")
+                    b.Property<string>("type")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.ToTable("DDevices");
                 });

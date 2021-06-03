@@ -4,11 +4,27 @@ import ImageQuote from '../../components/ImageQuote/ImageQuote';
 import LogIn from '../../components/LogIn/LogIn';
 import classes from './LandingPage.module.css';
 import { ImPhone } from 'react-icons/im';
+import axios from 'axios';
+
 class LandingPage extends Component {
     quote = "The present is theirs; the future, for witch I really worked, is mine."
 
     reportOutageHandler = () => {
-        this.props.history.push('/reportOutage')
+        axios.get('http://localhost:60259/api/Devices')
+            .then(function (response) {
+                // handle success
+                console.log(response);
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .then(function () {
+                // always executed
+            });
+
+        // this.props.history.push('/reportOutage')
+
     }
 
     render() {
