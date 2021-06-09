@@ -10,26 +10,28 @@ import Calls from './Calls/Calls';
 import { FaSave, FaTimesCircle } from 'react-icons/fa';
 import NewCall from './Calls/NewCall/NewCall';
 import NewDevice from '../../NewDevice/NewDevice';
+import Multimedia from './Multimedia/Multimedia';
+import axios from 'axios';
 
 const NewIncident = (props) => {
 
     const [incident, setIncident] = useState({
-        basicInfo: {
-            incidentId: 'INC00015',
-            affectedCustomers: 100,
-            type: 'Planned Work',
-            outageTime: '',
-            priority: 1,
-            etr: '',
-            confirmed: false,
-            calls: 5,
-            status: 'Dispatched',
-            voltage: 12.47,
-            description: '',
-            eta: '',
-            scheduledTime: '',
-            ata: '',
-        },
+
+        incidentId: 'INC00015',
+        affectedCustomers: 100.0,
+        type: 'Planned Work',
+        outageTime: '',
+        priority: 1,
+        etr: '',
+        confirmed: false,
+        calls: 5.0,
+        status: 'Dispatched',
+        voltage: 12.47,
+        description: '',
+        eta: '',
+        scheduledTime: '',
+        ata: '',
+
         devices: [],
         resolution: {
             cause: 'Weather',
@@ -37,7 +39,7 @@ const NewIncident = (props) => {
             constructionType: 'None',
             material: 'Metal'
         },
-        calls: [],
+        incidentCalls: [],
     })
 
     const handleBasicChange = (event) => {
@@ -46,22 +48,21 @@ const NewIncident = (props) => {
             setIncident(prevState => {
                 return {
                     ...prevState,
-                    basicInfo: {
-                        ...prevState.basicInfo,
-                        [event.target.name]: !prevState.basicInfo[event.target.name],
-                    }
+
+                    [event.target.name]: !prevState[event.target.name],
+
                 }
             })
             return
         }
 
+
         setIncident(prevState => {
             return {
                 ...prevState,
-                basicInfo: {
-                    ...prevState.basicInfo,
-                    [event.target.name]: event.target.value,
-                }
+
+                [event.target.name]: event.target.value,
+
             }
         })
 
@@ -105,14 +106,22 @@ const NewIncident = (props) => {
         setIncident(prevState => {
             return {
                 ...prevState,
-                calls: [...prevState.calls, { customer, ...info }]
+                incidentCalls: [...prevState.incidentCalls, { customer, ...info }]
             }
         })
 
     }
 
     const saveHandle = () => {
+        //post
         console.log(incident);
+        axios.post('http://localhost:60259/api/Incidents', incident)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
     return (
@@ -127,8 +136,7 @@ const NewIncident = (props) => {
                         <NavLink to="/incident-browser/new-incident/resolution" className={classes.NavLink} activeClassName={classes.ActiveLink}>Resolution</NavLink>
                         <NavLink to="/incident-browser/new-incident/calls" className={classes.NavLink} activeClassName={classes.ActiveLink}>Calls</NavLink>
                         <NavLink to="/" className={classes.NavLink} >Crew</NavLink>
-                        <NavLink to="/" className={classes.NavLink} >Multimedia attachments</NavLink>
-                        <NavLink to="/" className={classes.NavLink} >Equipment</NavLink>
+                        <NavLink to="/incident-browser/new-incident/multimedia" className={classes.NavLink} activeClassName={classes.ActiveLink}>Multimedia attachments</NavLink>
                     </div>
 
 
@@ -139,7 +147,7 @@ const NewIncident = (props) => {
                         <Route path='/forgotPassword' component={} />  */}
                                 <Route path="/incident-browser/new-incident/basic-info" render={() =>
                                     <NewBasicInfo
-                                        basic={incident.basicInfo}
+                                        basic={incident}
                                         change={handleBasicChange}
                                     />} />
                                 <Route path="/incident-browser/new-incident/devices/new-device" component={NewDevice} />
@@ -158,10 +166,13 @@ const NewIncident = (props) => {
                                 <Route path="/incident-browser/new-incident/calls" render={() =>
                                     <Calls
                                         {...props}
-                                        calls={incident.calls}
+                                        calls={incident.incidentCalls}
                                         change={handleCallsChange}
                                     />
                                 } />
+
+                                <Route path="/incident-browser/new-incident/multimedia" component={Multimedia} />
+
                             </Switch>
                         </HashRouter>
                     </div>
