@@ -21,3 +21,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+WebAPI/WebAPI/obj/Debug/netcoreapp3.1/WebAPI.csproj.CoreCompileInputs.cache
+WebAPI/WebAPI/obj/Debug/netcoreapp3.1/WebAPI.csproj.CoreCompileInputs.cache
+WebAPI/WebAPI/obj/Debug/netcoreapp3.1/WebAPI.csprojAssemblyReference.cache
+WebAPI/.vs/WebAPI/v16/.suo
+WebAPI/WebAPI/bin/Debug/netcoreapp3.1/WebAPI.dll
+WebAPI/WebAPI/bin/Debug/netcoreapp3.1/WebAPI.pdb

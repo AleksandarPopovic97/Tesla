@@ -8,7 +8,7 @@ const CustomerInfoCard = (props) => {
         <div className={classes.CustomerInfoCard}>
             <div className={classes.Header}>
                 <p>Customer info</p>
-                <button><FaUserPlus /> Select customer</button>
+                <button onClick={props.pickCustomer}><FaUserPlus /> Select customer</button>
             </div>
             <div className={classes.CustomerInfo}>
                 <div className={classes.InfoContainer}>

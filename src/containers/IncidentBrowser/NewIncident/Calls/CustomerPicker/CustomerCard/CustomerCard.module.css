@@ -1,0 +1,16 @@
+.CustomerCard{
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    margin: 10px;
+}
+
+.CustomerCard:hover{
+    background-color: rgb(211, 211, 211);
+    cursor: pointer;
+}
+
+.CustomerCard p{
+    width: 20%;
+    text-align: center;
+}

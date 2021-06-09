@@ -36,7 +36,8 @@ const NewIncident = (props) => {
             subcause: 'Lightning',
             constructionType: 'None',
             material: 'Metal'
-        }
+        },
+        calls: [],
     })
 
     const handleBasicChange = (event) => {
@@ -96,6 +97,17 @@ const NewIncident = (props) => {
 
             })
         }
+    }
+
+    const handleCallsChange = (customer, info) => {
+
+
+        setIncident(prevState => {
+            return {
+                ...prevState,
+                calls: [...prevState.calls, { customer, ...info }]
+            }
+        })
 
     }
 
@@ -143,7 +155,13 @@ const NewIncident = (props) => {
                                     />} />
                                 <Route path="/incident-browser/new-incident/calls/new-call" exact component={NewCall} />
 
-                                <Route path="/incident-browser/new-incident/calls" component={Calls} />
+                                <Route path="/incident-browser/new-incident/calls" render={() =>
+                                    <Calls
+                                        {...props}
+                                        calls={incident.calls}
+                                        change={handleCallsChange}
+                                    />
+                                } />
                             </Switch>
                         </HashRouter>
                     </div>
