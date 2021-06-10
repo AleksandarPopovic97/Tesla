@@ -1,7 +1,8 @@
 import classes from './NewDevice.module.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DashboardLayout from '../../components/DashboardLayout/DashboardLayout';
 import axios from 'axios';
+import IncidentTable from '../../components/UI/IncidentTable/IncidentTable';
 
 const NewDevice = (props) => {
 
@@ -11,6 +12,51 @@ const NewDevice = (props) => {
         address: '',
         coordinates: ''
     })
+
+    const [filter, setFilter] = useState({
+        type: '',
+        name: '',
+        address: '',
+        coordinates: '',
+        id: ''
+    })
+
+
+    const [filteredDevices, setFilteredDevices] = useState([]);
+    const [devices, setDevices] = useState([])
+    const [showfilter, setFilterShow] = useState(false);
+
+    const columns = [
+        {
+            Header: 'Id',
+            accessor: 'id'
+        },
+        {
+            Header: 'Name',
+            accessor: 'name'
+        },
+        {
+            Header: 'Type',
+            accessor: 'type'
+        },
+        {
+            Header: 'Coordinates',
+            accessor: 'coordinates'
+        },
+        {
+            Header: 'Address',
+            accessor: 'address'
+        },
+    ]
+
+    useEffect(() => {
+        axios.get('http://localhost:60259/api/Devices').then(response => {
+            console.log(response);
+            setDevices(response.data);
+        }).catch(error => {
+            console.log(error);
+        })
+    }, [])
 
     const handleChange = (event) => {
 
@@ -33,11 +79,50 @@ const NewDevice = (props) => {
             .catch(function (error) {
                 console.log(error);
             });
+
+        setDevices(prevState => {
+            return [...prevState, device]
+        })
+    }
+
+    const showFilterHandler = () => {
+        setFilterShow(prevState => {
+            return !prevState;
+        });
+    }
+
+    const onFilterHandler = () => {
+
+
+        setFilteredDevices([]);
+
+        let counter = 0;
+        devices.map(device => {
+            if (filter.id && filter.id == device.id
+                || filter.name && filter.name === device.name
+                || filter.address && filter.address === device.address
+                || filter.coordinates && filter.coordinates === device.coordinates
+                || filter.type !== 'All' && filter.type === device.type
+            ) {
+                setFilteredDevices(prevState => {
+                    return [...prevState, device]
+                })
+                counter++;
+            }
+        })
+    }
+
+    const onFilterChange = (event) => {
+        setFilter(prevState => {
+            return {
+                ...prevState,
+                [event.target.name]: event.target.value
+            }
+        })
     }
 
     return (
         <DashboardLayout title="Device - new">
-
             <div className={classes.NewDevice}>
                 <form className={classes.Form}>
                     <div className={classes.Container}>
@@ -61,8 +146,44 @@ const NewDevice = (props) => {
                         <input type="text" onChange={handleChange} value={device.coordinates} name="coordinates"></input>
                     </div>
                 </form>
+                <button onClick={addDeviceHandler}>Add</button>
             </div>
-            <button onClick={addDeviceHandler}>Add</button>
+            {devices.length > 0 ?
+                <IncidentTable tableColumns={columns} tableData={filteredDevices.length > 0 ? filteredDevices : devices} />
+                : null}
+
+            <button onClick={showFilterHandler}>Filter</button>
+            {showfilter ?
+
+                <div className={classes.Filter}>
+                    <div className={classes.FilterContainer}>
+                        <label>Id:</label>
+                        <input type="text" onChange={onFilterChange} value={filter.id} name="id"></input>
+                    </div>
+                    <div className={classes.FilterContainer}>
+                        <label>Name:</label>
+                        <input type="text" onChange={onFilterChange} value={filter.name} name="name"></input>
+                    </div>
+                    <div className={classes.FilterContainer}>
+                        <label>Address:</label>
+                        <input type="text" onChange={onFilterChange} value={filter.address} name="address"></input>
+                    </div>
+                    <div className={classes.FilterContainer}>
+                        <label>Coordinates:</label>
+                        <input type="text" onChange={onFilterChange} value={filter.coordinates} name="coordinates"></input>
+                    </div>
+                    <div className={classes.FilterContainer}>
+                        <label>Type:</label>
+                        <select onChange={onFilterChange} value={filter.type} name="type">
+                            <option>All</option>
+                            <option>Breaker</option>
+                            <option>Fuse</option>
+                        </select>
+                    </div>
+                    <button className={classes.FilterButton} onClick={onFilterHandler}>Filter</button>
+                </div>
+                : null}
+
         </DashboardLayout>
     )
 }
