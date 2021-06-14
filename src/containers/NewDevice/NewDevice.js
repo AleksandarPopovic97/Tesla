@@ -96,18 +96,16 @@ const NewDevice = (props) => {
 
         setFilteredDevices([]);
 
-        let counter = 0;
         devices.map(device => {
-            if (filter.id && filter.id == device.id
-                || filter.name && filter.name === device.name
-                || filter.address && filter.address === device.address
-                || filter.coordinates && filter.coordinates === device.coordinates
-                || filter.type !== 'All' && filter.type === device.type
+            if (filter.id ? filter.id == device.id : true
+                && filter.name ? filter.name === device.name : true
+                    && filter.address ? filter.address === device.address : true
+                        && filter.coordinates ? filter.coordinates === device.coordinates : true
+                        && filter.type !== 'All' && filter.type === device.type
             ) {
                 setFilteredDevices(prevState => {
                     return [...prevState, device]
                 })
-                counter++;
             }
         })
     }
