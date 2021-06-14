@@ -21,6 +21,8 @@ namespace WebAPI.Models
         public DbSet<WebAPI.Models.Call> Call { get; set; }
         
         public DbSet<WebAPI.Models.Incident> Incident { get; set; }
+        
+        public DbSet<WebAPI.Models.SafetyDocument> SafetyDocument { get; set; }
 
 
     }

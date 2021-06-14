@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import IncidentTable from '../../../../components/UI/IncidentTable/IncidentTable';
 import { FaPlusCircle, FaFilter } from 'react-icons/fa';
 import Modal from '../../../../components/UI/Modal/Modal';
-import NewDevice from '../../../NewDevice/NewDevice';
 import DevicePicker from './DevicePicker/DevicePicker';
 
 const Devices = (props) => {

@@ -8,22 +8,21 @@ import Multimedia from './Multimedia/Multimedia';
 import Equipment from './Equipment/Equipment';
 import Checklist from './Checklist/Checklist';
 import History from './History/History';
+import axios from 'axios';
 
 const NewSafetyDoc = (props) => {
 
     const [safetyDoc, setSafetyDoc] = useState({
-        basicInfo: {
-            type: '',
-            phoneNo: 0,
-            status: 'Draft',
-            fieldCrew: 'NS Crew',
-            switchingPlan: 'SP 150',
-            safetyDocType: 'Clearance',
-            //add datetime
-            createdBy: 'User name',
-            details: '',
-            notes: '',
-        },
+        type: 'Planned Work',
+        phoneNo: 0,
+        status: 'Draft',
+        fieldCrew: 'NS Crew',
+        switchingPlan: 'SP 150',
+        safetyDocType: 'Clearance',
+        //add datetime
+        createdBy: 'User name',
+        details: '',
+        notes: '',
         checkList: {
             workCompleted: false,
             tagsRemoved: false,
@@ -33,7 +32,13 @@ const NewSafetyDoc = (props) => {
     });
 
     const clickHandler = () => {
-        console.log(safetyDoc);
+        axios.post('http://localhost:60259/api/SafetyDocuments', safetyDoc)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
     const handleBasicChange = (event) => {
@@ -41,12 +46,11 @@ const NewSafetyDoc = (props) => {
         setSafetyDoc(prevState => {
             return {
                 ...prevState,
-                basicInfo: {
-                    ...prevState.basicInfo,
-                    [event.target.name]: event.target.value,
-                }
+
+                [event.target.name]: event.target.value,
             }
-        })
+        }
+        )
     }
 
     const handleChecklistChange = (event) => {
@@ -91,7 +95,7 @@ const NewSafetyDoc = (props) => {
                                 {/* <Route path="/reportOutage" component={} />
                         <Route path='/forgotPassword' component={} />  */}
                                 <Route path="/incident-browser/new-safetyDoc/basic-info" render={() => <BasicInfo
-                                    basic={safetyDoc.basicInfo}
+                                    basic={safetyDoc}
                                     change={handleBasicChange}
                                 />} />
                                 <Route path="/incident-browser/new-safetyDoc/history" component={History} />

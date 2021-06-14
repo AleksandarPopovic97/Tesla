@@ -15,7 +15,7 @@ const Multimedia = (props) => {
         <div className={classes.Multimedia}>
             consider using this for safetydoc multimedia
             <input type="file" onChange={handleImageChange} />
-            <img src={image} className={classes.Image}></img>
+            <img src={image} className={classes.Image} alt={image.name}></img>
         </div>
     )
 }

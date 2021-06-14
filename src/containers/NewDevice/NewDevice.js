@@ -144,7 +144,9 @@ const NewDevice = (props) => {
                         <input type="text" onChange={handleChange} value={device.coordinates} name="coordinates"></input>
                     </div>
                 </form>
-                <button onClick={addDeviceHandler}>Add</button>
+                <button onClick={addDeviceHandler} type="submit"
+                    disabled={!device.coordinates.length || !device.address.length}
+                >Add</button>
             </div>
             {devices.length > 0 ?
                 <IncidentTable tableColumns={columns} tableData={filteredDevices.length > 0 ? filteredDevices : devices} />

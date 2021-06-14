@@ -1,7 +1,6 @@
 import classes from './CustomerPicker.module.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Modal from '../../../../../components/UI/Modal/Modal';
 import CustomerCard from './CustomerCard/CustomerCard';
 
 const CustomerPicker = (props) => {

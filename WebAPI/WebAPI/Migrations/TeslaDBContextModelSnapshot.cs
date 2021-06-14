@@ -189,6 +189,74 @@ namespace WebAPI.Migrations
                     b.ToTable("Resolution");
                 });
 
+            modelBuilder.Entity("WebAPI.Models.SafetyDocChecklist", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("groundingRemoved")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("ready")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("tagsRemoved")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("workCompleted")
+                        .HasColumnType("bit");
+
+                    b.HasKey("id");
+
+                    b.ToTable("SafetyDocChecklist");
+                });
+
+            modelBuilder.Entity("WebAPI.Models.SafetyDocument", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("checklistid")
+                        .HasColumnType("int");
+
+                    b.Property<string>("createdBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("details")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("fieldCrew")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("phoneNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("safetyDocType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("switchingPlan")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("checklistid");
+
+                    b.ToTable("SafetyDocument");
+                });
+
             modelBuilder.Entity("WebAPI.Models.Call", b =>
                 {
                     b.HasOne("WebAPI.Models.Incident", null)
@@ -216,6 +284,15 @@ namespace WebAPI.Migrations
                         .HasForeignKey("resolutionid");
 
                     b.Navigation("resolution");
+                });
+
+            modelBuilder.Entity("WebAPI.Models.SafetyDocument", b =>
+                {
+                    b.HasOne("WebAPI.Models.SafetyDocChecklist", "checklist")
+                        .WithMany()
+                        .HasForeignKey("checklistid");
+
+                    b.Navigation("checklist");
                 });
 
             modelBuilder.Entity("WebAPI.Models.Incident", b =>
