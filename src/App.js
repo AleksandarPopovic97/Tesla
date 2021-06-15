@@ -22,9 +22,9 @@ function App() {
             <Route path="/new-device" component={NewDevice} />
             <Route path="/incident-browser/new-incident" component={NewIncident} />
             <Route path="/incident-browser/new-incident/basic-info" component={NewBasicInfo} />
-            <Route path="/incident-browser/new-safetyDoc" component={NewSafetyDoc} />
-            <Route path="/incident-browser" component={IncidentBrowser} />
+            <Route path="/safetyDocs-browser/new-safetyDoc" component={NewSafetyDoc} />
             <Route path="/safetyDocs-browser" component={SafetyDocBrowser} />
+            <Route path="/incident-browser" component={IncidentBrowser} />
 
 
             <Route path="/" component={LandingPage} />

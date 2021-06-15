@@ -80,7 +80,16 @@ namespace WebAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Device>> PostDevice(Device device)
         {
-           
+            int id = 0;
+            foreach(Device d in _context.DDevices.ToList())
+            {
+                Trace.WriteLine(d.id);
+                id = d.id;
+            }
+
+            id++;
+
+            device.name = device.type.Substring(0, 3).ToUpper() + id;
             _context.DDevices.Add(device);
             await _context.SaveChangesAsync();
 

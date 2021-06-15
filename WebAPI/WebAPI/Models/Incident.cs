@@ -22,13 +22,13 @@ namespace WebAPI.Models
         public string type { get; set; }
 
         [Column]
-        public string outageTime { get; set; }
+        public DateTime? outageTime { get; set; }
 
         [Column]
         public int priority { get; set; }
 
         [Column]
-        public string etr { get; set; }
+        public DateTime? etr { get; set; }
 
         [Column]
         public bool confirmed { get; set; }
@@ -46,15 +46,15 @@ namespace WebAPI.Models
         public string description { get; set; }
 
         [Column]
-        public string eta { get; set; }
+        public DateTime? eta { get; set; }
 
         [Column]
-        public string scheduledTime { get; set; }
+        public DateTime? scheduledTime { get; set; }
 
         [Column]
-        public string ata { get; set; }
+        public DateTime? ata { get; set; }
 
-        [Column]
+        [ForeignKey("DDevices")]
         public List<Device> devices { get; set; }
 
         [Column]

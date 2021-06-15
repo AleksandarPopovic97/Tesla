@@ -27,6 +27,8 @@ namespace WebAPI.Models
         [Column]
         public string createdBy { get; set; }
         [Column]
+        public DateTime? dateTimeCreated { get; set; }
+        [Column]
         public string details { get; set; }
         [Column]
         public string notes { get; set; }

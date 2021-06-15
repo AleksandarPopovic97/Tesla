@@ -84,7 +84,7 @@ namespace WebAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("Incidentid")
+                    b.Property<int?>("DDevices")
                         .HasColumnType("int");
 
                     b.Property<string>("address")
@@ -101,7 +101,7 @@ namespace WebAPI.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("Incidentid");
+                    b.HasIndex("DDevices");
 
                     b.ToTable("DDevices");
                 });
@@ -116,8 +116,8 @@ namespace WebAPI.Migrations
                     b.Property<int>("affectedCustomers")
                         .HasColumnType("int");
 
-                    b.Property<string>("ata")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime?>("ata")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("calls")
                         .HasColumnType("int");
@@ -128,17 +128,17 @@ namespace WebAPI.Migrations
                     b.Property<string>("description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("eta")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime?>("eta")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("etr")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime?>("etr")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("incidentId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("outageTime")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime?>("outageTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("priority")
                         .HasColumnType("int");
@@ -146,8 +146,8 @@ namespace WebAPI.Migrations
                     b.Property<int?>("resolutionid")
                         .HasColumnType("int");
 
-                    b.Property<string>("scheduledTime")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime?>("scheduledTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("status")
                         .HasColumnType("nvarchar(max)");
@@ -226,6 +226,9 @@ namespace WebAPI.Migrations
                     b.Property<string>("createdBy")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime?>("dateTimeCreated")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("details")
                         .HasColumnType("nvarchar(max)");
 
@@ -274,7 +277,7 @@ namespace WebAPI.Migrations
                 {
                     b.HasOne("WebAPI.Models.Incident", null)
                         .WithMany("devices")
-                        .HasForeignKey("Incidentid");
+                        .HasForeignKey("DDevices");
                 });
 
             modelBuilder.Entity("WebAPI.Models.Incident", b =>

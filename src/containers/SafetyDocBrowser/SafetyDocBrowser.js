@@ -1,62 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import DashboardLayout from '../../components/DashboardLayout/DashboardLayout';
 import classes from './SafetyDocBrowser.module.css';
 import { FaPlusCircle, FaFilter } from 'react-icons/fa';
 import IncidentTable from '../../components/UI/IncidentTable/IncidentTable';
+import axios from 'axios';
 
 const SafetyDocBrowser = (props) => {
 
-    const data = [
-        {
-            id: 'WR1',
-            startDate: '13 aug 2018',
-            phoneNo: '351-661-3252',
-            status: 'Draft',
-            address: 'Vladike Curica 10'
-        },
-        {
-            id: 'WR2',
-            startDate: '13 aug 2018',
-            phoneNo: '251-661-5362',
-            status: 'Draft',
-            address: 'Suboticka 10'
-        },
-        {
-            id: 'WR3',
-            startDate: '13 aug 2018',
-            phoneNo: '351-661-3252',
-            status: 'Submitted',
-            address: 'Mileve Marica 14'
-        },
-        {
-            id: 'WR4',
-            startDate: '13 aug 2018',
-            phoneNo: '251-661-5362',
-            status: 'Submitted',
-            address: 'Masarikova 2'
-        },
-        {
-            id: 'WR4',
-            startDate: '13 aug 2018',
-            phoneNo: '251-661-5362',
-            status: 'Submitted',
-            address: 'Masarikova 2'
-        },
-        {
-            id: 'WR4',
-            startDate: '13 aug 2018',
-            phoneNo: '251-661-5362',
-            status: 'Submitted',
-            address: 'Masarikova 2'
-        },
-        {
-            id: 'WR4',
-            startDate: '13 aug 2018',
-            phoneNo: '251-661-5362',
-            status: 'Submitted',
-            address: 'Masarikova 2'
-        },
-    ]
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://localhost:60259/api/SafetyDocuments')
+            .then(function (response) {
+                setData(response.data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }, []);
 
     const columns = [
         {
@@ -64,16 +25,16 @@ const SafetyDocBrowser = (props) => {
             accessor: 'id'
         },
         {
-            Header: 'Start Date',
-            accessor: 'startDate'
-        },
-        {
-            Header: 'Phone No.',
+            Header: 'Phone no',
             accessor: 'phoneNo'
         },
         {
             Header: 'Status',
             accessor: 'status'
+        },
+        {
+            Header: 'Doc type',
+            accessor: 'safetyDocType'
         },
         {
             Header: 'Address',
@@ -82,7 +43,7 @@ const SafetyDocBrowser = (props) => {
     ]
 
     const newSafetyDoc = () => {
-        props.history.push('/incident-browser/new-safetyDoc/basic-info');
+        props.history.push('/safetyDocs-browser/new-safetyDoc/basic-info');
     }
 
     return (

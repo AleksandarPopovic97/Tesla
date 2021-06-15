@@ -75,14 +75,15 @@ const NewDevice = (props) => {
         axios.post('http://localhost:60259/api/Devices', device)
             .then(function (response) {
                 console.log(response);
+                setDevices(prevState => {
+                    return [...prevState, response.data]
+                })
             })
             .catch(function (error) {
                 console.log(error);
             });
 
-        setDevices(prevState => {
-            return [...prevState, device]
-        })
+
     }
 
     const showFilterHandler = () => {

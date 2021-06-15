@@ -1,8 +1,9 @@
 import classes from './IncidentBrowser.module.css';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import DashboardLayout from '../../components/DashboardLayout/DashboardLayout';
 import { FaPlusCircle, FaFilter } from 'react-icons/fa';
 import IncidentTable from '../../components/UI/IncidentTable/IncidentTable';
+import axios from 'axios';
 
 const IncidentBrowser = (props) => {
 
@@ -14,57 +15,17 @@ const IncidentBrowser = (props) => {
 
     }
 
-    const data = [
-        {
-            id: 'WR1',
-            startDate: '13 aug 2018',
-            phoneNo: '351-661-3252',
-            status: 'Draft',
-            address: 'Vladike Curica 10'
-        },
-        {
-            id: 'WR2',
-            startDate: '13 aug 2018',
-            phoneNo: '251-661-5362',
-            status: 'Draft',
-            address: 'Suboticka 10'
-        },
-        {
-            id: 'WR3',
-            startDate: '13 aug 2018',
-            phoneNo: '351-661-3252',
-            status: 'Submitted',
-            address: 'Mileve Marica 14'
-        },
-        {
-            id: 'WR4',
-            startDate: '13 aug 2018',
-            phoneNo: '251-661-5362',
-            status: 'Submitted',
-            address: 'Masarikova 2'
-        },
-        {
-            id: 'WR4',
-            startDate: '13 aug 2018',
-            phoneNo: '251-661-5362',
-            status: 'Submitted',
-            address: 'Masarikova 2'
-        },
-        {
-            id: 'WR4',
-            startDate: '13 aug 2018',
-            phoneNo: '251-661-5362',
-            status: 'Submitted',
-            address: 'Masarikova 2'
-        },
-        {
-            id: 'WR4',
-            startDate: '13 aug 2018',
-            phoneNo: '251-661-5362',
-            status: 'Submitted',
-            address: 'Masarikova 2'
-        },
-    ]
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://localhost:60259/api/Incidents')
+            .then(function (response) {
+                setData(response.data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }, [])
 
     const columns = [
         {
@@ -72,20 +33,20 @@ const IncidentBrowser = (props) => {
             accessor: 'id'
         },
         {
-            Header: 'Start Date',
-            accessor: 'startDate'
+            Header: 'Type',
+            accessor: 'type'
         },
         {
-            Header: 'Phone No.',
-            accessor: 'phoneNo'
+            Header: 'Voltage',
+            accessor: 'voltage'
         },
         {
             Header: 'Status',
             accessor: 'status'
         },
         {
-            Header: 'Address',
-            accessor: 'address'
+            Header: 'Affected customers',
+            accessor: 'affectedCustomers'
         },
     ]
 

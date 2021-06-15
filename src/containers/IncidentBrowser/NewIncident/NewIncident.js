@@ -20,17 +20,17 @@ const NewIncident = (props) => {
         incidentId: 'INC00015',
         affectedCustomers: 100.0,
         type: 'Planned Work',
-        outageTime: '',
+        outageTime: new Date(Date.now()).toISOString().slice(0, 10),
         priority: 1,
-        etr: '',
+        etr: new Date(Date.now()).toISOString().slice(0, 10),
         confirmed: false,
         calls: 5.0,
         status: 'Dispatched',
         voltage: 12.47,
         description: '',
-        eta: '',
-        scheduledTime: '',
-        ata: '',
+        eta: new Date(Date.now()).toISOString().slice(0, 10),
+        scheduledTime: new Date(Date.now()).toISOString().slice(0, 10),
+        ata: new Date(Date.now()).toISOString().slice(0, 10),
 
         devices: [],
         resolution: {
@@ -50,6 +50,30 @@ const NewIncident = (props) => {
                     ...prevState,
 
                     [event.target.name]: !prevState[event.target.name],
+
+                }
+            })
+            return
+        }
+
+        if (event.target.name === 'affectedCustomers' || event.target.name === 'calls') {
+            setIncident(prevState => {
+                return {
+                    ...prevState,
+
+                    [event.target.name]: parseInt(event.target.value),
+
+                }
+            })
+            return
+        }
+
+        if (event.target.name === 'voltage') {
+            setIncident(prevState => {
+                return {
+                    ...prevState,
+
+                    [event.target.name]: parseFloat(event.target.value),
 
                 }
             })

@@ -44,7 +44,7 @@ const BasicInfo = (props) => {
 
                     <div className={classes.Container}>
                         <label>Date/time created:</label>
-                        <input name={props.name} type="date"></input>
+                        <input name={props.name} type="date" value={props.basic.dateTimeCreated} onChange={props.change}></input>
                     </div>
                 </div>
                 <div className={classes.Rows}>

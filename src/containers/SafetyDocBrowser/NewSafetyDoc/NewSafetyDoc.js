@@ -14,12 +14,12 @@ const NewSafetyDoc = (props) => {
 
     const [safetyDoc, setSafetyDoc] = useState({
         type: 'Planned Work',
-        phoneNo: 0,
+        phoneNo: '0',
         status: 'Draft',
         fieldCrew: 'NS Crew',
         switchingPlan: 'SP 150',
         safetyDocType: 'Clearance',
-        //add datetime
+        dateTimeCreated: new Date(Date.now()).toISOString().slice(0, 10),
         createdBy: 'User name',
         details: '',
         notes: '',
@@ -39,6 +39,8 @@ const NewSafetyDoc = (props) => {
             .catch(function (error) {
                 console.log(error);
             });
+
+        console.log();
     }
 
     const handleBasicChange = (event) => {
@@ -78,11 +80,11 @@ const NewSafetyDoc = (props) => {
 
                 <div className={classes.NewSafetyDoc}>
                     <div className={classes.LinkContainer}>
-                        <NavLink to="/incident-browser/new-safetyDoc/basic-info" className={classes.NavLink} activeClassName={classes.ActiveLink}>Basic Information</NavLink>
-                        <NavLink to="/incident-browser/new-safetyDoc/history" className={classes.NavLink} activeClassName={classes.ActiveLink}>History of state changes</NavLink>
-                        <NavLink to="/incident-browser/new-safetyDoc/multimedia" className={classes.NavLink} activeClassName={classes.ActiveLink}>Multimedia attachments</NavLink>
-                        <NavLink to="/incident-browser/new-safetyDoc/equipment" className={classes.NavLink} activeClassName={classes.ActiveLink}>Equipment</NavLink>
-                        <NavLink to="/incident-browser/new-safetyDoc/checklist" className={classes.NavLink} activeClassName={classes.ActiveLink}>Checklist</NavLink>
+                        <NavLink to="/safetyDocs-browser/new-safetyDoc/basic-info" className={classes.NavLink} activeClassName={classes.ActiveLink}>Basic Information</NavLink>
+                        <NavLink to="/safetyDocs-browser/new-safetyDoc/history" className={classes.NavLink} activeClassName={classes.ActiveLink}>History of state changes</NavLink>
+                        <NavLink to="/safetyDocs-browser/new-safetyDoc/multimedia" className={classes.NavLink} activeClassName={classes.ActiveLink}>Multimedia attachments</NavLink>
+                        <NavLink to="/safetyDocs-browser/new-safetyDoc/equipment" className={classes.NavLink} activeClassName={classes.ActiveLink}>Equipment</NavLink>
+                        <NavLink to="/safetyDocs-browser/new-safetyDoc/checklist" className={classes.NavLink} activeClassName={classes.ActiveLink}>Checklist</NavLink>
                         {/* <NavLink to="/" className={classes.NavLink} >Crew</NavLink>
                         <NavLink to="/" className={classes.NavLink} >Multimedia attachments</NavLink>
                         <NavLink to="/" className={classes.NavLink} >Equipment</NavLink> */}
@@ -94,14 +96,14 @@ const NewSafetyDoc = (props) => {
                             <Switch>
                                 {/* <Route path="/reportOutage" component={} />
                         <Route path='/forgotPassword' component={} />  */}
-                                <Route path="/incident-browser/new-safetyDoc/basic-info" render={() => <BasicInfo
+                                <Route path="/safetyDocs-browser/new-safetyDoc/basic-info" render={() => <BasicInfo
                                     basic={safetyDoc}
                                     change={handleBasicChange}
                                 />} />
-                                <Route path="/incident-browser/new-safetyDoc/history" component={History} />
-                                <Route path="/incident-browser/new-safetyDoc/multimedia" component={Multimedia} />
-                                <Route path="/incident-browser/new-safetyDoc/equipment" component={Equipment} />
-                                <Route path="/incident-browser/new-safetyDoc/checklist" render={() => <Checklist
+                                <Route path="/safetyDocs-browser/new-safetyDoc/history" component={History} />
+                                <Route path="/safetyDocs-browser/new-safetyDoc/multimedia" component={Multimedia} />
+                                <Route path="/safetyDocs-browser/new-safetyDoc/equipment" component={Equipment} />
+                                <Route path="/safetyDocs-browser/new-safetyDoc/checklist" render={() => <Checklist
                                     checkList={safetyDoc.checkList}
                                     change={handleChecklistChange}
                                 />} />
