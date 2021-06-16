@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebAPI.Migrations
 {
-    public partial class initial : Migration
+    public partial class SafetyDocs : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -76,7 +76,8 @@ namespace WebAPI.Migrations
                     eta = table.Column<DateTime>(type: "datetime2", nullable: true),
                     scheduledTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ata = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    resolutionid = table.Column<int>(type: "int", nullable: true)
+                    resolutionid = table.Column<int>(type: "int", nullable: true),
+                    multimedia = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -105,7 +106,8 @@ namespace WebAPI.Migrations
                     dateTimeCreated = table.Column<DateTime>(type: "datetime2", nullable: true),
                     details = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     notes = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    checklistid = table.Column<int>(type: "int", nullable: true)
+                    checklistid = table.Column<int>(type: "int", nullable: true),
+                    multimedia = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -157,15 +159,22 @@ namespace WebAPI.Migrations
                     name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     address = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     coordinates = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DDevices = table.Column<int>(type: "int", nullable: true)
+                    IncidentId = table.Column<int>(type: "int", nullable: true),
+                    SafetyDocumentid = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DDevices", x => x.id);
                     table.ForeignKey(
-                        name: "FK_DDevices_Incident_DDevices",
-                        column: x => x.DDevices,
+                        name: "FK_DDevices_Incident_IncidentId",
+                        column: x => x.IncidentId,
                         principalTable: "Incident",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_DDevices_SafetyDocument_SafetyDocumentid",
+                        column: x => x.SafetyDocumentid,
+                        principalTable: "SafetyDocument",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -181,9 +190,14 @@ namespace WebAPI.Migrations
                 column: "Incidentid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DDevices_DDevices",
+                name: "IX_DDevices_IncidentId",
                 table: "DDevices",
-                column: "DDevices");
+                column: "IncidentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DDevices_SafetyDocumentid",
+                table: "DDevices",
+                column: "SafetyDocumentid");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Incident_resolutionid",
@@ -205,19 +219,19 @@ namespace WebAPI.Migrations
                 name: "DDevices");
 
             migrationBuilder.DropTable(
-                name: "SafetyDocument");
-
-            migrationBuilder.DropTable(
                 name: "Customer");
 
             migrationBuilder.DropTable(
                 name: "Incident");
 
             migrationBuilder.DropTable(
-                name: "SafetyDocChecklist");
+                name: "SafetyDocument");
 
             migrationBuilder.DropTable(
                 name: "Resolution");
+
+            migrationBuilder.DropTable(
+                name: "SafetyDocChecklist");
         }
     }
 }

@@ -24,6 +24,9 @@ namespace WebAPI.Models
         [Column]
         public string coordinates { get; set; }
 
+        public int? IncidentId { get; set; }
+        public int? SafetyDocumentid { get; set; }
+
         //public int Id { get => id; set => id = value; }
         //public string Type { get => type; set => type = value; }
         //public string Name { get => name; set => name = value; }

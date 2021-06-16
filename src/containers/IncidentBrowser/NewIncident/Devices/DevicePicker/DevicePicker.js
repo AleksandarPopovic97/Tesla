@@ -26,10 +26,24 @@ const DevicePicker = (props) => {
             });
     }, [])
 
+    const checkAdded = (device) => {
+        let flag = false;
+        if (props.devices) {
+            props.devices.map((d) => {
+                if (d.name === device.name) {
+                    flag = true;
+                }
+            })
+        }
+        return flag;
+    }
+
     return (
         <div className={classes.DevicePicker}>
             {devices.map(device => {
+
                 return <Device
+                    isAdded={() => checkAdded(device)}
                     key={device.id}
                     name={device.name}
                     type={device.type}

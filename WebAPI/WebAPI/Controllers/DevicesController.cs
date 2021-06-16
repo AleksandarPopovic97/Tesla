@@ -25,7 +25,7 @@ namespace WebAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Device>>> GetDDevices()
         {
-            return await _context.DDevices.ToListAsync();
+            return await _context.DDevices.Where(d => d.IncidentId == null && d.SafetyDocumentid == null).ToListAsync();
         }
 
         // GET: api/Devices/5

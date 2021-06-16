@@ -11,9 +11,9 @@ const CustomerPicker = (props) => {
         axios.get('http://localhost:60259/api/Customers')
             .then(function (response) {
                 // handle success
-                for (const i of response.data) {
-                    delete i.id;
-                }
+                // for (const i of response.data) {
+                //     delete i.id;
+                // }
                 setCustomers(response.data);
                 console.log(response);
             })

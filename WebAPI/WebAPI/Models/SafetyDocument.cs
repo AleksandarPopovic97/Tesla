@@ -34,6 +34,11 @@ namespace WebAPI.Models
         public string notes { get; set; }
         [Column]
         public SafetyDocChecklist checklist { get; set; }
+        [Column]
+        public string multimedia { get; set; }
+        [Column]
+        public List<Device> devices { get; set; }
+
 
     }
 }

@@ -1,21 +1,34 @@
 import classes from './Multimedia.module.css';
-import React, { useState } from 'react';
+import React from 'react';
 
 const Multimedia = (props) => {
 
-    const [image, setImage] = useState(null);
 
     const handleImageChange = (event) => {
-        console.log(event.target.files[0]);
+
+        const reader = new FileReader();
+        reader.onload = () => {
+
+            if (reader.readyState === 2) {
+                console.log('done')
+                props.change(reader.result)
+            }
+        }
         if (event.target.files[0])
-            setImage(URL.createObjectURL(event.target.files[0]));
+            reader.readAsDataURL(event.target.files[0]);
+
+
+
+
+        // console.log(event.target.files[0])
+        // if (event.target.files[0])
+        //     setImage(URL.createObjectURL(event.target.files[0]));
     }
 
     return (
         <div className={classes.Multimedia}>
-            consider using this for safetydoc multimedia
             <input type="file" onChange={handleImageChange} />
-            <img src={image} className={classes.Image} alt={image.name}></img>
+            <img src={props.multimedia} className={classes.Image} alt='Multimedia'></img>
         </div>
     )
 }

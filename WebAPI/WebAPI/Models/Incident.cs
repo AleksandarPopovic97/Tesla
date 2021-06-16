@@ -54,7 +54,7 @@ namespace WebAPI.Models
         [Column]
         public DateTime? ata { get; set; }
 
-        [ForeignKey("DDevices")]
+        [Column]
         public List<Device> devices { get; set; }
 
         [Column]
@@ -62,5 +62,8 @@ namespace WebAPI.Models
 
         [Column]
         public List<Call> incidentCalls { get; set; }
+
+        [Column]
+        public string multimedia { get; set; }
     }
 }

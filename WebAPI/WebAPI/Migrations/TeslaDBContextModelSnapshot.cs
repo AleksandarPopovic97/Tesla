@@ -84,7 +84,10 @@ namespace WebAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("DDevices")
+                    b.Property<int?>("IncidentId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SafetyDocumentid")
                         .HasColumnType("int");
 
                     b.Property<string>("address")
@@ -101,7 +104,9 @@ namespace WebAPI.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("DDevices");
+                    b.HasIndex("IncidentId");
+
+                    b.HasIndex("SafetyDocumentid");
 
                     b.ToTable("DDevices");
                 });
@@ -135,6 +140,9 @@ namespace WebAPI.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("incidentId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("multimedia")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("outageTime")
@@ -235,6 +243,9 @@ namespace WebAPI.Migrations
                     b.Property<string>("fieldCrew")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("multimedia")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("notes")
                         .HasColumnType("nvarchar(max)");
 
@@ -277,7 +288,11 @@ namespace WebAPI.Migrations
                 {
                     b.HasOne("WebAPI.Models.Incident", null)
                         .WithMany("devices")
-                        .HasForeignKey("DDevices");
+                        .HasForeignKey("IncidentId");
+
+                    b.HasOne("WebAPI.Models.SafetyDocument", null)
+                        .WithMany("devices")
+                        .HasForeignKey("SafetyDocumentid");
                 });
 
             modelBuilder.Entity("WebAPI.Models.Incident", b =>
@@ -303,6 +318,11 @@ namespace WebAPI.Migrations
                     b.Navigation("devices");
 
                     b.Navigation("incidentCalls");
+                });
+
+            modelBuilder.Entity("WebAPI.Models.SafetyDocument", b =>
+                {
+                    b.Navigation("devices");
                 });
 #pragma warning restore 612, 618
         }

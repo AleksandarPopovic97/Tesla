@@ -36,8 +36,8 @@ const Calls = (props) => {
 
     const columns = [
         {
-            Header: 'Id',
-            accessor: 'id'
+            Header: 'Customer',
+            accessor: 'calls.name'
         },
         {
             Header: 'Reason',
@@ -68,7 +68,7 @@ const Calls = (props) => {
         //     });
     }
     const onFilterHandler = () => {
-
+        console.log(props.calls)
     }
 
     return (

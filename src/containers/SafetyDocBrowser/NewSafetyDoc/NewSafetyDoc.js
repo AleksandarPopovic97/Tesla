@@ -4,11 +4,12 @@ import DashboardLayout from '../../../components/DashboardLayout/DashboardLayout
 import classes from './NewSafetyDoc.module.css';
 import { FaSave, FaTimesCircle } from 'react-icons/fa';
 import BasicInfo from './BasicInfo/BasicInfo';
-import Multimedia from './Multimedia/Multimedia';
 import Equipment from './Equipment/Equipment';
 import Checklist from './Checklist/Checklist';
 import History from './History/History';
 import axios from 'axios';
+import Multimedia from '../../IncidentBrowser/NewIncident/Multimedia/Multimedia';
+import DevicePicker from '../../IncidentBrowser/NewIncident/Devices/DevicePicker/DevicePicker';
 
 const NewSafetyDoc = (props) => {
 
@@ -28,15 +29,20 @@ const NewSafetyDoc = (props) => {
             tagsRemoved: false,
             groundingRemoved: false,
             ready: false
-        }
+        },
+        multimedia: '',
+        devices: [],
     });
 
     const clickHandler = () => {
         axios.post('http://localhost:60259/api/SafetyDocuments', safetyDoc)
             .then(function (response) {
-                console.log(response);
+                console.log(safetyDoc);  //set state so I can get ID?
+                // setSafetyDoc(response.data);
             })
             .catch(function (error) {
+                console.log(safetyDoc);  //set state so I can get ID?
+
                 console.log(error);
             });
 
@@ -55,6 +61,24 @@ const NewSafetyDoc = (props) => {
         )
     }
 
+    const handleDevicesChange = (event) => {
+        if (event.config.added === true) {
+            setSafetyDoc(prevState => {
+                return {
+                    ...prevState,
+                    devices: [...prevState.devices, event.data]
+                }
+            })
+        } else {
+            setSafetyDoc(prevState => {
+                return {
+                    ...prevState,
+                    devices: prevState.devices.filter(item => item.name !== event.data.name)
+                }
+
+            })
+        }
+    }
     const handleChecklistChange = (event) => {
 
 
@@ -65,6 +89,19 @@ const NewSafetyDoc = (props) => {
                     ...prevState.checkList,
                     [event.target.name]: !prevState.checkList[event.target.name],
                 }
+            }
+        })
+
+
+    }
+
+    const handleMultimediaChange = (multimedia) => {
+
+
+        setSafetyDoc(prevState => {
+            return {
+                ...prevState,
+                multimedia: multimedia,
             }
         })
 
@@ -82,7 +119,7 @@ const NewSafetyDoc = (props) => {
                     <div className={classes.LinkContainer}>
                         <NavLink to="/safetyDocs-browser/new-safetyDoc/basic-info" className={classes.NavLink} activeClassName={classes.ActiveLink}>Basic Information</NavLink>
                         <NavLink to="/safetyDocs-browser/new-safetyDoc/history" className={classes.NavLink} activeClassName={classes.ActiveLink}>History of state changes</NavLink>
-                        <NavLink to="/safetyDocs-browser/new-safetyDoc/multimedia" className={classes.NavLink} activeClassName={classes.ActiveLink}>Multimedia attachments</NavLink>
+                        <NavLink to="/safetyDocs-browser/new-safetyDoc/multimedia" className={classes.NavLink} activeClassName={classes.ActiveLink}>Multimedia attachment</NavLink>
                         <NavLink to="/safetyDocs-browser/new-safetyDoc/equipment" className={classes.NavLink} activeClassName={classes.ActiveLink}>Equipment</NavLink>
                         <NavLink to="/safetyDocs-browser/new-safetyDoc/checklist" className={classes.NavLink} activeClassName={classes.ActiveLink}>Checklist</NavLink>
                         {/* <NavLink to="/" className={classes.NavLink} >Crew</NavLink>
@@ -101,8 +138,15 @@ const NewSafetyDoc = (props) => {
                                     change={handleBasicChange}
                                 />} />
                                 <Route path="/safetyDocs-browser/new-safetyDoc/history" component={History} />
-                                <Route path="/safetyDocs-browser/new-safetyDoc/multimedia" component={Multimedia} />
-                                <Route path="/safetyDocs-browser/new-safetyDoc/equipment" component={Equipment} />
+                                <Route path="/safetyDocs-browser/new-safetyDoc/multimedia" render={() =>
+                                    <Multimedia
+                                        multimedia={safetyDoc.multimedia}
+                                        change={handleMultimediaChange}
+                                    />
+                                } />
+                                <Route path="/safetyDocs-browser/new-safetyDoc/equipment" render={() =>
+                                    <DevicePicker change={handleDevicesChange} devices={safetyDoc.devices} />
+                                } />
                                 <Route path="/safetyDocs-browser/new-safetyDoc/checklist" render={() => <Checklist
                                     checkList={safetyDoc.checkList}
                                     change={handleChecklistChange}

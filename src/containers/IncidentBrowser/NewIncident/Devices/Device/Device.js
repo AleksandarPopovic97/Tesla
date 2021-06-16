@@ -1,9 +1,11 @@
 import classes from './Device.module.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Device = (props) => {
 
-    const [added, setAdded] = useState(false)
+    const [added, setAdded] = useState(props.isAdded)
+
+
 
     const addedHandler = (event) => {
         props.added({

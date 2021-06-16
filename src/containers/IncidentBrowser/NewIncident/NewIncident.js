@@ -40,6 +40,7 @@ const NewIncident = (props) => {
             material: 'Metal'
         },
         incidentCalls: [],
+        multimedia: '',
     })
 
     const handleBasicChange = (event) => {
@@ -117,20 +118,32 @@ const NewIncident = (props) => {
             setIncident(prevState => {
                 return {
                     ...prevState,
-                    devices: prevState.devices.filter(item => item.id !== event.data.id)
+                    devices: prevState.devices.filter(item => item.name !== event.data.name)
                 }
 
             })
         }
     }
 
-    const handleCallsChange = (customer, info) => {
+    const handleCallsChange = (calls, info) => {
 
 
         setIncident(prevState => {
             return {
                 ...prevState,
-                incidentCalls: [...prevState.incidentCalls, { customer, ...info }]
+                incidentCalls: [...prevState.incidentCalls, { calls, ...info }]
+            }
+        })
+
+    }
+
+    const handleMultimediaChange = (multimedia) => {
+
+
+        setIncident(prevState => {
+            return {
+                ...prevState,
+                multimedia: multimedia
             }
         })
 
@@ -138,7 +151,6 @@ const NewIncident = (props) => {
 
     const saveHandle = () => {
         //post
-        console.log(incident);
         axios.post('http://localhost:60259/api/Incidents', incident)
             .then(function (response) {
                 console.log(response);
@@ -195,8 +207,14 @@ const NewIncident = (props) => {
                                     />
                                 } />
 
-                                <Route path="/incident-browser/new-incident/multimedia" component={Multimedia} />
-
+                                <Route path="/incident-browser/new-incident/multimedia" render={() =>
+                                    <Multimedia
+                                        {...props}
+                                        multimedia={incident.multimedia}
+                                        change={handleMultimediaChange}
+                                    />
+                                }
+                                />
                             </Switch>
                         </HashRouter>
                     </div>
