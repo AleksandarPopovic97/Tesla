@@ -1,0 +1,18 @@
+.CrewPicker{
+    border: 5px solid rgb(153, 151, 151);
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+
+.Crew{
+    font-size: 1.5rem;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.Crew:hover{
+    background-color: gray;
+    color: white;
+    cursor: pointer;
+}

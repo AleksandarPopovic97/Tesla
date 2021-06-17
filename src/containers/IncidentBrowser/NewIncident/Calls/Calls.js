@@ -6,38 +6,10 @@ import NewCall from './NewCall/NewCall';
 
 const Calls = (props) => {
 
-    // const calls = [
-    //     {
-    //         id: 1525222,
-    //         reason: 'No electricity for some reason',
-    //         hazard: 'Strong wind',
-    //         comment: '',
-    //     },
-    //     {
-    //         id: 4582528,
-    //         reason: 'No electricity for some reason',
-    //         hazard: 'Strong wind',
-    //         comment: '',
-    //     },
-    //     {
-    //         id: 8585755,
-    //         reason: 'No electricity for some reason',
-    //         hazard: 'Strong wind',
-    //         comment: '',
-    //     },
-    //     {
-    //         id: 2356225,
-    //         reason: 'No electricity for some reason',
-    //         hazard: 'Strong wind',
-    //         comment: '',
-    //     },
-
-    // ]
-
     const columns = [
         {
             Header: 'Customer',
-            accessor: 'calls.name'
+            accessor: 'customer.name'
         },
         {
             Header: 'Reason',

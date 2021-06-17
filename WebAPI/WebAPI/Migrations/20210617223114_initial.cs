@@ -3,10 +3,23 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebAPI.Migrations
 {
-    public partial class SafetyDocs : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Crew",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Crew", x => x.id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Customer",
                 columns: table => new
@@ -129,7 +142,7 @@ namespace WebAPI.Migrations
                     reason = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     comment = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     hazard = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    customerid = table.Column<int>(type: "int", nullable: true),
+                    customerid = table.Column<int>(type: "int", nullable: false),
                     Incidentid = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -140,7 +153,7 @@ namespace WebAPI.Migrations
                         column: x => x.customerid,
                         principalTable: "Customer",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Call_Incident_Incidentid",
                         column: x => x.Incidentid,
@@ -214,6 +227,9 @@ namespace WebAPI.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Call");
+
+            migrationBuilder.DropTable(
+                name: "Crew");
 
             migrationBuilder.DropTable(
                 name: "DDevices");

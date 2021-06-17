@@ -20,7 +20,8 @@ const NewBasicInfo = (props) => {
                 <div className={classes.Container}>
                     <label>Type:</label>
                     <select name="type" onChange={props.change} value={props.basic.type}>
-                        <option>Planned Work</option>
+                        <option>Planned incident</option>
+                        <option>Unplaned incident</option>
                     </select>
                 </div>
                 <div className={classes.Container}>

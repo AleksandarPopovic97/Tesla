@@ -21,6 +21,8 @@ namespace WebAPI.Models
         [Column]
         public string hazard { get; set; }
 
+        public int customerid { get; set; }
+
         [Column]
         public Customer customer { get; set; }
     }

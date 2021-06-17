@@ -17,7 +17,7 @@ namespace WebAPI.Models
 
         [Column]
         public int affectedCustomers { get; set; }
-
+        
         [Column]
         public string type { get; set; }
 
@@ -62,7 +62,8 @@ namespace WebAPI.Models
 
         [Column]
         public List<Call> incidentCalls { get; set; }
-
+        [Column]
+        public Crew crew { get; set; }
         [Column]
         public string multimedia { get; set; }
     }

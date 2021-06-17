@@ -79,6 +79,18 @@ namespace WebAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Incident>> PostIncident(Incident incident)
         {
+            int lastInc;
+            if (!_context.Incident.Any())
+            {
+                //empty table
+                lastInc = 0;
+            }
+            else
+            {
+                lastInc = int.Parse(_context.Incident.Max(m => m.id).ToString()) + 1;
+            }
+            
+            incident.incidentId = "INC" + lastInc;
             _context.Incident.Add(incident);
             await _context.SaveChangesAsync();
 

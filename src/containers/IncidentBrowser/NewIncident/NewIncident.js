@@ -12,14 +12,15 @@ import NewCall from './Calls/NewCall/NewCall';
 import NewDevice from '../../NewDevice/NewDevice';
 import Multimedia from './Multimedia/Multimedia';
 import axios from 'axios';
+import Crew from './Crew/Crew';
 
 const NewIncident = (props) => {
 
     const [incident, setIncident] = useState({
 
-        incidentId: 'INC00015',
+        incidentId: 'INC-id',
         affectedCustomers: 100.0,
-        type: 'Planned Work',
+        type: 'Planned incident',
         outageTime: new Date(Date.now()).toISOString().slice(0, 10),
         priority: 1,
         etr: new Date(Date.now()).toISOString().slice(0, 10),
@@ -41,6 +42,9 @@ const NewIncident = (props) => {
         },
         incidentCalls: [],
         multimedia: '',
+        crew: {
+            name: '',
+        }
     })
 
     const handleBasicChange = (event) => {
@@ -125,16 +129,29 @@ const NewIncident = (props) => {
         }
     }
 
-    const handleCallsChange = (calls, info) => {
+    const handleCallsChange = (customer, info) => {
 
+        const customerid = customer.id;
 
         setIncident(prevState => {
             return {
                 ...prevState,
-                incidentCalls: [...prevState.incidentCalls, { calls, ...info }]
+                incidentCalls: [...prevState.incidentCalls, { customer, ...info, customerid }]
             }
         })
 
+    }
+
+    const handleCrewChange = (crew) => {
+
+        console.log(crew);
+
+        setIncident(prevState => {
+            return {
+                ...prevState,
+                crew: crew
+            }
+        })
     }
 
     const handleMultimediaChange = (multimedia) => {
@@ -151,6 +168,7 @@ const NewIncident = (props) => {
 
     const saveHandle = () => {
         //post
+        console.log(incident);
         axios.post('http://localhost:60259/api/Incidents', incident)
             .then(function (response) {
                 console.log(response);
@@ -171,7 +189,7 @@ const NewIncident = (props) => {
                         <NavLink to="/incident-browser/new-incident/devices" className={classes.NavLink} activeClassName={classes.ActiveLink}>Devices</NavLink>
                         <NavLink to="/incident-browser/new-incident/resolution" className={classes.NavLink} activeClassName={classes.ActiveLink}>Resolution</NavLink>
                         <NavLink to="/incident-browser/new-incident/calls" className={classes.NavLink} activeClassName={classes.ActiveLink}>Calls</NavLink>
-                        <NavLink to="/" className={classes.NavLink} >Crew</NavLink>
+                        <NavLink to="/incident-browser/new-incident/crew" className={classes.NavLink} activeClassName={classes.ActiveLink} >Crew</NavLink>
                         <NavLink to="/incident-browser/new-incident/multimedia" className={classes.NavLink} activeClassName={classes.ActiveLink}>Multimedia attachments</NavLink>
                     </div>
 
@@ -207,6 +225,14 @@ const NewIncident = (props) => {
                                     />
                                 } />
 
+                                <Route path="/incident-browser/new-incident/crew" render={() =>
+                                    <Crew
+                                        {...props}
+                                        crew={incident.crew}
+                                        change={handleCrewChange}
+                                    />
+                                }
+                                />
                                 <Route path="/incident-browser/new-incident/multimedia" render={() =>
                                     <Multimedia
                                         {...props}

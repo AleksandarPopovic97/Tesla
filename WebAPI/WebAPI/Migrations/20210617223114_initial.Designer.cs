@@ -10,8 +10,8 @@ using WebAPI.Models;
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(TeslaDBContext))]
-    [Migration("20210616221012_SafetyDocs")]
-    partial class SafetyDocs
+    [Migration("20210617223114_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,7 +34,7 @@ namespace WebAPI.Migrations
                     b.Property<string>("comment")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("customerid")
+                    b.Property<int>("customerid")
                         .HasColumnType("int");
 
                     b.Property<string>("hazard")
@@ -50,6 +50,21 @@ namespace WebAPI.Migrations
                     b.HasIndex("customerid");
 
                     b.ToTable("Call");
+                });
+
+            modelBuilder.Entity("WebAPI.Models.Crew", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Crew");
                 });
 
             modelBuilder.Entity("WebAPI.Models.Customer", b =>
@@ -281,7 +296,9 @@ namespace WebAPI.Migrations
 
                     b.HasOne("WebAPI.Models.Customer", "customer")
                         .WithMany()
-                        .HasForeignKey("customerid");
+                        .HasForeignKey("customerid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("customer");
                 });

@@ -7,25 +7,12 @@ using System.Threading.Tasks;
 
 namespace WebAPI.Models
 {
-    public class Customer
+    public class Crew
     {
         [Key]
         public int id { get; set; }
 
         [Column]
         public string name { get; set; }
-
-        [Column]
-        public string lastName { get; set; }
-
-        [Column]
-        public int account { get; set; }
-
-        [Column]
-        public string address { get; set; }
-
-        [Column]
-        public string priority { get; set; }
-
     }
 }
