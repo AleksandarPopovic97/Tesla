@@ -10,8 +10,8 @@ using WebAPI.Models;
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(TeslaDBContext))]
-    [Migration("20210617223114_initial")]
-    partial class initial
+    [Migration("20210619044224_user")]
+    partial class user
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -147,6 +147,9 @@ namespace WebAPI.Migrations
                     b.Property<bool>("confirmed")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("crewid")
+                        .HasColumnType("int");
+
                     b.Property<string>("description")
                         .HasColumnType("nvarchar(max)");
 
@@ -184,6 +187,8 @@ namespace WebAPI.Migrations
                         .HasColumnType("float");
 
                     b.HasKey("id");
+
+                    b.HasIndex("crewid");
 
                     b.HasIndex("resolutionid");
 
@@ -288,6 +293,24 @@ namespace WebAPI.Migrations
                     b.ToTable("SafetyDocument");
                 });
 
+            modelBuilder.Entity("WebAPI.Models.User", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("role")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("User");
+                });
+
             modelBuilder.Entity("WebAPI.Models.Call", b =>
                 {
                     b.HasOne("WebAPI.Models.Incident", null)
@@ -316,9 +339,15 @@ namespace WebAPI.Migrations
 
             modelBuilder.Entity("WebAPI.Models.Incident", b =>
                 {
+                    b.HasOne("WebAPI.Models.Crew", "crew")
+                        .WithMany()
+                        .HasForeignKey("crewid");
+
                     b.HasOne("WebAPI.Models.Resolution", "resolution")
                         .WithMany()
                         .HasForeignKey("resolutionid");
+
+                    b.Navigation("crew");
 
                     b.Navigation("resolution");
                 });

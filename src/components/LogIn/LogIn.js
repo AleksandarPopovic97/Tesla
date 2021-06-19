@@ -3,6 +3,7 @@ import classes from './LogIn.module.css';
 import { Link } from 'react-router-dom';
 import Input from '../UI/Input/Input';
 import Spinner from '../UI/Spinner/Spinner';
+import auth from '../../auth';
 
 class LogIn extends Component {
 
@@ -114,6 +115,7 @@ class LogIn extends Component {
                 })}
                 <Link to='/forgotPassword' style={{ color: 'black' }} className={classes.ForgotPassword}>Forgot your password?</Link>
                 <button type="submit" className={classes.LogInbtn} onClick={this.logInHandler}>Login</button>
+                <button type="button" className={classes.LogInbtn} onClick={() => auth.login()}>Simulate logging in...</button>
                 {/* disabled={!this.state.formIsValid}  for testing reasons, return back when complete*/}
             </form>
         );

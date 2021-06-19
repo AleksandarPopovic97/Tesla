@@ -291,6 +291,24 @@ namespace WebAPI.Migrations
                     b.ToTable("SafetyDocument");
                 });
 
+            modelBuilder.Entity("WebAPI.Models.User", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("role")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("User");
+                });
+
             modelBuilder.Entity("WebAPI.Models.Call", b =>
                 {
                     b.HasOne("WebAPI.Models.Incident", null)

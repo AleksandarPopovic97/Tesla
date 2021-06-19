@@ -27,6 +27,9 @@ namespace WebAPI.Models
         
         
         public DbSet<WebAPI.Models.Crew> Crew { get; set; }
+        
+        
+        public DbSet<WebAPI.Models.User> User { get; set; }
 
 
     }

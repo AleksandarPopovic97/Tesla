@@ -9,6 +9,8 @@ import NewBasicInfo from './containers/IncidentBrowser/NewIncident/NewBasicInfo/
 import SafetyDocBrowser from './containers/SafetyDocBrowser/SafetyDocBrowser';
 import NewSafetyDoc from './containers/SafetyDocBrowser/NewSafetyDoc/NewSafetyDoc';
 import NewDevice from './containers/NewDevice/NewDevice';
+import { ProtectedRoute } from './protected.route';
+import { AdminRoute } from './admin.route';
 
 function App() {
   return (
@@ -18,13 +20,13 @@ function App() {
           <Switch>
             {/* <Route path="/reportOutage" component={} />
             <Route path='/forgotPassword' component={} />  */}
-            <Route path="/dashboard" component={Dashboard} />
-            <Route path="/new-device" component={NewDevice} />
-            <Route path="/incident-browser/new-incident" component={NewIncident} />
-            <Route path="/incident-browser/new-incident/basic-info" component={NewBasicInfo} />
-            <Route path="/safetyDocs-browser/new-safetyDoc" component={NewSafetyDoc} />
-            <Route path="/safetyDocs-browser" component={SafetyDocBrowser} />
-            <Route path="/incident-browser" component={IncidentBrowser} />
+            <ProtectedRoute path="/dashboard" component={Dashboard} />
+            <AdminRoute path="/new-device" component={NewDevice} />
+            <ProtectedRoute path="/incident-browser/new-incident" component={NewIncident} />
+            <ProtectedRoute path="/incident-browser/new-incident/basic-info" component={NewBasicInfo} />
+            <ProtectedRoute path="/safetyDocs-browser/new-safetyDoc" component={NewSafetyDoc} />
+            <ProtectedRoute path="/safetyDocs-browser" component={SafetyDocBrowser} />
+            <ProtectedRoute path="/incident-browser" component={IncidentBrowser} />
             <Route path="/" component={LandingPage} />
           </Switch>
         </Layout>
