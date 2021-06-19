@@ -25,8 +25,6 @@ function App() {
             <Route path="/safetyDocs-browser/new-safetyDoc" component={NewSafetyDoc} />
             <Route path="/safetyDocs-browser" component={SafetyDocBrowser} />
             <Route path="/incident-browser" component={IncidentBrowser} />
-
-
             <Route path="/" component={LandingPage} />
           </Switch>
         </Layout>

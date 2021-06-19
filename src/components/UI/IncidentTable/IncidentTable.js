@@ -62,6 +62,10 @@ const IncidentTable = (props) => {
                                         return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                                     })
                                 }
+                                {props.delete ?
+                                    <td className={classes.DeleteBtn}><button onClick={() => props.delete(row.cells[0].value)}>Delete</button></td>
+                                    : null
+                                }
                             </tr>
                         })
                     }

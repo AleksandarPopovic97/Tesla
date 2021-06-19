@@ -6,7 +6,7 @@ const Crew = (props) => {
     return (
         <div>
             <h2>Selected crew name: {props.crew.name}</h2>
-            <CrewPicker change={props.change}></CrewPicker>
+            <CrewPicker change={props.change} pickedName={props.crew.name}></CrewPicker>
         </div>
     )
 

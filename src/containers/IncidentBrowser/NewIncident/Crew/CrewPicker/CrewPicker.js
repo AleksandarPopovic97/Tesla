@@ -6,6 +6,9 @@ const CrewPicker = (props) => {
 
     const [crew, setCrew] = useState([]);
 
+    const [picked, setPicked] = useState(-1);
+
+
     useEffect(() => {
         axios.get('http://localhost:60259/api/Crews')
             .then(function (response) {
@@ -25,12 +28,18 @@ const CrewPicker = (props) => {
             });
     }, [])
 
+    const pick = (index) => {
+        setPicked(index);
+    }
+
     return (
         <div>
             {crew ?
                 <div className={classes.CrewPicker}>
-                    {crew.map(crew => {
-                        return <p key={crew.name} onClick={() => props.change(crew)} className={classes.Crew}>{crew.name}</p>
+                    {crew.map((crew, index) => {
+                        return <p key={index} onClick={() => { props.change(crew); pick(index); }}
+                            className={index === picked || crew.name === props.pickedName ? [classes.Picked, classes.Crew].join(' ') : classes.Crew}
+                        >{crew.name}</p>
                     })}
                 </div>
                 : null}

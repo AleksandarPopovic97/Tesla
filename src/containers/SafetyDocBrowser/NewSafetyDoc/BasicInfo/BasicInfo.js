@@ -16,7 +16,9 @@ const BasicInfo = (props) => {
                     </div>
                     <div className={classes.Container}>
                         <label>Phone No:</label>
-                        <input name="phoneNo" type="number" value={props.basic.phoneNo} onChange={props.change}></input>
+                        <input name="phoneNo" type="text" value={props.basic.phoneNo} onChange={props.change}
+                            className={props.validate.phoneNo ? classes.ValidationError : ''}
+                        ></input>
                     </div>
 
                     <div className={classes.Container}>

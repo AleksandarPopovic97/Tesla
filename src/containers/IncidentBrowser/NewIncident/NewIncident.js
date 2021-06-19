@@ -47,7 +47,17 @@ const NewIncident = (props) => {
         }
     })
 
+    const [message, setMessage] = useState('')
+
+    const [validator, setValidator] = useState({
+        affectedCustomers: false,
+        calls: false,
+        voltage: false
+    });
+
     const handleBasicChange = (event) => {
+
+
 
         if (event.target.name === 'confirmed') {        //for checklist only
             setIncident(prevState => {
@@ -61,12 +71,32 @@ const NewIncident = (props) => {
             return
         }
 
+        //validation 
+        if (event.target.name === 'affectedCustomers' || event.target.name === 'calls' || event.target.name === 'voltage') {
+
+            if (!event.target.value) {
+                setValidator(prevState => {
+                    return {
+                        ...prevState,
+                        [event.target.name]: true
+                    }
+                })
+            } else {
+                setValidator(prevState => {
+                    return {
+                        ...prevState,
+                        [event.target.name]: false
+                    }
+                })
+            }
+        }
+
         if (event.target.name === 'affectedCustomers' || event.target.name === 'calls') {
             setIncident(prevState => {
                 return {
                     ...prevState,
 
-                    [event.target.name]: parseInt(event.target.value),
+                    [event.target.name]: event.target.value ? parseInt(event.target.value) : '',
 
                 }
             })
@@ -78,7 +108,7 @@ const NewIncident = (props) => {
                 return {
                     ...prevState,
 
-                    [event.target.name]: parseFloat(event.target.value),
+                    [event.target.name]: event.target.value ? parseFloat(event.target.value) : '',
 
                 }
             })
@@ -168,14 +198,35 @@ const NewIncident = (props) => {
 
     const saveHandle = () => {
         //post
-        console.log(incident);
-        axios.post('http://localhost:60259/api/Incidents', incident)
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+
+        const checkValidity = [incident.affectedCustomers, incident.calls, incident.voltage]
+        let isValid = true;
+
+
+        checkValidity.map((validate) => {
+            if (validate === '') {
+                isValid = false;
+            }
+        })
+
+        if (!isValid) {
+            setMessage('Validation error, please fill all fields!')
+        } else {
+
+            axios.post('http://localhost:60259/api/Incidents', incident)
+                .then(function (response) {
+                    setMessage('Incident successfully saved!')
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    setMessage('Server error, check internet connection!')
+                    console.log(error);
+                });
+        }
+
+
+
+
     }
 
     return (
@@ -201,6 +252,7 @@ const NewIncident = (props) => {
                         <Route path='/forgotPassword' component={} />  */}
                                 <Route path="/incident-browser/new-incident/basic-info" render={() =>
                                     <NewBasicInfo
+                                        validation={validator}
                                         basic={incident}
                                         change={handleBasicChange}
                                     />} />
@@ -250,6 +302,7 @@ const NewIncident = (props) => {
                         <button><FaTimesCircle /></button>
                         <button onClick={saveHandle}><FaSave /></button>
                     </div>
+                    <h1>{message}</h1>
                 </div>
             </React.Fragment>
         </DashboardLayout>

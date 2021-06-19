@@ -15,7 +15,7 @@ const NewSafetyDoc = (props) => {
 
     const [safetyDoc, setSafetyDoc] = useState({
         type: 'Planned Work',
-        phoneNo: '0',
+        phoneNo: '+381',
         status: 'Draft',
         fieldCrew: 'NS Crew',
         switchingPlan: 'SP 150',
@@ -34,22 +34,55 @@ const NewSafetyDoc = (props) => {
         devices: [],
     });
 
+    const [validator, setValidator] = useState({
+        phoneNo: false
+    })
+
+    const [message, setMessage] = useState('')
+
     const clickHandler = () => {
-        axios.post('http://localhost:60259/api/SafetyDocuments', safetyDoc)
-            .then(function (response) {
-                console.log(safetyDoc);  //set state so I can get ID?
-                // setSafetyDoc(response.data);
-            })
-            .catch(function (error) {
-                console.log(safetyDoc);  //set state so I can get ID?
 
-                console.log(error);
-            });
+        if (validator.phoneNo === true) {
+            setMessage('Validation error, please fill all the fields!')
+        } else {
 
-        console.log();
+            setMessage('Safety document succesfully saved!')
+            axios.post('http://localhost:60259/api/SafetyDocuments', safetyDoc)
+                .then(function (response) {
+                    console.log(safetyDoc);  //set state so I can get ID?
+                    // setSafetyDoc(response.data);
+                })
+                .catch(function (error) {
+                    console.log(safetyDoc);  //set state so I can get ID?
+
+                    console.log(error);
+                });
+        }
+
+
     }
 
     const handleBasicChange = (event) => {
+
+        if (event.target.name === 'phoneNo') {
+            if (event.target.value === '') {
+
+                setValidator(prevState => {
+                    return {
+                        ...prevState,
+                        [event.target.name]: true
+                    }
+                })
+            } else {
+                setValidator(prevState => {
+                    return {
+                        ...prevState,
+                        [event.target.name]: false
+                    }
+                })
+            }
+
+        }
 
         setSafetyDoc(prevState => {
             return {
@@ -134,6 +167,7 @@ const NewSafetyDoc = (props) => {
                                 {/* <Route path="/reportOutage" component={} />
                         <Route path='/forgotPassword' component={} />  */}
                                 <Route path="/safetyDocs-browser/new-safetyDoc/basic-info" render={() => <BasicInfo
+                                    validate={validator}
                                     basic={safetyDoc}
                                     change={handleBasicChange}
                                 />} />
@@ -162,6 +196,9 @@ const NewSafetyDoc = (props) => {
                         <button><FaTimesCircle /></button>
                         <button onClick={clickHandler} ><FaSave /></button>
                     </div>
+                    <h1>
+                        {message}
+                    </h1>
                 </div>
             </React.Fragment>
         </DashboardLayout>

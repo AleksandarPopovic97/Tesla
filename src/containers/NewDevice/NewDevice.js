@@ -25,6 +25,10 @@ const NewDevice = (props) => {
     const [filteredDevices, setFilteredDevices] = useState([]);
     const [devices, setDevices] = useState([])
     const [showfilter, setFilterShow] = useState(false);
+    const [validator, setValidator] = useState({
+        address: false,
+        coordinates: false
+    })
 
     const columns = [
         {
@@ -47,6 +51,7 @@ const NewDevice = (props) => {
             Header: 'Address',
             accessor: 'address'
         },
+
     ]
 
     useEffect(() => {
@@ -59,6 +64,22 @@ const NewDevice = (props) => {
     }, [])
 
     const handleChange = (event) => {
+
+        if (!event.target.value) {
+            setValidator(prevState => {
+                return {
+                    ...prevState,
+                    [event.target.name]: true
+                }
+            })
+        } else {
+            setValidator(prevState => {
+                return {
+                    ...prevState,
+                    [event.target.name]: false
+                }
+            })
+        }
 
         setDevice(prevState => {
             return {
@@ -120,6 +141,18 @@ const NewDevice = (props) => {
         })
     }
 
+    const onDeleteHandler = (id) => {
+        axios.delete('http://localhost:60259/api/Devices/' + id).then(response => {
+            console.log(response);
+            setDevices(prevState => {
+                return prevState.splice(response.id, 1);
+            })
+            // setDevices(response.data);
+        }).catch(error => {
+            console.log(error);
+        })
+    }
+
     return (
         <DashboardLayout title="Device - new">
             <div className={classes.NewDevice}>
@@ -129,6 +162,8 @@ const NewDevice = (props) => {
                         <select onChange={handleChange} value={device.type} name="type">
                             <option>Breaker</option>
                             <option>Fuse</option>
+                            <option>Transformer</option>
+                            <option>Disconnector</option>
                         </select>
                     </div>
 
@@ -138,11 +173,15 @@ const NewDevice = (props) => {
                     </div> */}
                     <div className={classes.Container}>
                         <label>Address:</label>
-                        <input type="text" onChange={handleChange} value={device.address} name="address"></input>
+                        <input type="text" onChange={handleChange} value={device.address} name="address"
+                            className={validator.address ? classes.ValidationError : ''}
+                        ></input>
                     </div>
                     <div className={classes.Container}>
                         <label>Coordinates:</label>
-                        <input type="text" onChange={handleChange} value={device.coordinates} name="coordinates"></input>
+                        <input type="text" onChange={handleChange} value={device.coordinates} name="coordinates"
+                            className={validator.coordinates ? classes.ValidationError : ''}
+                        ></input>
                     </div>
                 </form>
                 <button onClick={addDeviceHandler} type="submit"
@@ -150,7 +189,7 @@ const NewDevice = (props) => {
                 >Add</button>
             </div>
             {devices.length > 0 ?
-                <IncidentTable tableColumns={columns} tableData={filteredDevices.length > 0 ? filteredDevices : devices} />
+                <IncidentTable delete={onDeleteHandler} tableColumns={columns} tableData={filteredDevices.length > 0 ? filteredDevices : devices} />
                 : null}
 
             <button onClick={showFilterHandler}>Filter</button>

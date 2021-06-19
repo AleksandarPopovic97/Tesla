@@ -61,3 +61,14 @@
     margin: auto;
     text-align: center;
 }
+
+.ValidationError{
+    border: 3px solid red !important;
+    box-sizing: border-box;
+}
+
+.ValidationError:focus{
+    border: 3px solid red !important;
+    background-color: rgb(238, 140, 129);
+    box-sizing: border-box;
+}

@@ -15,7 +15,9 @@ const NewBasicInfo = (props) => {
                 </div>
                 <div className={classes.Container}>
                     <label>Affected customers:</label>
-                    <input name="affectedCustomers" type="number" onChange={props.change} value={props.basic.affectedCustomers}></input>
+                    <input name="affectedCustomers" type="number" onChange={props.change} value={props.basic.affectedCustomers}
+                        className={props.validation.affectedCustomers ? classes.ValidationError : ''}
+                    ></input>
                 </div>
                 <div className={classes.Container}>
                     <label>Type:</label>
@@ -44,7 +46,9 @@ const NewBasicInfo = (props) => {
                 </div>
                 <div className={classes.Container}>
                     <label>Calls:</label>
-                    <input name="calls" type="number" onChange={props.change} value={props.basic.calls}></input>
+                    <input name="calls" type="number" onChange={props.change} value={props.basic.calls}
+                        className={props.validation.calls ? classes.ValidationError : ''}
+                    ></input>
                 </div>
                 <div className={classes.Container}>
                     <label>Status:</label>
@@ -52,7 +56,9 @@ const NewBasicInfo = (props) => {
                 </div>
                 <div className={classes.Container}>
                     <label>Voltage [kV]:</label>
-                    <input name="voltage" type="number" onChange={props.change} value={props.basic.voltage}></input>
+                    <input name="voltage" type="number" onChange={props.change} value={props.basic.voltage}
+                        className={props.validation.voltage ? classes.ValidationError : ''}
+                    ></input>
                 </div>
                 <div className={classes.Container}>
                     <label>Description:</label>
