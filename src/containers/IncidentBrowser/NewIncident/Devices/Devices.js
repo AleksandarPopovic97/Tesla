@@ -35,7 +35,7 @@ const Devices = (props) => {
         });
     }
 
-    const onFilterHandler = () => {
+    const onRowClick = () => {
 
     }
 
@@ -49,10 +49,10 @@ const Devices = (props) => {
                 </Modal> : ''}
             <div className={classes.ButtonContainer}>
                 <button onClick={onAddHandler}><FaPlusCircle />Add/Remove</button>
-                <button onClick={onFilterHandler}><FaFilter />Filter</button>
+                <button ><FaFilter />Filter</button>
             </div>
             <div className={classes.Table}>
-                <IncidentTable tableColumns={columns} tableData={props.devices} />
+                <IncidentTable tableColumns={columns} tableData={props.devices} rowClick={onRowClick} />
             </div>
         </div>
     )

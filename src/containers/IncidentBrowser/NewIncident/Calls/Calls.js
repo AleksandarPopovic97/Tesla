@@ -43,6 +43,10 @@ const Calls = (props) => {
         console.log(props.calls)
     }
 
+    const onRowClick = () => {
+
+    }
+
     return (
 
 
@@ -56,7 +60,7 @@ const Calls = (props) => {
 
                 </div>
                 <div className={classes.Table}>
-                    <IncidentTable tableColumns={columns} tableData={props.calls} />
+                    <IncidentTable tableColumns={columns} tableData={props.calls} rowClick={onRowClick} />
                 </div>
             </React.Fragment>}
 

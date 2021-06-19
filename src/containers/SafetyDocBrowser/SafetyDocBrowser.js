@@ -46,6 +46,10 @@ const SafetyDocBrowser = (props) => {
         props.history.push('/safetyDocs-browser/new-safetyDoc/basic-info');
     }
 
+    const onRowClick = () => {
+
+    }
+
     return (
         <DashboardLayout title="Safety documents - all">
             <div className={classes.SafetyDocBrowser}>
@@ -59,7 +63,7 @@ const SafetyDocBrowser = (props) => {
                     <button><FaFilter />Filter</button>
                 </div>
                 <div className={classes.Table}>
-                    <IncidentTable tableColumns={columns} tableData={data} />
+                    <IncidentTable tableColumns={columns} tableData={data} rowClick={onRowClick} />
                 </div>
             </div>
         </DashboardLayout>

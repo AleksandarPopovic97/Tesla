@@ -4,8 +4,11 @@ import DashboardLayout from '../../components/DashboardLayout/DashboardLayout';
 import { FaPlusCircle, FaFilter } from 'react-icons/fa';
 import IncidentTable from '../../components/UI/IncidentTable/IncidentTable';
 import axios from 'axios';
+import IncidentPreview from './IncidentPreview/IncidentPreview';
 
 const IncidentBrowser = (props) => {
+
+    const [loadedIncident, setLoadedIncident] = useState(null);
 
     const allIncidentsHandler = () => {
 
@@ -55,6 +58,23 @@ const IncidentBrowser = (props) => {
         props.history.push('/incident-browser/new-incident/basic-info');
     }
 
+    const onRowClick = (row) => {
+
+
+
+        console.log(row.cells[0].value);
+        axios.get('http://localhost:60259/api/Incidents/' + row.cells[0].value)
+            .then(function (response) {
+                setLoadedIncident(response.data)
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+
+
+    }
+
 
     return (
         <DashboardLayout title="Incident browser - all">
@@ -69,7 +89,12 @@ const IncidentBrowser = (props) => {
                     <button><FaFilter />Filter</button>
                 </div>
                 <div className={classes.Table}>
-                    <IncidentTable tableColumns={columns} tableData={data} />
+                    <IncidentTable tableColumns={columns} tableData={data} rowClick={onRowClick} />
+                </div>
+                <div className={classes.IncidentPreview}>
+                    {loadedIncident ?
+                        <IncidentPreview incident={loadedIncident} />
+                        : null}
                 </div>
             </div>
         </DashboardLayout>

@@ -31,7 +31,10 @@ namespace WebAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Incident>> GetIncident(int id)
         {
-            var incident = await _context.Incident.FindAsync(id);
+            var incident = await _context.Incident.Include(c => c.resolution).Include(d => d.devices)
+                .Include(cr => cr.crew)
+                .Include(c => c.incidentCalls).ThenInclude(c => c.customer).FirstOrDefaultAsync(i => i.id == id);
+
 
             if (incident == null)
             {

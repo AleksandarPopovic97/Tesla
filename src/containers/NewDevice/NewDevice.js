@@ -145,12 +145,16 @@ const NewDevice = (props) => {
         axios.delete('http://localhost:60259/api/Devices/' + id).then(response => {
             console.log(response);
             setDevices(prevState => {
-                return prevState.splice(response.id, 1);
+                return prevState.splice(prevState.indexOf(prevState.id), 1);
             })
             // setDevices(response.data);
         }).catch(error => {
             console.log(error);
         })
+    }
+
+    const onRowClick = () => {
+
     }
 
     return (
@@ -189,7 +193,7 @@ const NewDevice = (props) => {
                 >Add</button>
             </div>
             {devices.length > 0 ?
-                <IncidentTable delete={onDeleteHandler} tableColumns={columns} tableData={filteredDevices.length > 0 ? filteredDevices : devices} />
+                <IncidentTable delete={onDeleteHandler} rowClick={onRowClick} tableColumns={columns} tableData={filteredDevices.length > 0 ? filteredDevices : devices} />
                 : null}
 
             <button onClick={showFilterHandler}>Filter</button>
