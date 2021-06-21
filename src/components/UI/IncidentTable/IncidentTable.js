@@ -56,7 +56,7 @@ const IncidentTable = (props) => {
                     {
                         page.map(row => {
                             prepareRow(row);
-                            return <tr {...row.getRowProps()} onClick={() => props.rowClick(row)}>
+                            return <tr {...row.getRowProps()} onClick={() => props.rowClick(row)} className={classes.TableRow}>
                                 {
                                     row.cells.map(cell => {
                                         return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>

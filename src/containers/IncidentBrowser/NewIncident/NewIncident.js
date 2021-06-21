@@ -198,6 +198,42 @@ const NewIncident = (props) => {
 
     }
 
+    const resetHandle = () => {
+
+        setIncident({
+
+            incidentId: 'INC-id',
+            affectedCustomers: 100.0,
+            type: 'Planned incident',
+            outageTime: new Date(Date.now()).toISOString().slice(0, 10),
+            priority: 1,
+            etr: new Date(Date.now()).toISOString().slice(0, 10),
+            confirmed: false,
+            calls: 5.0,
+            status: 'Dispatched',
+            voltage: 12.47,
+            description: '',
+            eta: new Date(Date.now()).toISOString().slice(0, 10),
+            scheduledTime: new Date(Date.now()).toISOString().slice(0, 10),
+            ata: new Date(Date.now()).toISOString().slice(0, 10),
+
+            devices: [],
+            resolution: {
+                cause: 'Weather',
+                subcause: 'Lightning',
+                constructionType: 'None',
+                material: 'Metal'
+            },
+            incidentCalls: [],
+            multimedia: '',
+            crew: {
+                name: '',
+            },
+            userCreatorId: 0
+        })
+
+    }
+
     const saveHandle = () => {
         //post
 
@@ -301,7 +337,7 @@ const NewIncident = (props) => {
                 </div>
                 <div className={classes.FooterSection}>
                     <div className={classes.ButtonContainer}>
-                        <button><FaTimesCircle /></button>
+                        <button onClick={resetHandle}><FaTimesCircle /></button>
                         <button onClick={saveHandle}><FaSave /></button>
                     </div>
                     <h1>{message}</h1>

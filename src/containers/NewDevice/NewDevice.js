@@ -188,7 +188,7 @@ const NewDevice = (props) => {
                         ></input>
                     </div>
                 </form>
-                <button onClick={addDeviceHandler} type="submit"
+                <button onClick={addDeviceHandler} type="submit" className={classes.AddBtn}
                     disabled={!device.coordinates.length || !device.address.length}
                 >Add</button>
             </div>
@@ -196,7 +196,7 @@ const NewDevice = (props) => {
                 <IncidentTable delete={onDeleteHandler} rowClick={onRowClick} tableColumns={columns} tableData={filteredDevices.length > 0 ? filteredDevices : devices} />
                 : null}
 
-            <button onClick={showFilterHandler}>Filter</button>
+            <button onClick={showFilterHandler} className={classes.FilterBtn}>Show filter</button>
             {showfilter ?
 
                 <div className={classes.Filter}>

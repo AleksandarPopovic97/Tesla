@@ -131,6 +131,31 @@ const NewSafetyDoc = (props) => {
 
     }
 
+
+    const resetHandle = () => {
+        setSafetyDoc({
+            type: 'Planned Work',
+            phoneNo: '+381',
+            status: 'Draft',
+            fieldCrew: 'NS Crew',
+            switchingPlan: 'SP 150',
+            safetyDocType: 'Clearance',
+            dateTimeCreated: new Date(Date.now()).toISOString().slice(0, 10),
+            createdBy: auth.user.username,
+            details: '',
+            notes: '',
+            checkList: {
+                workCompleted: false,
+                tagsRemoved: false,
+                groundingRemoved: false,
+                ready: false
+            },
+            multimedia: '',
+            devices: [],
+            userCreatedId: 0
+        })
+    }
+
     const handleMultimediaChange = (multimedia) => {
 
 
@@ -154,9 +179,9 @@ const NewSafetyDoc = (props) => {
                 <div className={classes.NewSafetyDoc}>
                     <div className={classes.LinkContainer}>
                         <NavLink to="/safetyDocs-browser/new-safetyDoc/basic-info" className={classes.NavLink} activeClassName={classes.ActiveLink}>Basic Information</NavLink>
-                        <NavLink to="/safetyDocs-browser/new-safetyDoc/history" className={classes.NavLink} activeClassName={classes.ActiveLink}>History of state changes</NavLink>
+                        {/* <NavLink to="/safetyDocs-browser/new-safetyDoc/history" className={classes.NavLink} activeClassName={classes.ActiveLink}>History of state changes</NavLink> */}
                         <NavLink to="/safetyDocs-browser/new-safetyDoc/multimedia" className={classes.NavLink} activeClassName={classes.ActiveLink}>Multimedia attachment</NavLink>
-                        <NavLink to="/safetyDocs-browser/new-safetyDoc/equipment" className={classes.NavLink} activeClassName={classes.ActiveLink}>Equipment</NavLink>
+                        {/* <NavLink to="/safetyDocs-browser/new-safetyDoc/equipment" className={classes.NavLink} activeClassName={classes.ActiveLink}>Equipment</NavLink> */}
                         <NavLink to="/safetyDocs-browser/new-safetyDoc/checklist" className={classes.NavLink} activeClassName={classes.ActiveLink}>Checklist</NavLink>
                         {/* <NavLink to="/" className={classes.NavLink} >Crew</NavLink>
                         <NavLink to="/" className={classes.NavLink} >Multimedia attachments</NavLink>
@@ -196,7 +221,7 @@ const NewSafetyDoc = (props) => {
                 </div>
                 <div className={classes.FooterSection}>
                     <div className={classes.ButtonContainer}>
-                        <button><FaTimesCircle /></button>
+                        <button onClick={resetHandle}><FaTimesCircle /></button>
                         <button onClick={clickHandler} ><FaSave /></button>
                     </div>
                     <h1>

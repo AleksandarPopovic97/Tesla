@@ -63,3 +63,7 @@
 }
 
 
+.TableRow:hover{
+    cursor: pointer;
+    background-color: rgb(195, 195, 195) !important;
+}
