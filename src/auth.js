@@ -12,7 +12,7 @@ class Auth {
 
     getUser() {
 
-        axios.get('http://localhost:60259/api/Users/2').then(response => {
+        axios.get('http://localhost:60259/api/Users/1').then(response => {
             this.user = response.data;
             console.log(this.user);
             if (response.data.role === "Admin") {

@@ -10,6 +10,7 @@ import History from './History/History';
 import axios from 'axios';
 import Multimedia from '../../IncidentBrowser/NewIncident/Multimedia/Multimedia';
 import DevicePicker from '../../IncidentBrowser/NewIncident/Devices/DevicePicker/DevicePicker';
+import auth from '../../../auth';
 
 const NewSafetyDoc = (props) => {
 
@@ -21,7 +22,7 @@ const NewSafetyDoc = (props) => {
         switchingPlan: 'SP 150',
         safetyDocType: 'Clearance',
         dateTimeCreated: new Date(Date.now()).toISOString().slice(0, 10),
-        createdBy: 'User name',
+        createdBy: auth.user.username,
         details: '',
         notes: '',
         checkList: {
@@ -32,6 +33,7 @@ const NewSafetyDoc = (props) => {
         },
         multimedia: '',
         devices: [],
+        userCreatedId: 0
     });
 
     const [validator, setValidator] = useState({
@@ -47,6 +49,7 @@ const NewSafetyDoc = (props) => {
         } else {
 
             setMessage('Safety document succesfully saved!')
+            safetyDoc.userCreatedId = auth.getUserId();
             axios.post('http://localhost:60259/api/SafetyDocuments', safetyDoc)
                 .then(function (response) {
                     console.log(safetyDoc);  //set state so I can get ID?

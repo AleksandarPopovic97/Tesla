@@ -38,7 +38,8 @@ namespace WebAPI.Models
         public string multimedia { get; set; }
         [Column]
         public List<Device> devices { get; set; }
-
+        [Column]
+        public int userCreatedId { get; set; }
 
     }
 }

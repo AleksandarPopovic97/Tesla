@@ -6,6 +6,7 @@ import {
     FaSearch, FaHome, FaFileAlt, FaGlobe, FaPhone, FaSuitcase, FaRegSurprise, FaUserFriends, FaBell, FaRegSun, FaSignInAlt, FaCloud
 } from 'react-icons/fa';
 import defaultPicture from '../../assets/images/defaultUserPicture.png';
+import auth from '../../auth';
 
 const dashboardLayout = (props) => {
 
@@ -26,7 +27,7 @@ const dashboardLayout = (props) => {
                         </div>
                         <div className={classes.UserContainer}>
                             <div className={classes.UserNameContainer}>
-                                <div className={classes.UserName}><p>Renee Mckelvey</p></div>
+                                <div className={classes.UserName}><p>{auth.user.username}</p></div>
                                 <div><p>Account Settings</p></div>
                             </div>
 

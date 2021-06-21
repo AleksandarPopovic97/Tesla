@@ -27,6 +27,12 @@ namespace WebAPI.Controllers
             return await _context.SafetyDocument.ToListAsync();
         }
 
+        [HttpGet("[action]/{user}")]
+        public async Task<ActionResult<IEnumerable<SafetyDocument>>> GetSafetyDocuments(int user)
+        {
+            return await _context.SafetyDocument.Where(doc => doc.userCreatedId == user).ToListAsync();
+        }
+
         // GET: api/SafetyDocuments/5
         [HttpGet("{id}")]
         public async Task<ActionResult<SafetyDocument>> GetSafetyDocument(int id)
