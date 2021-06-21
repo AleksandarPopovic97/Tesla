@@ -44,6 +44,22 @@ namespace WebAPI.Controllers
             return incident;
         }
 
+        [HttpGet("[action]/{user}")]
+        public async Task<ActionResult<IEnumerable<Incident>>> GetIncidents(int user)
+        {
+            var incident = await _context.Incident.Include(c => c.resolution).Include(d => d.devices)
+                .Include(cr => cr.crew)
+                .Include(c => c.incidentCalls).ThenInclude(c => c.customer).Where(i => i.userCreatorId == user).ToListAsync();
+            //promeni first or default ToList
+
+            if (incident == null)
+            {
+                return NotFound();
+            }
+
+            return incident;
+        }
+
         // PUT: api/Incidents/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.

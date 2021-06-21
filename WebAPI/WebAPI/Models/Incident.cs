@@ -66,5 +66,7 @@ namespace WebAPI.Models
         public Crew crew { get; set; }
         [Column]
         public string multimedia { get; set; }
+        [Column]
+        public int userCreatorId { get; set; }
     }
 }

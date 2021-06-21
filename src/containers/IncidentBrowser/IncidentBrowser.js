@@ -5,23 +5,52 @@ import { FaPlusCircle, FaFilter } from 'react-icons/fa';
 import IncidentTable from '../../components/UI/IncidentTable/IncidentTable';
 import axios from 'axios';
 import IncidentPreview from './IncidentPreview/IncidentPreview';
+import auth from '../../auth';
 
 const IncidentBrowser = (props) => {
 
     const [loadedIncident, setLoadedIncident] = useState(null);
 
     const allIncidentsHandler = () => {
+        if (auth.isAdmin()) {
+            axios.get('http://localhost:60259/api/Incidents/')
+                .then(function (response) {
+                    setData(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
 
     }
 
     const mineIncidentsHandler = () => {
+        axios.get('http://localhost:60259/api/Incidents/GetIncidents/' + auth.getUserId()
+            // , {
+            //     params: {
+            //         user: auth.getUserId()
+            //     }
+            // }
+        )
+            .then(function (response) {
+                setData(response.data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
 
     }
 
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:60259/api/Incidents')
+        axios.get('http://localhost:60259/api/Incidents/GetIncidents/' + auth.getUserId()
+            // , {
+            //     params: {
+            //         user: auth.getUserId()
+            //     }
+            // }
+        )
             .then(function (response) {
                 setData(response.data);
             })
@@ -82,10 +111,14 @@ const IncidentBrowser = (props) => {
                 <div className={classes.ButtonContainer}>
                     <button onClick={newIncident}><FaPlusCircle />New</button>
                     {/* maybe navlink? */}
-                    <div className={classes.RadioButtons}>
-                        <button onClick={allIncidentsHandler}>All</button>
-                        <button onClick={mineIncidentsHandler}>Mine</button>
-                    </div>
+                    {
+                        auth.isAdmin() ?
+                            <div className={classes.RadioButtons}>
+                                <button onClick={allIncidentsHandler}>All</button>
+                                <button onClick={mineIncidentsHandler}>Mine</button>
+                            </div>
+                            : null
+                    }
                     <button><FaFilter />Filter</button>
                 </div>
                 <div className={classes.Table}>

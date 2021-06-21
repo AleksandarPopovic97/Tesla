@@ -13,6 +13,7 @@ import NewDevice from '../../NewDevice/NewDevice';
 import Multimedia from './Multimedia/Multimedia';
 import axios from 'axios';
 import Crew from './Crew/Crew';
+import auth from '../../../auth';
 
 const NewIncident = (props) => {
 
@@ -44,7 +45,8 @@ const NewIncident = (props) => {
         multimedia: '',
         crew: {
             name: '',
-        }
+        },
+        userCreatorId: 0
     })
 
     const [message, setMessage] = useState('')
@@ -212,7 +214,7 @@ const NewIncident = (props) => {
         if (!isValid) {
             setMessage('Validation error, please fill all fields!')
         } else {
-
+            incident.userCreatorId = auth.getUserId();
             axios.post('http://localhost:60259/api/Incidents', incident)
                 .then(function (response) {
                     setMessage('Incident successfully saved!')

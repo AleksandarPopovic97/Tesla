@@ -10,8 +10,8 @@ using WebAPI.Models;
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(TeslaDBContext))]
-    [Migration("20210619044224_user")]
-    partial class user
+    [Migration("20210621075650_User")]
+    partial class User
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -182,6 +182,9 @@ namespace WebAPI.Migrations
 
                     b.Property<string>("type")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("userCreatorId")
+                        .HasColumnType("int");
 
                     b.Property<double>("voltage")
                         .HasColumnType("float");

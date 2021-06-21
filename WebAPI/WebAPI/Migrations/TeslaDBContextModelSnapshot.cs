@@ -181,6 +181,9 @@ namespace WebAPI.Migrations
                     b.Property<string>("type")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("userCreatorId")
+                        .HasColumnType("int");
+
                     b.Property<double>("voltage")
                         .HasColumnType("float");
 

@@ -13,7 +13,7 @@ export const AdminRoute = ({ component: Component, ...rest }) => {
                     console.log(props);
                     // console.log(rest);
 
-                    return <Redirect to={props.history.goBack()} />
+                    return <Redirect to='/dashboard' />
                 }
             }}
         />
