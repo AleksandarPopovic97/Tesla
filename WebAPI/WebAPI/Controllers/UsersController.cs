@@ -41,6 +41,19 @@ namespace WebAPI.Controllers
             return user;
         }
 
+        [HttpGet("{username}/{password}")]
+        public async Task<ActionResult<User>> GetUser(string username, string password)
+        {
+            var user = await _context.User.FirstOrDefaultAsync(a => a.username == username && a.password == password && a.isConfirmed);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return user;
+        }
+
         // PUT: api/Users/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.

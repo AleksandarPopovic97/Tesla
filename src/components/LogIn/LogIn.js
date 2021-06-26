@@ -1,14 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import auth from '../../auth';
 import classes from './LogIn.module.css'
 const LogIn = (props) => {
 
-    const onLogInHandler = () => {
-        console.log(props)
+    const [loginData, setLoginData] = useState({
+        username: '',
+        password: ''
+    });
 
+    const onInputChangeHandler = (event) => {
+
+        setLoginData(prevState => {
+            return {
+                ...prevState,
+                [event.target.name]: event.target.value
+            }
+        })
+
+    }
+
+    const onLogInHandler = () => {
+        
+        const loggedIn = auth.logIn(loginData);
+        setTimeout(function() {
+            if(auth.isAuthenticated){
+                props.history.push('/dashboard');
+            }
+         }, 500);
+
+        
+
+        // if(auth.logIn(loginData)){
+        //     props.history.push('/dashboard')
+        // }
+
+        console.log(loggedIn)
         //idi na auth i trazi proveru sa back-a da bi dozvolio da ode na dashboard
 
-        props.history.push('/dashboard');
+        // props.history.push('/dashboard');
     }
 
     return (
@@ -17,11 +47,11 @@ const LogIn = (props) => {
                 <div className={classes.Container}>
                     <div className={classes.Input}>
                         <label>E-mail:</label>
-                        <input ></input>
+                        <input name="username" value={loginData.username} onChange={onInputChangeHandler}></input>
                     </div>
                     <div className={classes.Input}>
                         <label>Password:</label>
-                        <input ></input>
+                        <input name="password" value={loginData.password} onChange={onInputChangeHandler}></input>
                     </div>
                     <Link to="/createAccount" className={classes.CreateAccount}>Create account</Link>
                     <button className={classes.LogInbtn} onClick={onLogInHandler}>
