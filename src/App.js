@@ -11,6 +11,7 @@ import NewSafetyDoc from './containers/SafetyDocBrowser/NewSafetyDoc/NewSafetyDo
 import NewDevice from './containers/NewDevice/NewDevice';
 import { ProtectedRoute } from './protected.route';
 import { AdminRoute } from './admin.route';
+import Register from './components/User/Register/Register';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             {/* <Route path="/reportOutage" component={} />
             <Route path='/forgotPassword' component={} />  */}
             <ProtectedRoute path="/dashboard" component={Dashboard} />
+            <Route path="/createAccount" component={Register} />
             <AdminRoute path="/new-device" component={NewDevice} />
             <ProtectedRoute path="/incident-browser/new-incident" component={NewIncident} />
             <ProtectedRoute path="/incident-browser/new-incident/basic-info" component={NewBasicInfo} />

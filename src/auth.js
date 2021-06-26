@@ -5,22 +5,29 @@ class Auth {
 
     user;
     constructor() {
-        this.admin = false;
+        this.admin = true;
         this.getUser();
-        this.authenticated = false;
+        this.authenticated = true;
     }
 
     getUser() {
 
-        axios.get('http://localhost:60259/api/Users/1').then(response => {
-            this.user = response.data;
-            console.log(this.user);
-            if (response.data.role === "Admin") {
-                this.admin = true;
-            }
-        }).catch(error => {
-            console.log(error);
-        })
+        // axios.get('http://localhost:60259/api/Users/1').then(response => {
+        //     this.user = response.data;
+        //     console.log(this.user);
+        //     if (response.data.role === "Admin") {
+        //         this.admin = true;
+        //     }
+        // }).catch(error => {
+        //     console.log(error);
+        // })
+        this.user = {
+            name : 'dejan',
+            username : 'dejan',
+            id : 1,
+            role : 'Admin',
+        }
+        
 
         return this.user;
     }

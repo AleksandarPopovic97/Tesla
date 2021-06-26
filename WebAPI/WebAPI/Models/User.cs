@@ -17,5 +17,26 @@ namespace WebAPI.Models
 
         [Column]
         public string username { get; set; }
+
+        [Column]
+        public string password { get; set; }
+
+        [Column]
+        public string name { get; set; }
+
+        [Column]
+        public string lastName { get; set; }
+
+        [Column]
+        public DateTime? birthday { get; set; }
+
+        [Column]
+        public bool isConfirmed { get; set; } = false;
+
+        [Column]
+        public string crew { get; set; }
+
+        [Column]
+        public string image { get; set; }
     }
 }

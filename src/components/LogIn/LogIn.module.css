@@ -1,79 +1,106 @@
-.LogIn{
-    width: 30%;
-    background-color: rgb(228, 227, 227);
-    margin-left: auto;
-    margin-right: auto;
-    height: 500px;
-    border-radius: 7px;
-    display: flex;
-    flex-direction: column;
+.LogIn {
+  width: 30%;
+  background-color: rgb(228, 227, 227);
+  margin-left: auto;
+  margin-right: auto;
+  height: 500px;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
 }
 
-.LogInContent{
-    width: 70%;
-    margin: 0 auto;
+.LogInContent {
+  width: 70%;
+  margin: 0 auto;
 }
 
-.Container{
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
+.Container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
-.LogInbtn{
-    background-color: rgb(3, 51, 51);
-    width: 100%;
-    height: 40px;
-    color: white;
-    margin-top: 18px;
-    border-radius: 5px;
-    border: none;
+.LogInbtn {
+  background-color: rgb(3, 51, 51);
+  width: 100%;
+  height: 40px;
+  color: white;
+  margin-top: 18px;
+  border-radius: 5px;
+  border: none;
 }
 
-.LogInbtn:hover{
-    border: 2px solid silver;
-    cursor: pointer;
+.LogInbtn:hover {
+  border: 2px solid silver;
+  cursor: pointer;
 }
 
-.LogInbtn:disabled{
-    cursor: not-allowed;
-    background-color: ghostwhite;
-    color: gray
+.LogInbtn:disabled {
+  cursor: not-allowed;
+  background-color: ghostwhite;
+  color: gray;
 }
 
-
-.ForgotPassword{
-    display: inline-block;
-    text-align: left;
-    width: 100%;
-    margin-top: 10px;
+.ForgotPassword {
+  display: inline-block;
+  text-align: left;
+  width: 100%;
+  margin-top: 10px;
 }
 
-.GoogleBtn{
-    background-color: #dd4b39;
-
+.GoogleBtn {
+  background-color: #dd4b39;
 }
-.FacebookBtn{
-    background-color: #3b5999;
+.FacebookBtn {
+  background-color: #3b5999;
 }
 
-.CreateAccount{
-    display: inline-block;
-    margin-top: 15px;
+.CreateAccount {
+  display: inline-block;
+  margin-top: 15px;
+  text-decoration: none;
+  color: gray;
+}
+
+.CreateAccount:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: black;
+}
+
+/* INPUT */
+
+.Input input {
+  border: 2.5px solid #ccc;
+  border-radius: 7px;
+  width: 100%;
+  height: 45px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+.Input label {
+  font-size: 17px;
+  color: rgb(100, 100, 100);
+  display: block;
+  margin-top: 15px;
+  text-align: left;
+}
+
+.Invalid {
+  border: 2px solid red;
+  background-color: rgb(255, 188, 181);
 }
 
 @media (max-width: 500px) {
-    .LogIn{
-        width: 70%;
-        font-size: 0.8rem;
-        height: 450px;
-        
-    }
+  .LogIn {
+    width: 70%;
+    font-size: 0.8rem;
+    height: 450px;
+  }
 
-    .LogInContent{
-        width: 90%;
-        margin: 0 auto;
-    }
-
-    
+  .LogInContent {
+    width: 90%;
+    margin: 0 auto;
+  }
 }

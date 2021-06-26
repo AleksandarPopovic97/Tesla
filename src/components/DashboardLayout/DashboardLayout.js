@@ -27,7 +27,7 @@ const dashboardLayout = (props) => {
                         </div>
                         <div className={classes.UserContainer}>
                             <div className={classes.UserNameContainer}>
-                                <div className={classes.UserName}><p>{auth.user.username}</p></div>
+                                <div className={classes.UserName}><p>USER</p></div>
                                 <div><p>Account Settings</p></div>
                             </div>
 

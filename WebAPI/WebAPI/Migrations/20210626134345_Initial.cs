@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebAPI.Migrations
 {
-    public partial class User : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -76,7 +76,14 @@ namespace WebAPI.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     role = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    username = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    username = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    password = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    lastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    birthday = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    isConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    crew = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    image = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -142,7 +149,8 @@ namespace WebAPI.Migrations
                     details = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     notes = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     checklistid = table.Column<int>(type: "int", nullable: true),
-                    multimedia = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    multimedia = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    userCreatedId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
