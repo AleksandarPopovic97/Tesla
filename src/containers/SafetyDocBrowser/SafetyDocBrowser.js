@@ -74,7 +74,7 @@ const SafetyDocBrowser = (props) => {
     }
 
     return (
-        <DashboardLayout title="Safety documents - all">
+        <DashboardLayout title="Safety documents - all" {...props}>
             <div className={classes.SafetyDocBrowser}>
                 <div className={classes.ButtonContainer}>
                     <button onClick={newSafetyDoc}><FaPlusCircle />New</button>

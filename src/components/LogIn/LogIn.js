@@ -27,7 +27,7 @@ const LogIn = (props) => {
             if(auth.isAuthenticated){
                 props.history.push('/dashboard');
             }
-         }, 500);
+         }, 1000);
 
         
 

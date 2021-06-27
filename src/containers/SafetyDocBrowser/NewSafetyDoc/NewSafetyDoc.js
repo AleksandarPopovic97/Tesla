@@ -172,7 +172,7 @@ const NewSafetyDoc = (props) => {
 
 
     return (
-        <DashboardLayout title='Safety document - new'>
+        <DashboardLayout title='Safety document - new' {...props}>
             {/* get title from new call */}
             <React.Fragment>
 

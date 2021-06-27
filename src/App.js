@@ -12,6 +12,7 @@ import NewDevice from './containers/NewDevice/NewDevice';
 import { ProtectedRoute } from './protected.route';
 import { AdminRoute } from './admin.route';
 import Register from './components/User/Register/Register';
+import EditUser from './components/User/EditUser/EditUser';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path='/forgotPassword' component={} />  */}
             <ProtectedRoute path="/dashboard" component={Dashboard} />
             <Route path="/createAccount" component={Register} />
+            <Route path="/editUser" component={EditUser} />
             <AdminRoute path="/new-device" component={NewDevice} />
             <ProtectedRoute path="/incident-browser/new-incident" component={NewIncident} />
             <ProtectedRoute path="/incident-browser/new-incident/basic-info" component={NewBasicInfo} />

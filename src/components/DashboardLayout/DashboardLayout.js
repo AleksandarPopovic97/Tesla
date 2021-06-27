@@ -10,6 +10,10 @@ import auth from '../../auth';
 
 const dashboardLayout = (props) => {
 
+    const editUserHandler = () =>
+    {
+        props.history.push("/editUser");
+    }
 
     return (
 
@@ -31,7 +35,7 @@ const dashboardLayout = (props) => {
                                 <div><p>Account Settings</p></div>
                             </div>
 
-                            <div className={classes.UserIcon}><img src={defaultPicture} alt="User icon" /></div>
+                            <div className={classes.UserIcon} onClick={editUserHandler}><img src={defaultPicture} alt="User icon" /></div>
                         </div>
                     </div>
                 </header>

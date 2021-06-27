@@ -106,7 +106,7 @@ const IncidentBrowser = (props) => {
 
 
     return (
-        <DashboardLayout title="Incident browser - all">
+        <DashboardLayout title="Incident browser - all" {...props}>
             <div className={classes.IncidentBrowser}>
                 <div className={classes.ButtonContainer}>
                     <button onClick={newIncident}><FaPlusCircle />New</button>

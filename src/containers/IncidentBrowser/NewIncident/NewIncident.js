@@ -268,7 +268,7 @@ const NewIncident = (props) => {
     }
 
     return (
-        <DashboardLayout title='Incident - new'>
+        <DashboardLayout title='Incident - new' {...props}>
             {/* get title from new call */}
             <React.Fragment>
 

@@ -14,5 +14,8 @@ namespace WebAPI.Models
 
         [Column]
         public string name { get; set; }
+
+        [Column]
+        public List<User> crewMembers { get; set; }
     }
 }

@@ -158,7 +158,7 @@ const NewDevice = (props) => {
     }
 
     return (
-        <DashboardLayout title="Device - new">
+        <DashboardLayout title="Device - new" {...props}>
             <div className={classes.NewDevice}>
                 <form className={classes.Form}>
                     <div className={classes.Container}>
