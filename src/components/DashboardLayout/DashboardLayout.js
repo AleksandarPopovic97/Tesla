@@ -10,6 +10,14 @@ import auth from '../../auth';
 
 const dashboardLayout = (props) => {
 
+
+    const logOutHandler = () =>
+    {
+        auth.logout();
+        props.history.push("/");
+    }
+
+
     const editUserHandler = () =>
     {
         props.history.push("/editUser");
@@ -32,7 +40,8 @@ const dashboardLayout = (props) => {
                         <div className={classes.UserContainer}>
                             <div className={classes.UserNameContainer}>
                                 <div className={classes.UserName}><p>{auth.user.name}</p></div>
-                                <div><p>Account Settings</p></div>
+                                <div><p onClick={logOutHandler}>Log Out</p></div>
+                            
                             </div>
 
                             <div className={classes.UserIcon} onClick={editUserHandler}><img src={defaultPicture} alt="User icon" /></div>
@@ -51,7 +60,7 @@ const dashboardLayout = (props) => {
                             <NavLink to="/" className={classes.NavLink}><FaPhone /></NavLink>
                             <NavLink to="/safetyDocs-browser" className={classes.NavLink} activeClassName={classes.Active}><FaSuitcase /></NavLink>
                             <NavLink to="/" className={classes.NavLink}><FaRegSurprise /></NavLink>
-                            <NavLink to="/" className={classes.NavLink}><FaUserFriends /></NavLink>
+                            <NavLink to="/approvement" className={classes.NavLink}><FaUserFriends /></NavLink>
                         </div>
 
                         <div className={classes.NavOptionsLinks}>

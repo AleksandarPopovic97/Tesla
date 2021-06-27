@@ -54,6 +54,12 @@ namespace WebAPI.Controllers
             return user;
         }
 
+        [HttpGet("[action]")]
+        public async Task<ActionResult<IEnumerable<User>>> UnapprovedUsers()
+        {
+            return await _context.User.Where(user => user.isConfirmed == false).ToListAsync();
+        }
+
         // PUT: api/Users/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.

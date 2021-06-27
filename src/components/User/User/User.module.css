@@ -1,0 +1,22 @@
+.User {
+  width: 70%;
+  height: 50px;
+  border: 2px solid gray;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.Container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-left: 10px;
+}
+
+.Container p {
+  padding: 0;
+  margin: 0 0 0 10px;
+}

@@ -43,9 +43,10 @@ class Auth {
     //     console.log('you are logged in')
     // }
 
-    logout(cb) {
+    logout() {
         this.authenticated = false;
-        cb();
+        this.admin = false;
+        
     }
 
     isAuthenticated() {

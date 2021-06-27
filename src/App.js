@@ -13,6 +13,7 @@ import { ProtectedRoute } from './protected.route';
 import { AdminRoute } from './admin.route';
 import Register from './components/User/Register/Register';
 import EditUser from './components/User/EditUser/EditUser';
+import Approvement from './components/Approvement/Approvement';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/createAccount" component={Register} />
             <Route path="/editUser" component={EditUser} />
             <AdminRoute path="/new-device" component={NewDevice} />
+            <AdminRoute path="/approvement" component={Approvement} />
             <ProtectedRoute path="/incident-browser/new-incident" component={NewIncident} />
             <ProtectedRoute path="/incident-browser/new-incident/basic-info" component={NewBasicInfo} />
             <ProtectedRoute path="/safetyDocs-browser/new-safetyDoc" component={NewSafetyDoc} />

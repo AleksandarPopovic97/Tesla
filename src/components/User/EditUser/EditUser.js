@@ -4,6 +4,7 @@ import Multimedia from '../../../containers/IncidentBrowser/NewIncident/Multimed
 import CrewPicker from '../../../containers/IncidentBrowser/NewIncident/Crew/CrewPicker/CrewPicker';
 import axios from 'axios';
 import auth from '../../../auth';
+import DashboardLayout from '../../DashboardLayout/DashboardLayout';
 
 const EditUser = (props) => {
 
@@ -88,9 +89,14 @@ const EditUser = (props) => {
             .then(function () {
                 // always executed
             });
+
+            props.history.push('/dashboard');
+
     }
 
     return(
+        <DashboardLayout title="User - edit" {...props}>
+
         <div className={classes.Register}>
             <h1>Register</h1>
             <form className={classes.Form}>
@@ -130,7 +136,7 @@ const EditUser = (props) => {
 
                 <div className={classes.CrewPicker}>
                 {
-
+                    
                     user.role === 'Crew member' ? 
                     <div>
                     
@@ -146,6 +152,7 @@ const EditUser = (props) => {
                 <h2>{message}</h2>
             </form>
         </div>
+                </DashboardLayout>
     )
 }
 

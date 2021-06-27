@@ -69,6 +69,8 @@ const Register = (props) => {
             .then(function () {
                 // always executed
             });
+
+            props.history.push('/');
     }
 
     return(
