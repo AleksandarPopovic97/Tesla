@@ -1,6 +1,7 @@
 import react from 'react';
 import CheckToggle from '../../UI/CheckToggle/CheckToggle';
 import classes from './BasicInfo.module.css';
+import IncidentPicker from './IncidentPicker/IncidentPicker';
 
 const BasicInfro = (props) => {
     return(
@@ -19,15 +20,11 @@ const BasicInfro = (props) => {
                 </div>
                 <div className={classes.Container}>
                     <label>Incident:</label>
-                    <p>{props.plan.incident.id}</p>
-                    <button>...</button>
+                    <p>{props.plan.incident.incidentId}</p>
+                    <button type="button" onClick={props.incidentModal}>...</button>
+                    
                 </div>
-                <div className={classes.Container}>
-                    <label>Type of work:</label>
-                    <select name="typeDocument" value={props.plan.typeDocument} onChange={props.change}>
-                        <option>Equpment</option>
-                    </select>
-                </div>
+                
                 <div className={classes.Container}>
                     <label>Start date/time:</label>
                     <input name="dateAndTimeStart" value={props.plan.dateAndTimeStart} type="date" onChange={props.change}></input>
@@ -50,7 +47,7 @@ const BasicInfro = (props) => {
                 </div>
                 <div className={classes.Container}>
                     <label>Incident:</label>
-                    <p>{props.plan.incident.id}</p>
+                    <p>{props.plan.incident.incidentId}</p>
                 </div>
                 <div className={classes.Container}>
                     <label>Phone No:</label>

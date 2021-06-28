@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { HashRouter, Switch, NavLink, Route } from 'react-router-dom';
 import DashboardLayout from '../../DashboardLayout/DashboardLayout';
 import BasicInfo from '../BasicInfo/BasicInfo';
@@ -6,17 +6,23 @@ import classes from './NewWorkPlan.module.css'
 import {FaTimesCircle, FaSave} from 'react-icons/fa'
 import Multimedia from '../../../containers/IncidentBrowser/NewIncident/Multimedia/Multimedia';
 import DevicePicker from '../../../containers/IncidentBrowser/NewIncident/Devices/DevicePicker/DevicePicker';
+import IncidentPicker from '../BasicInfo/IncidentPicker/IncidentPicker';
+import Modal from '../../UI/Modal/Modal';
+import axios from 'axios';
+import auth from '../../../auth';
 
 const NewWorkPlan = (props) => {
 
+    // const user = auth.getUser();
+
     const [workPlan, setWorkPlan] = useState({
-        typeDocument: '',
+        typeDocument: 'Planned Work',
         status: 'Draft',
         incident: {},
-        address: '',
+        // address: '',
         dateAndTimeStart: new Date(Date.now()).toISOString().slice(0, 10),
         dateAndTimeEnd: new Date(Date.now()).toISOString().slice(0, 10),
-        user: {},
+        user: auth.getUser(),
         purpose: '',
         details: '',
         emergancyWork: false,
@@ -28,6 +34,9 @@ const NewWorkPlan = (props) => {
         notes: '' //DODATI U BAZUUUUU POLJE NOTES !
 
     })
+
+    const [modal, setModal] = useState(false);
+    const [incidents, setIncidents] = useState([]);
 
     const workPlanBasicChangeHandler = (event) => {
 
@@ -63,12 +72,41 @@ const NewWorkPlan = (props) => {
 
     }
 
-    const resetHandle = () => {
 
+
+    const resetHandle = () => {
+        setWorkPlan({
+            typeDocument: '',
+        status: 'Draft',
+        incident: {},
+        // address: '',
+        dateAndTimeStart: new Date(Date.now()).toISOString().slice(0, 10),
+        dateAndTimeEnd: new Date(Date.now()).toISOString().slice(0, 10),
+        user: auth.getUser(),
+        purpose: '',
+        details: '',
+        emergancyWork: false,
+        company: '',
+        phoneNumber: '',
+        dateAndTimeCratingWorkRequest: new Date(Date.now()).toISOString().slice(0, 10),
+        image: '',
+        devices: [],
+        notes: '' 
+        })
     }
 
     const saveHandle = () => {
-        console.log(workPlan)
+        axios.post('http://localhost:60259/api/WorkRequests', workPlan)
+            .then(function (response) {
+                // handle success
+                console.log(response.data);
+            })
+            .catch(function (error) {
+                // handle error
+            })
+            .then(function () {
+                // always executed
+            });
     }
 
     const handleDevicesChange = (event) => {
@@ -91,11 +129,56 @@ const NewWorkPlan = (props) => {
         }
     }
 
+    const showModalHandler = (event) => {
+        // event.preventDefault();
+        setModal(prevState => {
+            return !prevState;
+        })
+    }
+
+    const onIncidentChangeHandler = (incidentObj) => {
+
+        setWorkPlan(prevState => {
+            return {
+                ...prevState,
+                incident: incidentObj
+            }
+        })
+
+        setModal(false);
+    }
+
+    useEffect(() => {
+        axios.get('http://localhost:60259/api/Incidents')
+            .then(function (response) {
+                // handle success
+                for (const i of response.data) {
+                    delete i.id;
+                }
+                console.log(response.data);
+                setIncidents(response.data);
+            })
+            .catch(function (error) {
+                // handle error
+            })
+            .then(function () {
+                // always executed
+            });
+    }, [])
+
     return(
         <DashboardLayout title="New work plan" {...props}>
             {/* <BasicInformation plan={workPlan} change={workPlanChangeHandler}></BasicInformation> */}
             <h1>New work plan</h1>
             <div className={classes.NewWorkPlan}>
+                {modal ? 
+            <Modal modalClick={showModalHandler} >
+                {incidents.map((incident) => {
+                   return <IncidentPicker key={incident.incidentId} incidentPick={onIncidentChangeHandler} incident={incident}/>
+                })}
+
+                    </Modal>
+            : null}
 
             <div className={classes.LinkContainer}>
                         <NavLink to="/workPlans-browser/new-work-plan/basic-info" className={classes.NavLink} activeClassName={classes.ActiveLink}>Basic Information</NavLink>
@@ -111,7 +194,7 @@ const NewWorkPlan = (props) => {
                                 {/* <Route path="/reportOutage" component={} />
                         <Route path='/forgotPassword' component={} />  */}
                                 <Route path="/workPlans-browser/new-work-plan/basic-info" render={() =>
-                                                <BasicInfo plan={workPlan} change={workPlanBasicChangeHandler}></BasicInfo>
+                                                <BasicInfo incidentModal={showModalHandler} plan={workPlan} change={workPlanBasicChangeHandler}></BasicInfo>
                                             } />
                                 <Route path="/workPlans-browser/new-work-plan/multimedia" render={() =>
                                                 <Multimedia multimedia={workPlan.image} change={multimediaChange}></Multimedia>

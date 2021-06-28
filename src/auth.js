@@ -18,6 +18,7 @@ class Auth {
             // if (response.data.role === "Admin") {
             //     this.admin = true;
             // }
+            
             this.authenticated = true;
             this.user = response.data;
             if(response.data.role === 'Admin'){
@@ -32,7 +33,20 @@ class Auth {
         //ako je request uspeo i ima lika u bazi set authenticated u true
     }
 
-    
+    getUser(){
+        return {
+            role: this.user.role,
+            username: this.user.username,
+            password: this.user.password,
+            name: this.user.name,
+            lastName: this.user.lastName,
+            birthday: this.user.birthday,
+            isConfirmed: this.user.isConfirmed,
+            crew: this.user.crew,
+            image: this.user.image
+
+        };
+    }
 
     getUserId() {
         return this.user.id;
