@@ -43,7 +43,6 @@ const CrewAdding = (props) =>
         axios.put('http://localhost:60259/api/Users/' + user.id, user)
             .then(function (response) {
                 // handle success3
-                setUpdated(true);
                 console.log(response);
             })
             .catch(function (error) {

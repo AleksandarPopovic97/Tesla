@@ -1,0 +1,26 @@
+.CrewAdding {
+  width: 100%;
+}
+
+.User {
+  width: 75%;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 20px auto 0 auto;
+  padding: 10px;
+}
+
+.Select {
+  margin: auto 0;
+  width: 20%;
+}
+
+.Updated {
+  background-color: wheat;
+}
+
+.User p {
+  width: 20%;
+}
