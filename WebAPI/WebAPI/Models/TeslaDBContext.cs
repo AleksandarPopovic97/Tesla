@@ -30,6 +30,9 @@ namespace WebAPI.Models
         
         
         public DbSet<WebAPI.Models.User> User { get; set; }
+        
+        
+        public DbSet<WebAPI.Models.WorkRequest> WorkRequest { get; set; }
 
 
     }

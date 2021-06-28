@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebAPI.Models;
 
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(TeslaDBContext))]
-    partial class TeslaDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210628130127_Notes")]
+    partial class Notes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -105,9 +107,6 @@ namespace WebAPI.Migrations
                     b.Property<int?>("SafetyDocumentid")
                         .HasColumnType("int");
 
-                    b.Property<int?>("WorkRequestid")
-                        .HasColumnType("int");
-
                     b.Property<string>("address")
                         .HasColumnType("nvarchar(max)");
 
@@ -125,8 +124,6 @@ namespace WebAPI.Migrations
                     b.HasIndex("IncidentId");
 
                     b.HasIndex("SafetyDocumentid");
-
-                    b.HasIndex("WorkRequestid");
 
                     b.ToTable("DDevices");
                 });
@@ -346,67 +343,6 @@ namespace WebAPI.Migrations
                     b.ToTable("User");
                 });
 
-            modelBuilder.Entity("WebAPI.Models.WorkRequest", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("company")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("dateAndTimeCratingWorkRequest")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("dateAndTimeEnd")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("dateAndTimeStart")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("details")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("emergancyWork")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("image")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("incidentid")
-                        .HasColumnType("int");
-
-                    b.Property<string>("notes")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("phoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("purpose")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("status")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("typeDocument")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("userid")
-                        .HasColumnType("int");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("incidentid");
-
-                    b.HasIndex("userid");
-
-                    b.ToTable("WorkRequest");
-                });
-
             modelBuilder.Entity("WebAPI.Models.Call", b =>
                 {
                     b.HasOne("WebAPI.Models.Incident", null)
@@ -431,10 +367,6 @@ namespace WebAPI.Migrations
                     b.HasOne("WebAPI.Models.SafetyDocument", null)
                         .WithMany("devices")
                         .HasForeignKey("SafetyDocumentid");
-
-                    b.HasOne("WebAPI.Models.WorkRequest", null)
-                        .WithMany("devices")
-                        .HasForeignKey("WorkRequestid");
                 });
 
             modelBuilder.Entity("WebAPI.Models.Incident", b =>
@@ -468,21 +400,6 @@ namespace WebAPI.Migrations
                         .HasForeignKey("Crewid");
                 });
 
-            modelBuilder.Entity("WebAPI.Models.WorkRequest", b =>
-                {
-                    b.HasOne("WebAPI.Models.Incident", "incident")
-                        .WithMany()
-                        .HasForeignKey("incidentid");
-
-                    b.HasOne("WebAPI.Models.User", "user")
-                        .WithMany()
-                        .HasForeignKey("userid");
-
-                    b.Navigation("incident");
-
-                    b.Navigation("user");
-                });
-
             modelBuilder.Entity("WebAPI.Models.Crew", b =>
                 {
                     b.Navigation("crewMembers");
@@ -496,11 +413,6 @@ namespace WebAPI.Migrations
                 });
 
             modelBuilder.Entity("WebAPI.Models.SafetyDocument", b =>
-                {
-                    b.Navigation("devices");
-                });
-
-            modelBuilder.Entity("WebAPI.Models.WorkRequest", b =>
                 {
                     b.Navigation("devices");
                 });

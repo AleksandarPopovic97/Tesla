@@ -4,73 +4,73 @@ import classes from './BasicInfo.module.css';
 
 const BasicInfro = (props) => {
     return(
-        <div>
-            <form>
-                <div>
+        <div className={classes.BasicInfo}>
+            <form className={classes.Form}>
+                <div className={classes.Container}>
                     <label>Type:</label>
                     <select name="typeDocument" value={props.plan.typeDocument} onChange={props.change}>
                         <option>Planned Work</option>
                         <option>Unplaned Work</option>
                     </select>
                 </div>
-                <div>
+                <div className={classes.Container}>
                     <label>Status:</label>
                     <p>{props.plan.status}</p>
                 </div>
-                <div>
+                <div className={classes.Container}>
                     <label>Incident:</label>
-                    <p>{props.plan.incident}</p>
+                    <p>{props.plan.incident.id}</p>
                     <button>...</button>
                 </div>
-                <div>
+                <div className={classes.Container}>
                     <label>Type of work:</label>
-                    <select>
+                    <select name="typeDocument" value={props.plan.typeDocument} onChange={props.change}>
                         <option>Equpment</option>
                     </select>
                 </div>
-                <div>
+                <div className={classes.Container}>
                     <label>Start date/time:</label>
-                    <input name="dateAndTimeStart" type="date" onChange={props.change}></input>
+                    <input name="dateAndTimeStart" value={props.plan.dateAndTimeStart} type="date" onChange={props.change}></input>
                 </div>
-                <div>
+                <div className={classes.Container}>
                     <label>End date/time:</label>
-                    <input name="dateAndTimeEnd" type="date" onChange={props.change}></input>
+                    <input name="dateAndTimeEnd" value={props.plan.dateAndTimeEnd} type="date" onChange={props.change}></input>
                 </div>
-                <div>
+                <div className={classes.Container}>
                     <label>Created by:</label>
                     <p>{props.plan.user.username}</p>
                 </div>
-                <div>
+                <div className={classes.Container}>
                     <label>Emergency work:</label>
                     <CheckToggle change={props.change} name="emergancyWork" value={props.plan.emergancyWork}></CheckToggle>
                 </div>
-                <div>
+                <div className={classes.Container}>
                     <label>Company:</label>
-                    <input type="text" name="company" onChange={props.company} value={props.plan.company}></input>
+                    <input type="text" name="company" onChange={props.change} value={props.plan.company}></input>
                 </div>
-                <div>
+                <div className={classes.Container}>
                     <label>Incident:</label>
-                    <p>{props.plan.incident.name}</p>
+                    <p>{props.plan.incident.id}</p>
                 </div>
-                <div>
+                <div className={classes.Container}>
                     <label>Phone No:</label>
-                    <input type="text" name="phoneNumber" onChange={props.phoneNumber} value={props.plan.phoneNumber}></input>
+                    <input type="text" name="phoneNumber" onChange={props.change} value={props.plan.phoneNumber}></input>
                 </div>
-                <div>
+                <div className={classes.Container}>
                     <label>Date/time created:</label>
-                    <input name="dateAndTimeCratingWorkRequest" type="date" onChange={props.dateAndTimeCratingWorkRequest}></input>
+                    <input name="dateAndTimeCratingWorkRequest" value={props.plan.dateAndTimeCratingWorkRequest} type="date" onChange={props.change}></input>
                 </div>
-                <div>
+                <div className={classes.Container}>
                     <label>Purpose:</label>
-                    <input type="text" name="purpose" onChange={props.purpose} value={props.plan.purpose}></input>
+                    <input type="text" name="purpose" onChange={props.change} value={props.plan.purpose}></input>
                 </div>
-                <div>
+                <div className={classes.Container}>
                     <label>Details:</label>
-                    <input type="text" name="details" onChange={props.details} value={props.plan.details}></input>
+                    <input type="text" name="details" onChange={props.change} value={props.plan.details}></input>
                 </div>
-                <div>
+                <div className={classes.Container}>
                     <label>Notes:</label>
-                    <input type="text" name="notes" onChange={props.notes} value={props.plan.notes}></input>
+                    <input type="text" name="notes" onChange={props.change} value={props.plan.notes}></input>
                 </div>
 
 

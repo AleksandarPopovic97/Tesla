@@ -58,6 +58,10 @@ namespace WebAPI.Models
         [Column]
         public List<Device> devices { get; set; }
 
+        [Column]
+        public string notes { get; set; }
+
+
 
 
 

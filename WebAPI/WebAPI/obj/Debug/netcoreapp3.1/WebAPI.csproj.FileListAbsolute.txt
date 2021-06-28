@@ -455,7 +455,6 @@ D:\Aleksandar_pop\Tesla\WebAPI\WebAPI\bin\Debug\netcoreapp3.1\runtimes\win-x86\n
 D:\Aleksandar_pop\Tesla\WebAPI\WebAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\Aleksandar_pop\Tesla\WebAPI\WebAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\Aleksandar_pop\Tesla\WebAPI\WebAPI\obj\Debug\netcoreapp3.1\WebAPI.csprojAssemblyReference.cache
-D:\Aleksandar_pop\Tesla\WebAPI\WebAPI\obj\Debug\netcoreapp3.1\WebAPI.MvcApplicationPartsAssemblyInfo.cache
 D:\Aleksandar_pop\Tesla\WebAPI\WebAPI\obj\Debug\netcoreapp3.1\WebAPI.AssemblyInfoInputs.cache
 D:\Aleksandar_pop\Tesla\WebAPI\WebAPI\obj\Debug\netcoreapp3.1\WebAPI.AssemblyInfo.cs
 D:\Aleksandar_pop\Tesla\WebAPI\WebAPI\obj\Debug\netcoreapp3.1\WebAPI.RazorTargetAssemblyInfo.cache
@@ -465,3 +464,4 @@ D:\Aleksandar_pop\Tesla\WebAPI\WebAPI\obj\Debug\netcoreapp3.1\staticwebassets\We
 D:\Aleksandar_pop\Tesla\WebAPI\WebAPI\obj\Debug\netcoreapp3.1\WebAPI.dll
 D:\Aleksandar_pop\Tesla\WebAPI\WebAPI\obj\Debug\netcoreapp3.1\WebAPI.pdb
 D:\Aleksandar_pop\Tesla\WebAPI\WebAPI\obj\Debug\netcoreapp3.1\WebAPI.genruntimeconfig.cache
+D:\Aleksandar_pop\Tesla\WebAPI\WebAPI\obj\Debug\netcoreapp3.1\WebAPI.MvcApplicationPartsAssemblyInfo.cache
