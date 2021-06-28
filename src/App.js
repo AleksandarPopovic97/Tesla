@@ -14,6 +14,9 @@ import { AdminRoute } from './admin.route';
 import Register from './components/User/Register/Register';
 import EditUser from './components/User/EditUser/EditUser';
 import Approvement from './components/Approvement/Approvement';
+import WorkPlanBrowser from './components/WorkPlans/WorkPlanBrowser/WorkPlanBrowser';
+import NewWorkPlan from './components/WorkPlans/NewWorkPlan/NewWorkPlan';
+import CrewAdding from './components/CrewAdding/CrewAdding';
 
 function App() {
   return (
@@ -28,6 +31,9 @@ function App() {
             <Route path="/editUser" component={EditUser} />
             <AdminRoute path="/new-device" component={NewDevice} />
             <AdminRoute path="/approvement" component={Approvement} />
+            <AdminRoute path="/crewadding" component={CrewAdding}></AdminRoute>
+            <ProtectedRoute path="/workPlans-browser/new-work-plan" component={NewWorkPlan}></ProtectedRoute>
+            <ProtectedRoute path="/workPlans-browser" component={WorkPlanBrowser}></ProtectedRoute>
             <ProtectedRoute path="/incident-browser/new-incident" component={NewIncident} />
             <ProtectedRoute path="/incident-browser/new-incident/basic-info" component={NewBasicInfo} />
             <ProtectedRoute path="/safetyDocs-browser/new-safetyDoc" component={NewSafetyDoc} />

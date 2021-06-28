@@ -59,7 +59,7 @@ const dashboardLayout = (props) => {
                             <NavLink to="/new-device" className={classes.NavLink} activeClassName={classes.Active}><FaGlobe /></NavLink>
                             <NavLink to="/" className={classes.NavLink}><FaPhone /></NavLink>
                             <NavLink to="/safetyDocs-browser" className={classes.NavLink} activeClassName={classes.Active}><FaSuitcase /></NavLink>
-                            <NavLink to="/" className={classes.NavLink}><FaRegSurprise /></NavLink>
+                            <NavLink to="/crewadding" className={classes.NavLink}><FaRegSurprise /></NavLink>
                             <NavLink to="/approvement" className={classes.NavLink}><FaUserFriends /></NavLink>
                         </div>
 
