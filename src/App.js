@@ -17,6 +17,7 @@ import Approvement from './components/Approvement/Approvement';
 import WorkPlanBrowser from './components/WorkPlans/WorkPlanBrowser/WorkPlanBrowser';
 import NewWorkPlan from './components/WorkPlans/NewWorkPlan/NewWorkPlan';
 import CrewAdding from './components/CrewAdding/CrewAdding';
+import Crew from './components/User/AddCrew/Crew';
 
 function App() {
   return (

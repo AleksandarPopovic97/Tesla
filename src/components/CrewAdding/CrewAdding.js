@@ -9,6 +9,7 @@ const CrewAdding = (props) =>
     const [users, setUsers] = useState([])
     const [crews, setCrews] = useState([])
 
+    const [crewName, setCrewName] = useState('')
 
     useEffect(() => {
         axios.get('http://localhost:60259/api/Users')
@@ -54,9 +55,39 @@ const CrewAdding = (props) =>
             });
     }
 
+    const addCrewHandler = () => {
+        const crew = {
+            name: crewName,
+            crewMembers: []
+        }
+        axios.post('http://localhost:60259/api/Crews/', crew)
+            .then(function (response) {
+                // handle success3
+                console.log(response);
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .then(function () {
+                // always executed
+            });
+
+        setCrews(prevState => {
+            return [...prevState, crew]
+        })
+    }
+
+    const changeCrewNameHandler = (event) => {
+        setCrewName(event.target.value);
+    }
+
     return(
         <DashboardLayout title="Adding users at crew" {...props}>
             <div className={classes.CrewAdding}>
+                <label>Crew name:</label>
+                <input type="text" value={crewName} onChange={changeCrewNameHandler}></input>
+                <button onClick={addCrewHandler}>Add new crew</button>
 
             {users.map((user) => {
                 if(user.role === 'Crew member'){

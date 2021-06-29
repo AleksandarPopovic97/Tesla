@@ -2,12 +2,16 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import auth from '../../auth';
 import classes from './LogIn.module.css'
+import Spinner from '../UI/Spinner/Spinner';
+
 const LogIn = (props) => {
 
     const [loginData, setLoginData] = useState({
         username: '',
         password: ''
     });
+
+    const [spinner, setSpinner] = useState(false);
 
     const onInputChangeHandler = (event) => {
 
@@ -22,6 +26,7 @@ const LogIn = (props) => {
 
     const onLogInHandler = () => {
         
+        setSpinner(true);
         const loggedIn = auth.logIn(loginData);
         setTimeout(function() {
             if(auth.isAuthenticated){
@@ -29,7 +34,8 @@ const LogIn = (props) => {
             }
          }, 1000);
 
-        
+
+
 
         // if(auth.logIn(loginData)){
         //     props.history.push('/dashboard')
@@ -44,6 +50,8 @@ const LogIn = (props) => {
     return (
         <div className={classes.LogIn}>
             <div className={classes.LogInContent}>
+        {
+                spinner ? <Spinner></Spinner> : 
                 <div className={classes.Container}>
                     <div className={classes.Input}>
                         <label>E-mail:</label>
@@ -68,6 +76,7 @@ const LogIn = (props) => {
                     
 
                 </div>
+        }
             </div>
         </div>
     )
