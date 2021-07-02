@@ -10,6 +10,7 @@ const Register = (props) => {
     const [user, setUser] = useState({
         username: '',
         password: '',
+        confirmPassword: '',
         name: '',
         lastName: '',
         birthday: new Date(Date.now()).toISOString().slice(0, 10),
@@ -19,7 +20,6 @@ const Register = (props) => {
     })
 
     const [message, setMessage] = useState('')
-
 
     const onInputChange = (event) => {
 
@@ -55,7 +55,23 @@ const Register = (props) => {
 
     const onRegisterHandler = () => {
 
-        axios.post('http://localhost:60259/api/Users', user)
+        if(user.username === '' || user.password === '' || user.confirmPassword === '' 
+        || user.name === '' || user.lastname === '' || user.birthday === ''
+        || user.image === '' || user.role === '') {
+            alert('Morate popuniti sva polja!');
+            return;
+        }
+
+        axios.post('http://localhost:60259/api/Users', {
+            username: user.username,
+            password: user.password,
+            name: user.name,
+            lastName: user.lastName,
+            birthday: user.birthday,
+            image: user.image,
+            role: user.role,
+            crew: user.crew
+        })
             .then(function (response) {
                 // handle success3
                 console.log(response);
@@ -83,11 +99,11 @@ const Register = (props) => {
                 </div>
                 <div className={classes.InputGroup}>
                     <label>Password:</label>
-                    <input type="text" name="password" onChange={onInputChange} value={user.password}></input>
+                    <input type="password" name="password" onChange={onInputChange} value={user.password}></input>
                 </div>
                 <div className={classes.InputGroup}>
                     <label>Confirm password:</label>
-                    <input type="text" name="confirmPassword" onChange={onInputChange} value={user.password}></input>
+                    <input type="password" name="confirmPassword" onChange={onInputChange} value={user.confirmPassword}></input>
                 </div>
                 <div className={classes.InputGroup}>
                     <label>Name:</label>

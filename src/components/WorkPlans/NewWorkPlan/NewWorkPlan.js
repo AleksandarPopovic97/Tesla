@@ -93,9 +93,18 @@ const NewWorkPlan = (props) => {
         devices: [],
         notes: '' 
         })
+        props.history.push('/workPlans-browser');
     }
 
     const saveHandle = () => {
+        if(workPlan.typeDocument === '' || workPlan.incident  === undefined 
+        || workPlan.dateAndTimeStart === '' || workPlan.dateAndTimeCratingWorkRequest=== ''
+        || workPlan.details === '' || workPlan.company === '' 
+        || workPlan.phoneNumber === '' || workPlan.purpose === ''
+        || workPlan.notes === '') {
+            alert('Morate popuniti sva polja!');
+            return;
+        }
         axios.post('http://localhost:60259/api/WorkRequests', workPlan)
             .then(function (response) {
                 // handle success
@@ -106,6 +115,7 @@ const NewWorkPlan = (props) => {
             })
             .then(function () {
                 // always executed
+                props.history.push('/workPlans-browser');
             });
     }
 

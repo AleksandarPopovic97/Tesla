@@ -3,6 +3,7 @@ import react, { useEffect, useState } from 'react';
 import CrewPicker from '../CrewAdding/CrewPicker';
 import DashboardLayout from '../DashboardLayout/DashboardLayout';
 import classes from './CrewAdding.module.css'
+import Map from '../Map/Map';
 
 const CrewAdding = (props) =>
 {
@@ -94,7 +95,9 @@ const CrewAdding = (props) =>
                     return <CrewPicker key={user.id} user={user} changeCrewHandler={changeCrewHandler} crews={crews}></CrewPicker>
                 }
             })}
-            
+                <div style={{width:"1000px", height:"500px"}}>
+                    <Map zoom={16} center={{lat:  45.24573132069935, lng: 19.84011507410784}}></Map>
+                </div>
             </div>
         </DashboardLayout>
     )

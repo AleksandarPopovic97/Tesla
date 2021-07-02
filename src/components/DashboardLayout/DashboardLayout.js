@@ -54,7 +54,7 @@ const dashboardLayout = (props) => {
                         <div className={classes.NavLinks}>
                             <NavLink to="/" className={classes.NavLink} ><FaSearch /></NavLink>
                             {/* maybe use NavLink because of active routes? */}
-                            <NavLink to="/" className={classes.NavLink}><FaHome /></NavLink>
+                            <NavLink to="/workPlans-browser" className={classes.NavLink}><FaHome /></NavLink>
                             <NavLink to="/incident-browser" activeClassName={classes.Active} className={classes.NavLink}><FaFileAlt /></NavLink>
                             <NavLink to="/new-device" className={classes.NavLink} activeClassName={classes.Active}><FaGlobe /></NavLink>
                             <NavLink to="/" className={classes.NavLink}><FaPhone /></NavLink>

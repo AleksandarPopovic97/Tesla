@@ -9,24 +9,30 @@ class Auth {
         this.admin = false;
     }
 
-    logIn(data){
+    async logIn(data){
 
 
-        axios.get('http://localhost:60259/api/Users/' + data.username + '/' + data.password).then(response => {
+        await axios.get('http://localhost:60259/api/Users/' + data.username + '/' + data.password).then(response => {
             // this.user = response.data;
             // console.log(this.user);
             // if (response.data.role === "Admin") {
             //     this.admin = true;
             // }
             
-            this.authenticated = true;
             this.user = response.data;
+            console.log(response.data);
+            if(!this.user.isConfirmed){
+                alert('Molimo Vas da sacekate odobrenje od strane admina.');
+                return;
+            }
+            this.authenticated = true;
             if(response.data.role === 'Admin'){
                 this.admin = true;
             }
-        }).catch(error => {
+        })
+        .catch(error => {
             this.authenticated = false;
-            console.log('Nije uspelo');
+            alert('Ne postoji takav korisnik!')
         })
         return this.authenticated;
         //get neki

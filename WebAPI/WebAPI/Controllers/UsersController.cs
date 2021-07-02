@@ -44,7 +44,7 @@ namespace WebAPI.Controllers
         [HttpGet("{username}/{password}")]
         public async Task<ActionResult<User>> GetUser(string username, string password)
         {
-            var user = await _context.User.FirstOrDefaultAsync(a => a.username == username && a.password == password && a.isConfirmed);
+            var user = await _context.User.FirstOrDefaultAsync(a => a.username == username && a.password == password);
 
             if (user == null)
             {
@@ -98,6 +98,8 @@ namespace WebAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
+            //moras proveriti sva polja da li su prazna ili sta
+
             _context.User.Add(user);
             await _context.SaveChangesAsync();
 

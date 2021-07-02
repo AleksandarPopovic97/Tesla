@@ -35,8 +35,6 @@ const LogIn = (props) => {
          }, 1000);
 
 
-
-
         // if(auth.logIn(loginData)){
         //     props.history.push('/dashboard')
         // }
