@@ -14,10 +14,14 @@ import { AdminRoute } from './admin.route';
 import Register from './components/User/Register/Register';
 import EditUser from './components/User/EditUser/EditUser';
 import Approvement from './components/Approvement/Approvement';
-import WorkPlanBrowser from './components/WorkPlans/WorkPlanBrowser/WorkPlanBrowser';
-import NewWorkPlan from './components/WorkPlans/NewWorkPlan/NewWorkPlan';
+import WorkPlanBrowsers from './components/WorkPlans/WorkPlanBrowser/WorkPlanBrowser';
+import WorkPlanBrowser from './containers/SwitchingPlan/SwitchingPlanBrowser/SwitchingPlanBrowser';
+import NewWorkPlans from './components/WorkPlans/NewWorkPlan/NewWorkPlan';
 import CrewAdding from './components/CrewAdding/CrewAdding';
 import Crew from './components/User/AddCrew/Crew';
+import NewWorkPlan from './components/WorkPlans/NewWorkPlan/NewWorkPlan';
+import NewSwitchingPlan from './containers/SwitchingPlan/NewSwitchingPlan/NewSwitchingPlan';
+import SwitchingPlanBrowser from './containers/SwitchingPlan/SwitchingPlanBrowser/SwitchingPlanBrowser';
 
 function App() {
   return (
@@ -33,8 +37,13 @@ function App() {
             <AdminRoute path="/new-device" component={NewDevice} />
             <AdminRoute path="/approvement" component={Approvement} />
             <AdminRoute path="/crewadding" component={CrewAdding}></AdminRoute>
-            <ProtectedRoute path="/workPlans-browser/new-work-plan" component={NewWorkPlan}></ProtectedRoute>
-            <ProtectedRoute path="/workPlans-browser" component={WorkPlanBrowser}></ProtectedRoute>
+
+            <ProtectedRoute path="/switching-plan-browser/new-switching-plan" component={NewSwitchingPlan}></ProtectedRoute>
+            <ProtectedRoute path="/switching-plan-browser" component={SwitchingPlanBrowser}></ProtectedRoute>
+
+            <ProtectedRoute path="/workPlans-browser/new-work-plan" component={NewWorkPlans}></ProtectedRoute>
+            <ProtectedRoute path="/workPlans-browser" component={WorkPlanBrowsers}></ProtectedRoute>
+
             <ProtectedRoute path="/incident-browser/new-incident" component={NewIncident} />
             <ProtectedRoute path="/incident-browser/new-incident/basic-info" component={NewBasicInfo} />
             <ProtectedRoute path="/safetyDocs-browser/new-safetyDoc" component={NewSafetyDoc} />

@@ -20,13 +20,18 @@ class Dashboard extends Component {
         this.props.history.push('/workPlans-browser')
     }
 
+    redirectToSwitchingPlans = () =>{
+        this.props.history.push('/switching-plan-browser')
+    }
+
     render() {
         return (
             <DashboardLayout title="Dashboard" {...this.props}>
                 <div className={classes.WidgetContainer}>
                     <Widget title="My incidents" number="5" draftNum='0' canceledNum='0' executingNum='2' completedNum='1' click={this.redirectToIncidents} />
                     <Widget title="My work plans" number="10" draftNum='0' canceledNum='0' executingNum='2' completedNum='1' click={this.redirectToWorkPlans}/>
-                    <Widget title="My safety docs" number="5" draftNum='0' canceledNum='0' executingNum='2' completedNum='1' click={this.redirectToSafetyDoc} />
+                    <Widget  title="My safety docs" number="5" draftNum='0' canceledNum='0' executingNum='2' completedNum='1' click={this.redirectToSafetyDoc} />
+                    <Widget  title="My swithing plans" number="5" draftNum='0' canceledNum='0' executingNum='2' completedNum='1' click={this.redirectToSwitchingPlans} />
                 </div>
                 <div className={classes.GraphsWidgetContainer}>
                     <GraphWidget title="Incidents" />

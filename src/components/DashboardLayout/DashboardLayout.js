@@ -8,7 +8,7 @@ import {
 import defaultPicture from '../../assets/images/defaultUserPicture.png';
 import auth from '../../auth';
 
-const dashboardLayout = (props) => {
+const DashboardLayout = (props) => {
 
 
     const logOutHandler = () =>
@@ -93,4 +93,4 @@ const dashboardLayout = (props) => {
 }
 
 
-export default dashboardLayout;
+export default DashboardLayout;

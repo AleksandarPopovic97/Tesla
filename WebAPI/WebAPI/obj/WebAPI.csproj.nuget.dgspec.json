@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Aleksandar_pop\\Tesla\\WebAPI\\WebAPI\\WebAPI.csproj": {}
+    "C:\\Users\\WIN 10\\Documents\\Web2\\Tesla\\WebAPI\\WebAPI\\WebAPI.csproj": {}
   },
   "projects": {
-    "D:\\Aleksandar_pop\\Tesla\\WebAPI\\WebAPI\\WebAPI.csproj": {
+    "C:\\Users\\WIN 10\\Documents\\Web2\\Tesla\\WebAPI\\WebAPI\\WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Aleksandar_pop\\Tesla\\WebAPI\\WebAPI\\WebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\WIN 10\\Documents\\Web2\\Tesla\\WebAPI\\WebAPI\\WebAPI.csproj",
         "projectName": "WebAPI",
-        "projectPath": "D:\\Aleksandar_pop\\Tesla\\WebAPI\\WebAPI\\WebAPI.csproj",
-        "packagesPath": "C:\\Users\\Dejan\\.nuget\\packages\\",
-        "outputPath": "D:\\Aleksandar_pop\\Tesla\\WebAPI\\WebAPI\\obj\\",
+        "projectPath": "C:\\Users\\WIN 10\\Documents\\Web2\\Tesla\\WebAPI\\WebAPI\\WebAPI.csproj",
+        "packagesPath": "C:\\Users\\WIN 10\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\WIN 10\\Documents\\Web2\\Tesla\\WebAPI\\WebAPI\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Dejan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\WIN 10\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -83,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

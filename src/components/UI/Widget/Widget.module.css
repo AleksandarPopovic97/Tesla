@@ -5,7 +5,15 @@
     border-radius: 5px;
     border: 2px solid rgb(207, 207, 207);
     box-sizing: border-box;
+    transition: 0.45s background-color;
 }
+
+.Widget:hover{
+    cursor: pointer;
+    background-color: bisque;
+}
+
+
 
 .TitleContainer{
     height: 25%;

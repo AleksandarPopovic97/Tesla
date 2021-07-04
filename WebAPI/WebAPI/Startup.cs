@@ -29,7 +29,7 @@ namespace WebAPI
             services.AddControllers();
 
             services.AddDbContext<TeslaDBContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DbConnectionString")));
+            options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
             services.AddCors(options => options.AddDefaultPolicy(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
 
             //services.AddCors(options => options.AddDefaultPolicy(builder => builder.WithOrigins("https://localhost:3000").AllowAnyHeader().AllowAnyMethod()));

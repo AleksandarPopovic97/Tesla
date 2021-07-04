@@ -3,15 +3,50 @@ import classes from './IncidentPicker.module.css'
 const IncidentPicker = (props) => {
 
     useEffect(() => {
-        console.log('Incident picker')
+        console.log(props)
     }, [])
 
     return(
         <div className={classes.IncidentPicker} onClick={() => props.incidentPick(props.incident)}>
+
+            {props.id === null ? 
+            <React.Fragment>
+
             <p>{props.incident.incidentId}</p>
             <p>{props.incident.type}</p>
             <p>{props.incident.priority}</p>
             <p>{props.incident.voltage} kV</p>
+            </React.Fragment>
+        :null}
+
+            {props.id ==='incident' ?
+                <React.Fragment>
+
+                <p>{props.incident.incidentId}</p>
+                <p>{props.incident.type}</p>
+                <p>{props.incident.priority}</p>
+                <p>{props.incident.voltage} kV</p>
+                </React.Fragment>
+                : null
+            }
+
+{props.id ==='workRequest' ?
+                <React.Fragment>
+
+                <p>{props.incident.typeDocument}</p>
+                <p>{props.incident.status}</p>
+                <p>{props.incident.details} </p>
+                </React.Fragment>
+                : null
+            }
+
+{props.id ==='fieldCrew' ?
+                <React.Fragment>
+                <p>{props.incident.name}</p>
+                </React.Fragment>
+                : null
+            }
+            
         </div>
     )
 }
