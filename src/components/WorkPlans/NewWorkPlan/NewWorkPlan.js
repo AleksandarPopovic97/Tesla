@@ -184,7 +184,7 @@ const NewWorkPlan = (props) => {
                 {modal ? 
             <Modal modalClick={showModalHandler} >
                 {incidents.map((incident) => {
-                   return <IncidentPicker key={incident.incidentId} incidentPick={onIncidentChangeHandler} incident={incident}/>
+                   return <IncidentPicker key={incident.incidentId} incidentPick={onIncidentChangeHandler} incident={incident} id = {"incident"}/>
                 })}
 
                     </Modal>
