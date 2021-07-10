@@ -64,7 +64,7 @@ const DashboardLayout = (props) => {
                         </div>
 
                         <div className={classes.NavOptionsLinks}>
-                            <Link to="/" className={classes.NavLink}><FaBell /></Link>
+                            <NavLink to="/Notifications" className={classes.NavLink}><FaBell /></NavLink>
                             <Link to="/" className={classes.NavLink}><FaRegSun /></Link>
                             <Link to="/" className={classes.NavLink}><FaSignInAlt /></Link>
 

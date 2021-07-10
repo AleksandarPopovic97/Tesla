@@ -33,6 +33,12 @@ namespace WebAPI.Models
         
         
         public DbSet<WebAPI.Models.WorkRequest> WorkRequest { get; set; }
+        
+        
+        public DbSet<WebAPI.Models.SwithingPlan> SwithingPlan { get; set; }
+        
+        
+        public DbSet<WebAPI.Models.Notification> Notification { get; set; }
 
 
     }

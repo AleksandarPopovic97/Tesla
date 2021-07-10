@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebAPI.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -83,11 +83,18 @@ namespace WebAPI.Migrations
                     birthday = table.Column<DateTime>(type: "datetime2", nullable: true),
                     isConfirmed = table.Column<bool>(type: "bit", nullable: false),
                     crew = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    image = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    image = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Crewid = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_User", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_User_Crew_Crewid",
+                        column: x => x.Crewid,
+                        principalTable: "Crew",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -193,6 +200,90 @@ namespace WebAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "WorkRequest",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    typeDocument = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    status = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    incidentid = table.Column<int>(type: "int", nullable: true),
+                    address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    dateAndTimeStart = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    dateAndTimeEnd = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    userid = table.Column<int>(type: "int", nullable: true),
+                    purpose = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    details = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    emergancyWork = table.Column<bool>(type: "bit", nullable: false),
+                    company = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    phoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    dateAndTimeCratingWorkRequest = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    image = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    notes = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WorkRequest", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_WorkRequest_Incident_incidentid",
+                        column: x => x.incidentid,
+                        principalTable: "Incident",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_WorkRequest_User_userid",
+                        column: x => x.userid,
+                        principalTable: "User",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SwithingPlan",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    phoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    type = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    company = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    incidentid = table.Column<int>(type: "int", nullable: true),
+                    workRequestid = table.Column<int>(type: "int", nullable: true),
+                    status = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    fieldCrewid = table.Column<int>(type: "int", nullable: true),
+                    user = table.Column<int>(type: "int", nullable: false),
+                    dateStart = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    dateEnd = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    dateCreated = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    details = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    notes = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    purpose = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    image = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SwithingPlan", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_SwithingPlan_Crew_fieldCrewid",
+                        column: x => x.fieldCrewid,
+                        principalTable: "Crew",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_SwithingPlan_Incident_incidentid",
+                        column: x => x.incidentid,
+                        principalTable: "Incident",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_SwithingPlan_WorkRequest_workRequestid",
+                        column: x => x.workRequestid,
+                        principalTable: "WorkRequest",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "DDevices",
                 columns: table => new
                 {
@@ -203,7 +294,9 @@ namespace WebAPI.Migrations
                     address = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     coordinates = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IncidentId = table.Column<int>(type: "int", nullable: true),
-                    SafetyDocumentid = table.Column<int>(type: "int", nullable: true)
+                    SafetyDocumentid = table.Column<int>(type: "int", nullable: true),
+                    SwithingPlanid = table.Column<int>(type: "int", nullable: true),
+                    WorkRequestid = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -218,6 +311,18 @@ namespace WebAPI.Migrations
                         name: "FK_DDevices_SafetyDocument_SafetyDocumentid",
                         column: x => x.SafetyDocumentid,
                         principalTable: "SafetyDocument",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_DDevices_SwithingPlan_SwithingPlanid",
+                        column: x => x.SwithingPlanid,
+                        principalTable: "SwithingPlan",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_DDevices_WorkRequest_WorkRequestid",
+                        column: x => x.WorkRequestid,
+                        principalTable: "WorkRequest",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -243,6 +348,16 @@ namespace WebAPI.Migrations
                 column: "SafetyDocumentid");
 
             migrationBuilder.CreateIndex(
+                name: "IX_DDevices_SwithingPlanid",
+                table: "DDevices",
+                column: "SwithingPlanid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DDevices_WorkRequestid",
+                table: "DDevices",
+                column: "WorkRequestid");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Incident_crewid",
                 table: "Incident",
                 column: "crewid");
@@ -256,6 +371,36 @@ namespace WebAPI.Migrations
                 name: "IX_SafetyDocument_checklistid",
                 table: "SafetyDocument",
                 column: "checklistid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SwithingPlan_fieldCrewid",
+                table: "SwithingPlan",
+                column: "fieldCrewid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SwithingPlan_incidentid",
+                table: "SwithingPlan",
+                column: "incidentid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SwithingPlan_workRequestid",
+                table: "SwithingPlan",
+                column: "workRequestid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_User_Crewid",
+                table: "User",
+                column: "Crewid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_WorkRequest_incidentid",
+                table: "WorkRequest",
+                column: "incidentid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_WorkRequest_userid",
+                table: "WorkRequest",
+                column: "userid");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -267,25 +412,31 @@ namespace WebAPI.Migrations
                 name: "DDevices");
 
             migrationBuilder.DropTable(
-                name: "User");
-
-            migrationBuilder.DropTable(
                 name: "Customer");
-
-            migrationBuilder.DropTable(
-                name: "Incident");
 
             migrationBuilder.DropTable(
                 name: "SafetyDocument");
 
             migrationBuilder.DropTable(
-                name: "Crew");
+                name: "SwithingPlan");
+
+            migrationBuilder.DropTable(
+                name: "SafetyDocChecklist");
+
+            migrationBuilder.DropTable(
+                name: "WorkRequest");
+
+            migrationBuilder.DropTable(
+                name: "Incident");
+
+            migrationBuilder.DropTable(
+                name: "User");
 
             migrationBuilder.DropTable(
                 name: "Resolution");
 
             migrationBuilder.DropTable(
-                name: "SafetyDocChecklist");
+                name: "Crew");
         }
     }
 }

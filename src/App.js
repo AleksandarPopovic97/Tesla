@@ -22,6 +22,7 @@ import Crew from './components/User/AddCrew/Crew';
 import NewWorkPlan from './components/WorkPlans/NewWorkPlan/NewWorkPlan';
 import NewSwitchingPlan from './containers/SwitchingPlan/NewSwitchingPlan/NewSwitchingPlan';
 import SwitchingPlanBrowser from './containers/SwitchingPlan/SwitchingPlanBrowser/SwitchingPlanBrowser';
+import NotificationsBrowser from './containers/Notifications/NotificationsBrowser';
 
 function App() {
   return (
@@ -43,6 +44,8 @@ function App() {
 
             <ProtectedRoute path="/workPlans-browser/new-work-plan" component={NewWorkPlans}></ProtectedRoute>
             <ProtectedRoute path="/workPlans-browser" component={WorkPlanBrowsers}></ProtectedRoute>
+
+            <ProtectedRoute path="/notifications" component={NotificationsBrowser}></ProtectedRoute>
 
             <ProtectedRoute path="/incident-browser/new-incident" component={NewIncident} />
             <ProtectedRoute path="/incident-browser/new-incident/basic-info" component={NewBasicInfo} />

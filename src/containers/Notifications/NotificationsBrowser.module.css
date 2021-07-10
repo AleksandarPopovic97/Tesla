@@ -1,0 +1,32 @@
+.LinkContainer {
+    width: 20%;
+    height: 100%;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.4rem;
+    border-radius: 5px;
+  }
+
+  .ContentContainer{
+    
+      width: 70%;
+      margin: 0 auto;
+  }
+  
+  .NewNotification {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .NavLink {
+    text-decoration: none;
+    color: rgb(83, 83, 83);
+    padding: 10px 20px;
+  }
+  
+  .ActiveLink {
+    background-color: rgb(185, 185, 185);
+  }

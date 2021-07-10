@@ -10,8 +10,8 @@ using WebAPI.Models;
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(TeslaDBContext))]
-    [Migration("20210628130558_NotesCont")]
-    partial class NotesCont
+    [Migration("20210710144846_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -107,6 +107,9 @@ namespace WebAPI.Migrations
                     b.Property<int?>("SafetyDocumentid")
                         .HasColumnType("int");
 
+                    b.Property<int?>("SwithingPlanid")
+                        .HasColumnType("int");
+
                     b.Property<int?>("WorkRequestid")
                         .HasColumnType("int");
 
@@ -127,6 +130,8 @@ namespace WebAPI.Migrations
                     b.HasIndex("IncidentId");
 
                     b.HasIndex("SafetyDocumentid");
+
+                    b.HasIndex("SwithingPlanid");
 
                     b.HasIndex("WorkRequestid");
 
@@ -304,6 +309,69 @@ namespace WebAPI.Migrations
                     b.ToTable("SafetyDocument");
                 });
 
+            modelBuilder.Entity("WebAPI.Models.SwithingPlan", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("company")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("dateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("dateEnd")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("dateStart")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("details")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("fieldCrewid")
+                        .HasColumnType("int");
+
+                    b.Property<string>("image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("incidentid")
+                        .HasColumnType("int");
+
+                    b.Property<string>("notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("phoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("purpose")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("user")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("workRequestid")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("fieldCrewid");
+
+                    b.HasIndex("incidentid");
+
+                    b.HasIndex("workRequestid");
+
+                    b.ToTable("SwithingPlan");
+                });
+
             modelBuilder.Entity("WebAPI.Models.User", b =>
                 {
                     b.Property<int>("id")
@@ -434,6 +502,10 @@ namespace WebAPI.Migrations
                         .WithMany("devices")
                         .HasForeignKey("SafetyDocumentid");
 
+                    b.HasOne("WebAPI.Models.SwithingPlan", null)
+                        .WithMany("equipment")
+                        .HasForeignKey("SwithingPlanid");
+
                     b.HasOne("WebAPI.Models.WorkRequest", null)
                         .WithMany("devices")
                         .HasForeignKey("WorkRequestid");
@@ -461,6 +533,27 @@ namespace WebAPI.Migrations
                         .HasForeignKey("checklistid");
 
                     b.Navigation("checklist");
+                });
+
+            modelBuilder.Entity("WebAPI.Models.SwithingPlan", b =>
+                {
+                    b.HasOne("WebAPI.Models.Crew", "fieldCrew")
+                        .WithMany()
+                        .HasForeignKey("fieldCrewid");
+
+                    b.HasOne("WebAPI.Models.Incident", "incident")
+                        .WithMany()
+                        .HasForeignKey("incidentid");
+
+                    b.HasOne("WebAPI.Models.WorkRequest", "workRequest")
+                        .WithMany()
+                        .HasForeignKey("workRequestid");
+
+                    b.Navigation("fieldCrew");
+
+                    b.Navigation("incident");
+
+                    b.Navigation("workRequest");
                 });
 
             modelBuilder.Entity("WebAPI.Models.User", b =>
@@ -500,6 +593,11 @@ namespace WebAPI.Migrations
             modelBuilder.Entity("WebAPI.Models.SafetyDocument", b =>
                 {
                     b.Navigation("devices");
+                });
+
+            modelBuilder.Entity("WebAPI.Models.SwithingPlan", b =>
+                {
+                    b.Navigation("equipment");
                 });
 
             modelBuilder.Entity("WebAPI.Models.WorkRequest", b =>

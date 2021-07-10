@@ -58,6 +58,11 @@ const NewBasicInfo = (props) => {
                     <input type="text" name="company" onChange={props.change} value={props.plan.company}></input>
                 </div>
                 <div className={classes.Container}>
+                    <label>Address:</label>
+                    <input type="text" name="address" onChange={props.change} value={props.plan.address}></input>
+                </div>
+
+                <div className={classes.Container}>
                     <label>Phone No:</label>
                     <input type="text" name="phoneNumber" onChange={props.change} value={props.plan.phoneNumber}></input>
                 </div>

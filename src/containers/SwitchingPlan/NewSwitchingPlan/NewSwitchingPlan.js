@@ -75,30 +75,31 @@ const NewSwitchingPlan = (props) => {
             });
     }, [])
 
+    const [message, setMessage] = useState('')
+
 
     const [swithingPlan, setSwitchingPlan] = useState({
-        type: 'Planned Work',
-        company: '',
-        status: 'Draft',
-        incident: {},
-        workRequest: {},
-        fieldCrew: {},
-        // address: '',
-        dateStart: new Date(Date.now()).toISOString().slice(0, 10),
-        dateEnd: new Date(Date.now()).toISOString().slice(0, 10),
+        type: 'Planned Work', // str
+        company: '', // str
+        status: 'Draft', // str
+        incident: {}, // obj 
+        workRequest: {}, // obj
+        fieldCrew: {}, //
+        address: '',
+        dateStart: new Date(Date.now()).toISOString().slice(0, 10), //
+        dateEnd: new Date(Date.now()).toISOString().slice(0, 10), //
         user: auth.getUser(),
-        purpose: '',
-        details: '',
+        purpose: '', //
+        details: '', //
         typeOfWork: 'Equipment',
-        notes: '',
-        phoneNumber: '',
-        dateCreated: new Date(Date.now()).toISOString().slice(0, 10),
-        image: '',
-        equipment: [],
+        notes: '', //
+        phoneNumber: '',//
+        dateCreated: new Date(Date.now()).toISOString().slice(0, 10),//
+        image: '',//
+        equipment: [], //
     })
 
     const handleBasicChange = (event) => {
-
         setSwitchingPlan(prevState => {
             return {
                 ...prevState,
@@ -108,8 +109,6 @@ const NewSwitchingPlan = (props) => {
     }
 
     const multimediaChange = (multimedia) => {
-
-
         setSwitchingPlan(prevState => {
             return {
                 ...prevState,
@@ -193,7 +192,22 @@ const NewSwitchingPlan = (props) => {
     }
 
     const saveHandle = () => {
-        console.log(swithingPlan)
+        let isValid = true;
+        if (!isValid) {
+            setMessage('Validation error, please fill all fields!')
+        } else {
+            swithingPlan.user = auth.getUserId();
+            
+            axios.post('http://localhost:60259/api/SwithingPlans', swithingPlan)
+                .then(function (response) {
+                    setMessage('Incident successfully saved!')
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    setMessage('Server error, check internet connection!')
+                    console.log(error);
+                });
+        }
     }
 
 
