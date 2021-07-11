@@ -13,6 +13,7 @@ import axios from 'axios';
 import {FaTimesCircle, FaSave} from 'react-icons/fa'
 
 
+
 const NewSwitchingPlan = (props) => {
 
     const validator = () => {
@@ -199,14 +200,34 @@ const NewSwitchingPlan = (props) => {
             swithingPlan.user = auth.getUserId();
             
             axios.post('http://localhost:60259/api/SwithingPlans', swithingPlan)
-                .then(function (response) {
+                .then( (response) => {
                     setMessage('Incident successfully saved!')
                     console.log(response);
+
+                    axios.post('http://localhost:60259/api/Notifications', {type:'success', message:'Switching plan saved', userId: auth.getUserId()} )
+                    .then( (response2) => {
+                        // handle success
+                        {console.log("post success not")
+                    }})
+                    .catch(function (error) {
+                        // handle error
+                    })
+                    
+                    
+
                 })
                 .catch(function (error) {
                     setMessage('Server error, check internet connection!')
                     console.log(error);
-                });
+
+                    axios.post('http://localhost:60259/api/Notifications', {type:'error', message:'Error with adding a new Switching Plan', userId: auth.getUserId()})
+                        .then( (response) => {
+                            console.log("post error not")
+                        })
+                        .catch( () => {
+                            console.log("Error with posting a notification")
+                        })
+                })
         }
     }
 

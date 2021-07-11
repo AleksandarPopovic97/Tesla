@@ -3,6 +3,7 @@ import classes from './NotificationsBrowser.module.css'
 import { Switch, Route, HashRouter, NavLink } from 'react-router-dom';
 import DashboardLayout from "../../components/DashboardLayout/DashboardLayout";
 import NewNotifications from "./NewNotification/NewNotification";
+import axios from 'axios';
 
 const NotificationsBrowser = () => {
 
@@ -16,6 +17,29 @@ const NotificationsBrowser = () => {
         }
     )
 
+    
+
+
+    const [allNotificationsList, setList] = useState ([])
+
+    useEffect(() => {
+
+        axios.get('http://localhost:60259/api/Notifications')
+        
+            .then(function (response) {
+                setList(response.data);
+                //console.log(response.data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+           
+    }, [])
+    
+    allNotificationsList.map( not => {
+        console.log(not.id);
+    })
+
     return ( 
         <DashboardLayout title = "Notifications">
             <div className={classes.NewNotifications}>
@@ -28,13 +52,9 @@ const NotificationsBrowser = () => {
                     <NavLink to="/warning-notifications" className={classes.NavLink} activeClassName={classes.ActiveLink}>Warning</NavLink>
                 </div>
                 <div className={classes.ContentContainer}>
-                    
-                        <NewNotifications message = "poruka" type= 'Error'></NewNotifications>
-                        <NewNotifications message = "poruka" type= 'Error'></NewNotifications>
-                        <NewNotifications message = "poruka" type= 'Error'></NewNotifications>
-                        <NewNotifications message = "poruka" type= 'Error'></NewNotifications>
-                        <NewNotifications message = "poruka" type= 'Error'></NewNotifications>
-                        <NewNotifications message = "poruka" type= 'Error'></NewNotifications>
+                    {allNotificationsList.map((notification) => (
+                        <NewNotifications key = {notification.id} message={notification.message} type = {notification.type}></NewNotifications>
+                    ))} 
                 </div>
             </div>
            
