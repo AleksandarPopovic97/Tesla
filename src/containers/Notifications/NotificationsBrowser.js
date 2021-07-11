@@ -7,19 +7,6 @@ import axios from 'axios';
 
 const NotificationsBrowser = () => {
 
-    const [notifications, setNotifications] = useState(
-        {
-            unreadNotifications: '',
-            errorsNotifications: '',
-            infoNotifications: '',
-            successNotifications: '',
-            warrningNotifications: ''
-        }
-    )
-
-    
-
-
     const [allNotificationsList, setList] = useState ([])
 
     useEffect(() => {
@@ -40,22 +27,56 @@ const NotificationsBrowser = () => {
         console.log(not.id);
     })
 
+     
+
     return ( 
         <DashboardLayout title = "Notifications">
             <div className={classes.NewNotifications}>
                 <div className={classes.LinkContainer}>
-                    <NavLink to="/all-notifications" className={classes.NavLink} activeClassName={classes.ActiveLink}>All Notifications</NavLink>
-                    <NavLink to="/unread-notifications" className={classes.NavLink} activeClassName={classes.ActiveLink}>Unread Notifications </NavLink>
-                    <NavLink to="/errors-notifications" className={classes.NavLink} activeClassName={classes.ActiveLink}>Errors</NavLink>
-                    <NavLink to="/info--notifications" className={classes.NavLink} activeClassName={classes.ActiveLink}>Info</NavLink>
-                    <NavLink to="/success-notifications" className={classes.NavLink} activeClassName={classes.ActiveLink}>Success</NavLink>
-                    <NavLink to="/warning-notifications" className={classes.NavLink} activeClassName={classes.ActiveLink}>Warning</NavLink>
+                    <NavLink to="/Notifications/all-notifications" className={classes.NavLink} activeClassName={classes.ActiveLink}>All Notifications</NavLink>
+                    <NavLink to="/Notifications/unread-notifications" className={classes.NavLink} activeClassName={classes.ActiveLink}>Unread Notifications </NavLink>
+                    <NavLink to="/Notifications/errors-notifications" className={classes.NavLink} activeClassName={classes.ActiveLink}>Errors</NavLink>
+                    <NavLink to="/Notifications/success-notifications" className={classes.NavLink} activeClassName={classes.ActiveLink}>Success</NavLink>
                 </div>
-                <div className={classes.ContentContainer}>
-                    {allNotificationsList.map((notification) => (
-                        <NewNotifications key = {notification.id} message={notification.message} type = {notification.type}></NewNotifications>
-                    ))} 
+                <div className = {classes.ContentContainer}>
+
+                <HashRouter>
+                        <Switch>
+                            <Route path="/Notifications/all-notifications" render={() =>
+                                <div className={classes.ContentContainer}>
+                                    {allNotificationsList.map((notification) => (
+                                        <NewNotifications key = {notification.id} read = {notification.read} id ={notification.id} message={notification.message} type = {notification.type} ></NewNotifications>
+                                    ))} 
+                                </div>
+                                 }
+                            />
+                            <Route path="/Notifications/unread-notifications" render={() =>
+                                <div className={classes.ContentContainer}>
+                                    {allNotificationsList.map((notification) => (
+                                        notification.read === 0 ? <NewNotifications key = {notification.id} read = {notification.read} id={notification.id} message={notification.message} type = {notification.type}  ></NewNotifications> : null
+                                    ))} 
+                                </div>
+                                } 
+                            />
+                            <Route path="/Notifications/errors-notifications" render={() =>
+                                    <div className={classes.ContentContainer}>
+                                        {allNotificationsList.map((notification) => (
+                                            notification.type === 'error' ? <NewNotifications key = {notification.id} read = {notification.read} id={notification.id} message={notification.message} type = {notification.type}></NewNotifications> : null
+                                        ))} 
+                                    </div>
+                                } />
+                            <Route path="/Notifications/success-notifications" render={() =>
+                                <div className={classes.ContentContainer}>
+                                    {allNotificationsList.map((notification) => (
+                                        notification.type === 'success' ? <NewNotifications key = {notification.id} read = {notification.read} id={notification.id} message={notification.message} type = {notification.type} ></NewNotifications> : null
+                                    ))} 
+                            </div>
+                                } />
+                            
+                        </Switch>
+                    </HashRouter>
                 </div>
+
             </div>
            
             

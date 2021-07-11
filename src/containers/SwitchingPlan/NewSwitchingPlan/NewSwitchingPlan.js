@@ -204,7 +204,7 @@ const NewSwitchingPlan = (props) => {
                     setMessage('Incident successfully saved!')
                     console.log(response);
 
-                    axios.post('http://localhost:60259/api/Notifications', {type:'success', message:'Switching plan saved', userId: auth.getUserId()} )
+                    axios.post('http://localhost:60259/api/Notifications', {type:'success', message:'Switching plan saved', userId: auth.getUserId(), read:false} )
                     .then( (response2) => {
                         // handle success
                         {console.log("post success not")
@@ -220,7 +220,7 @@ const NewSwitchingPlan = (props) => {
                     setMessage('Server error, check internet connection!')
                     console.log(error);
 
-                    axios.post('http://localhost:60259/api/Notifications', {type:'error', message:'Error with adding a new Switching Plan', userId: auth.getUserId()})
+                    axios.post('http://localhost:60259/api/Notifications', {type:'error', message:'Error with adding a new Switching Plan', userId: auth.getUserId(), read:false})
                         .then( (response) => {
                             console.log("post error not")
                         })
@@ -294,6 +294,7 @@ const NewSwitchingPlan = (props) => {
                                 <Multimedia
                                 multimedia={swithingPlan.image} 
                                 change={multimediaChange}
+                                
                                 />} />
                             <Route path="/switching-plan-browser/new-switching-plan/equipment" render={() =>
                                 <DevicePicker

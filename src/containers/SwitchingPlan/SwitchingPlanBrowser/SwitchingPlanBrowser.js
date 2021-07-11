@@ -4,9 +4,12 @@ import classes from './SwitchingPlanBrowser.module.css';
 import IncidentTable from '../../../components/UI/IncidentTable/IncidentTable'
 import axios from 'axios';
 import auth from '../../../auth'
+import SwitchingPlanPreview from '../SwitchingPlanPreview/SwitchingPlanPreview';
+
 const SwitchingPlanBrowser = (props) => {
 
     const [data, setData] = useState([]);
+    const [loadedPlan, setPlan] = useState(null)
 
 
     useEffect(() => {
@@ -53,7 +56,21 @@ const SwitchingPlanBrowser = (props) => {
     }
 
     const editSwitchPlanHandler = (row) => {
-        console.log(row);
+        //console.log(row);
+    }
+
+    const onRowClick = (row) =>{
+
+       
+        axios.get('http://localhost:60259/api/SwithingPlans/' + row.cells[0].value)
+            .then(function (response) {
+                setPlan(response.data)
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+        
     }
 
     return (
@@ -62,8 +79,15 @@ const SwitchingPlanBrowser = (props) => {
         <button onClick={newSwithicPlanHandler}>New switching plan</button>
 
         <div className={classes.Table}>
-            <IncidentTable tableColumns={columns} tableData={data} rowClick={editSwitchPlanHandler} />
+            <IncidentTable tableColumns={columns} tableData={data} rowClick={onRowClick} />
         </div>
+
+        <div className={classes.SwitchingPlanPreview}>
+                    {loadedPlan ?
+                        <SwitchingPlanPreview switchingPlan={loadedPlan} />
+                        : null}
+        </div>
+
 
     </DashboardLayout>
     )

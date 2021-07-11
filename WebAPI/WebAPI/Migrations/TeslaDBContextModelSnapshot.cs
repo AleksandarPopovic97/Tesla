@@ -216,6 +216,9 @@ namespace WebAPI.Migrations
                     b.Property<string>("message")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("read")
+                        .HasColumnType("bit");
+
                     b.Property<string>("type")
                         .HasColumnType("nvarchar(max)");
 

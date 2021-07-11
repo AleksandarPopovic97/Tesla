@@ -1,0 +1,13 @@
+.SwitchingPlanPreview{
+
+}
+
+.BasicInfo{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.BasicInfo p{
+    width: 33%;
+}
+

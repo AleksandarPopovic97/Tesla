@@ -22,5 +22,8 @@ namespace WebAPI.Models
         [Column]
         public int userId { get; set; }
 
+        [Column]
+        public bool read { get; set; }
+
     }
 }

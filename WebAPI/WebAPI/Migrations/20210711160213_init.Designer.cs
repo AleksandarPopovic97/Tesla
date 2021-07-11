@@ -10,8 +10,8 @@ using WebAPI.Models;
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(TeslaDBContext))]
-    [Migration("20210711122508_notificationsMig")]
-    partial class notificationsMig
+    [Migration("20210711160213_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -217,6 +217,9 @@ namespace WebAPI.Migrations
 
                     b.Property<string>("message")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("read")
+                        .HasColumnType("bit");
 
                     b.Property<string>("type")
                         .HasColumnType("nvarchar(max)");
